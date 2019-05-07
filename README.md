@@ -1,3 +1,3 @@
-# donut_time
-🍩🍩🍩🍩🍩🍩🍩🍩🍩🍩
+# donut_time 🍩
+
 ![alt text](./index.jpeg)
