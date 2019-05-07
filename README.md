@@ -1,3 +1,6 @@
 # donut_time 🍩
+Kenny Li(PM), Jiayang Chen, Dennis Chen, Johnson Li
 
-![alt text](./index.jpeg)
+P #05: Fin
+
+![alt text](./donut.png)
