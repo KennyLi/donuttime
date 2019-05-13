@@ -5,7 +5,7 @@ Dennis Chen
 Johnson Li
 pd 7
 ---------------------
-**FILL IN WITH PROJECT IDEA**
+Donut Drawing
 
 
  ______   ______   __   __   __       ______   _______
@@ -23,6 +23,7 @@ kennyL -- 2019-05-06 22:57
 + added templates for devlog, app.py, and index.html
 + added doc, templates and util directory 
 ==============================================================
+
 chenD -- 2019-05-012 22:38
 --------------------------------------------------------------
 + Revised Design Document:
