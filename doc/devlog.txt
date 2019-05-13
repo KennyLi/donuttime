@@ -24,9 +24,10 @@ kennyL -- 2019-05-06 22:57
 + added doc, templates and util directory 
 ==============================================================
 
-chenD -- 2019-05-012 22:38
+chenD & kennyL -- 2019-05-012 22:38
 --------------------------------------------------------------
 + Revised Design Document:
 + Added arrow from drawing.js to canvas.html on component map
++ Changed the implementation of saving pictures from file system to blobs
 - Removed everything regarding websockets and collaboration
 ==============================================================
