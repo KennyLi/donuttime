@@ -19,14 +19,12 @@ def home():
 def test():
     return render_template("blob.html")
 
-@app.route("/blob")
+@app.route("/blob", methods =["POST"])
 def blob():
     print("hi")
-    print(request.headers)
-    print(request.files)
-    # db.add_drawing("Kenny", "blob", request.form["blob"])
+    # print(request.headers)
+    # print(request.files)
+    print (request.files["file"])
+    print(request.form)
+    # db.add_drawing("Kenny", "blob", request.files["file"])
     return "hi"
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run()

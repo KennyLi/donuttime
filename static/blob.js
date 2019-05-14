@@ -18,31 +18,29 @@ var button = document.getElementById("blob")
 var download = function (e) {
     e.preventDefault();
     canvas.toBlob(function (blob) {
-        formData = new FormData();
+        var formData = new FormData();
         // formData.append("blob", blob);
         formData.append("drawing_name", "Kenny");
         formData.append("test", "test");
         // for (var pair of formData.entries()){
-        //  console.log(pair[0]+ ', '+ pair[1]); 
+        //  console.log(pair[0]+ ', '+ pair[1]);
         // }
 
         // var oReq = new XMLHttpRequest();
         // var formData = new FormData()
-        formData.append("file", blob);
+        formData.append("file", blob, "blob.png");
         // formData.append("drawing_name", "Kenny");
         // oReq.open("GET", "/blob", true);
-        // oReq.setRequestHeader("Content-type", "multipart/form-data");        
+        // oReq.setRequestHeader("Content-type", "multipart/form-data");
         // oReq.send(formData)
 
         $.ajax({
-            type: "GET",
-            // beforeSend: function(xhrObj) {
-            //     xhrObj.setRequestHeader("Content-Type", 'application/x-www-form-urlencoded;charset=UTF-8')
-            // },
-            url: "/blob",
-            data: formData,
-            processData: false,
-            contentType: false
+          type: 'POST',
+          url: '/blob',
+          data: formData,
+          cache: false,
+          processData: false,
+          contentType: false
         })
     }, "image/png");
 }

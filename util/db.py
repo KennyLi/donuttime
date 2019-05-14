@@ -25,10 +25,9 @@ def add_user(username, password):
     db.commit()
     db.close()
 
-def add_drawing(username, drawing_name, drawing):
+def add_drawing(username, drawing_name, blob):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("INSERT INTO drawing VALUES(?, ?, ?)", (username, drawing_name, drawing))
+    c.execute("INSERT INTO drawing VALUES(?, ?, ?)", (username, drawing_name, blob))
     db.commit()
     db.close()
-
