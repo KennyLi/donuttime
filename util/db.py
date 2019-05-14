@@ -1,7 +1,7 @@
 import sqlite3
 
 #change later when connected with app.py
-DB_FILE="../data/drawing.db"
+DB_FILE="./data/drawing.db"
 
 def createTable():
     """Create all data tables."""
@@ -31,3 +31,4 @@ def add_drawing(username, drawing_name, drawing):
     c.execute("INSERT INTO drawing VALUES(?, ?, ?)", (username, drawing_name, drawing))
     db.commit()
     db.close()
+
