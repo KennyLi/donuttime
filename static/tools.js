@@ -23,6 +23,7 @@ var general = function (event) {
 canvas.addEventListener("mousedown", general, false)
 canvas.addEventListener("mousemove", general, false)
 canvas.addEventListener("mouseup", general, false)
+canvas.addEventListener("keydown", general, false)
 
 //Tool-ify a class
 var tool = function(name) {

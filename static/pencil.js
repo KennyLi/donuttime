@@ -12,6 +12,8 @@ eventFunction("pencil","mousemove", function(x0,y0,e) {
     }
     let x1 = e.offsetX;
     let y1 = e.offsetY;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#000000";
     ctx.lineTo(x1,y1);
     ctx.stroke();
 })
