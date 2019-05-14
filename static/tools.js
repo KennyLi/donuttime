@@ -2,8 +2,10 @@ var canvas = document.getElementById("playground");
 var ctx = canvas.getContext("2d");
 var currentTool = undefined;
 
+var color = 'black';
+
 var general = function (event) {
-    if (currentTool == undefined){
+    if (currentTool == undefined) {
         return
     }
     //For specific functions
@@ -26,12 +28,12 @@ canvas.addEventListener("mouseup", general, false)
 canvas.addEventListener("keydown", general, false)
 
 //Tool-ify a class
-var tool = function(name) {
+var tool = function (name) {
 
     //Add a button of the fxn to the toolbar
     let button = document.createElement("button");
     button.innerHTML = name;
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         currentTool = name;
         console.log("Switched tool to: " + currentTool)
     });
@@ -41,13 +43,13 @@ var tool = function(name) {
 
 
 
-var lastClicked = [undefined,undefined];
+var lastClicked = [undefined, undefined];
 var allTools = {};
 var mousedown = false;
 
-var eventFunction = function(toolName,type,fxn) {
+var eventFunction = function (toolName, type, fxn) {
     //Create the inner function
-    let inner = function(e) {
+    let inner = function (e) {
         if (e.type == type) {
             fxn(lastClicked[0], lastClicked[1], e) //Pass in the coords of the click and the previous
             lastClicked = [e.offsetX, e.offsetY] //Update the last clicked
@@ -55,11 +57,11 @@ var eventFunction = function(toolName,type,fxn) {
     }
 
     //Add it to the all tool functions lists
-    if(!(toolName in allTools)) {
+    if (!(toolName in allTools)) {
         allTools[toolName] = {};
         console.log("CREATED TOOL: " + toolName)
     }
-    if(!(type in allTools[toolName])) {
+    if (!(type in allTools[toolName])) {
         allTools[toolName][type] = inner;
         console.log("ADDED TOOL FUNCTION: " + toolName + " " + type)
     }

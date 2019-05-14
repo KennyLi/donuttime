@@ -12,9 +12,13 @@ gradient.src = '/static/gradient.png';
 
 grad_mousedown = false;
 
-colorGrad.addEventListener('mousedown', () => {
+colorGrad.addEventListener('mousedown', (e) => {
     console.log('down');
     grad_mousedown = true;
+    var data = colorGradContext.getImageData(e.offsetX, e.offsetY, 1, 1);
+    var data_color = data.data;
+    color = `rgba(${data_color[0]}, ${data_color[1]}, ${data_color[2]}, ${data_color[3]})`;
+    currColor.innerHTML = color;
 })
 
 colorGrad.addEventListener('mouseup', () => {
@@ -26,7 +30,8 @@ colorGrad.addEventListener('mousemove', (e) => {
     console.log('hihih');
     if (grad_mousedown) {
         var data = colorGradContext.getImageData(e.offsetX, e.offsetY, 1, 1);
-        var color = data.data;
-        currColor.innerHTML = `(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`;
+        var data_color = data.data;
+        color = `rgba(${data_color[0]}, ${data_color[1]}, ${data_color[2]}, ${data_color[3]})`
+        currColor.innerHTML = color;
     }
 })
