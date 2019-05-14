@@ -44,3 +44,9 @@ kennyL -- 2019-05-14 8:00
 + added blob test html and js
 + added database method for creating tables
 ==============================================================
+
+johnsonL -- 2019-05-14 15:31
+--------------------------------------------------------------
++ added simple color picker. click and hold to choose works.
++ made global var for color and pencil color works with pencil tool.
+==============================================================
