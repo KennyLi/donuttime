@@ -42,7 +42,7 @@ var download = function (e) {
             url: "/blob",
             data: formData,
             processData: false,
-            contentType: "multipart/form-data; boundary=------border"
+            contentType: false
         })
     }, "image/png");
 }
