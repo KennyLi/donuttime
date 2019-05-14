@@ -3,23 +3,29 @@
 {% block content %}
 <div class="container-fluid">
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
-         <div class="container-fluid">
+        <div class="container-fluid">
             <div class="navbar-header">
-               <a class="navbar-brand" href="- ">Donut Drawing</a>
+                <a class="navbar-brand" href="- ">Donut Drawing</a>
             </div>
-            <div class = "collapse navbar-collapse" id = "collapsibleNavbar">
-               <ul class="navbar-nav">
-                  <li class = "nav-item"><a class = "nav-link" href="/saved">Saved Drawings</a></li>
-                  <li class = "nav-item"><a class = "nav-link" href="/login">Login</a></li>
-                  <li class = "nav-item"><a class = "nav-link" href="/register">Register</a></li>
-               </ul>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/saved">Saved Drawings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                </ul>
             </div>
-         </div>
-      </nav>
+        </div>
+    </nav>
 </div>
 <canvas width="500" height="500" id="playground" tabindex="1">
 </canvas>
 <div id="toolbar">
+</div>
+<div id="color-picker">
+    <canvas id="color-grad" width="256" height="256">
+
+    </canvas>
+    current color = <span id="curr-color"></span>
 </div>
 {% endblock %}
 
@@ -28,5 +34,7 @@
 <script src="/static/pencil.js"></script>
 <script src="/static/eraser.js"></script>
 <script src="/static/text.js"></script>
+<script src="/static/colorpick.js"></script>
+
 
 {% endblock %}
