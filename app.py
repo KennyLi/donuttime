@@ -28,3 +28,7 @@ def blob():
     print(request.form)
     # db.add_drawing("Kenny", "blob", request.files["file"])
     return "hi"
+
+if __name__ == "__main__":	
+    app.debug = True	
+    app.run()
