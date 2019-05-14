@@ -21,7 +21,7 @@ Donut Drawing
 kennyL -- 2019-05-06 22:57
 --------------------------------------------------------------
 + added templates for devlog, app.py, and index.html
-+ added doc, templates and util directory 
++ added doc, templates and util directory
 ==============================================================
 
 chenD & kennyL -- 2019-05-012 22:38
@@ -30,4 +30,10 @@ chenD & kennyL -- 2019-05-012 22:38
 + Added arrow from drawing.js to canvas.html on component map
 + Changed the implementation of saving pictures from file system to blobs
 - Removed everything regarding websockets and collaboration
+==============================================================
+jiayangC -- 2019-05-13 20:17
+--------------------------------------------------------------
++ added stylesheet
++ began general tool encapsulating function (creates a button automatically, added events to event listener)
++ added basic pencil tool
 ==============================================================

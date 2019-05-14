@@ -10,7 +10,7 @@ app.secret_key = os.urandom(32)
 #root route
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("draw.html")
 
 
 
