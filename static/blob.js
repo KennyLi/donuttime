@@ -19,20 +19,9 @@ var download = function (e) {
     e.preventDefault();
     canvas.toBlob(function (blob) {
         var formData = new FormData();
-        // formData.append("blob", blob);
         formData.append("drawing_name", "Kenny");
         formData.append("test", "test");
-        // for (var pair of formData.entries()){
-        //  console.log(pair[0]+ ', '+ pair[1]);
-        // }
-
-        // var oReq = new XMLHttpRequest();
-        // var formData = new FormData()
         formData.append("file", blob, "blob.png");
-        // formData.append("drawing_name", "Kenny");
-        // oReq.open("GET", "/blob", true);
-        // oReq.setRequestHeader("Content-type", "multipart/form-data");
-        // oReq.send(formData)
 
         $.ajax({
           type: 'POST',
