@@ -77,3 +77,11 @@ kennyL -- 2019-05-14 22:35
 --------------------------------------------------------------
 +fixed bug with downloading blob which didn't work on ubuntu
 ==============================================================
+
+jiayangC -- 2019-05-15 18:44
+--------------------------------------------------------------
++ added dotted circle to show where eraser was erasing
++ fixed a bug where the eraser would be choppy if mouse moved fast
++ fixed a bug where everything messes up if the user drags mouse out of canvas while holding down and then reenters
++ made eraser actually erase instead of filling white
+==============================================================

@@ -1,8 +1,9 @@
-#playground {
+#playground,.helpercanvas {
     border: 1px solid black;
     position: absolute;
     top: 15%;
     left: 12.5%;
+
 }
 
 .wrapper {

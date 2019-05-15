@@ -1,5 +1,6 @@
 var canvas = document.getElementById("playground");
 var ctx = canvas.getContext("2d");
+var content = document.getElementById("content")
 var currentTool = undefined;
 canvas.width = 1280;
 canvas.height = 720;
@@ -12,7 +13,7 @@ var general = function (event) {
 
     //Execute event if it exists in list of all functions
     if (event.type in allTools[currentTool]) {
-        allTools[currentTool][event.type](event);
+        allTools[currentTool][event.type](event,inCanvas(event,canvas));
     }
 }
 
@@ -26,13 +27,16 @@ var updateMouse = function(event) {
         mousedown = false;
     }
 }
-
+//Used to see if mouse in canvas
+var inCanvas = function(e,c) {
+    return e.pageX > c.offsetLeft && e.pageX < c.offsetLeft + c.width && e.pageY > c.offsetTop && e.pageY < c.offsetTop + c.height
+}
 window.addEventListener("mousedown", updateMouse, false)
 window.addEventListener("mouseup", updateMouse, false)
-canvas.addEventListener("mousedown", general, false)
-canvas.addEventListener("mousemove", general, false)
-canvas.addEventListener("mouseup", general, false)
-canvas.addEventListener("keydown", general, false)
+content.addEventListener("mousedown", general, false)
+content.addEventListener("mousemove", general, false)
+content.addEventListener("mouseup", general, false)
+content.addEventListener("keydown", general, false)
 
 //Tool-ify a class
 var tool = function (name, image=false) {
@@ -50,7 +54,7 @@ var tool = function (name, image=false) {
     } else {
 	button.innerHTML = name;
     }
-    
+
     button.addEventListener('click', function (e) {
         currentTool = name;
         console.log("Switched tool to: " + currentTool)
@@ -65,10 +69,14 @@ var lastClicked = [undefined, undefined];
 var allTools = {};
 var mousedown = false;
 
-var eventFunction = function (toolName, type, fxn) {
+var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
     //Create the inner function
-    let inner = function (e) {
-        if (e.type == type) {
+    let inner = function (e, inside) {
+        if (type == "mousemove" && !inside && fxn1 != undefined){ //For mousemove, a lot of things go wrong if the mouse is held and dragged off canvas.
+            fxn1(e)
+            lastClicked = [undefined,undefined]
+        }
+        else if (e.type == type) {
             fxn(lastClicked[0], lastClicked[1], e) //Pass in the coords of the click and the previous
             lastClicked = [e.offsetX, e.offsetY] //Update the last clicked
         }
