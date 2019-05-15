@@ -39,6 +39,12 @@ jiayangC -- 2019-05-13 20:17
 + added basic pencil tool
 ==============================================================
 
+chenD -- 2019-05-14 14:40
+--------------------------------------------------------------
++ created the eraser tool
++ started working on login, made a navbar
+==============================================================
+
 kennyL -- 2019-05-14 8:00
 --------------------------------------------------------------
 + added blob test html and js
@@ -61,7 +67,7 @@ kennyL -- 2019-05-14 22:35
 --------------------------------------------------------------
 + completed process for downloading and storing blob to database
 
-TODO: 
+TODO:
 - confirm message if image is going to overwrite
 - connect test files to actual file
 - retrieve image from database
