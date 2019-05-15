@@ -1,10 +1,6 @@
-var canvas = document.getElementById("playground");
-var ctx = canvas.getContext("2d");
-var content = document.getElementById("content")
-var currentTool = undefined;
-canvas.width = 1280;
-canvas.height = 720;
 var color = 'black';
+
+var currentTool = undefined;
 
 var general = function (event) {
     if (currentTool == undefined) {
