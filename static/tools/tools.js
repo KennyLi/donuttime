@@ -1,19 +1,13 @@
 var canvas = document.getElementById("playground");
 var ctx = canvas.getContext("2d");
 var currentTool = undefined;
-
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight
 var color = 'black';
 
 var general = function (event) {
     if (currentTool == undefined) {
         return
-    }
-    //For specific functions
-    if (event.type == "mousedown") {
-        mousedown = true;
-    }
-    if (event.type == "mouseup") {
-        mousedown = false;
     }
 
     //Execute event if it exists in list of all functions
@@ -22,6 +16,19 @@ var general = function (event) {
     }
 }
 
+//Used to tell if the mouse is being pressed
+var updateMouse = function(event) {
+    //For specific functions
+    if (event.type == "mousedown") {
+        mousedown = true;
+    }
+    if (event.type == "mouseup") {
+        mousedown = false;
+    }
+}
+
+window.addEventListener("mousedown", updateMouse, false)
+window.addEventListener("mouseup", updateMouse, false)
 canvas.addEventListener("mousedown", general, false)
 canvas.addEventListener("mousemove", general, false)
 canvas.addEventListener("mouseup", general, false)
@@ -37,7 +44,7 @@ var tool = function (name) {
         currentTool = name;
         console.log("Switched tool to: " + currentTool)
     });
-    let toolbar = document.getElementById("toolbar");
+    let toolbar = document.getElementById("sidebar");
     toolbar.appendChild(button);
 }
 
