@@ -74,4 +74,4 @@ content.addEventListener("mousemove", function(e) {
     eraserCtx.stroke();
 
 });
-content.insertBefore(eraserCanvas,canvas);
+content.appendChild(eraserCanvas);

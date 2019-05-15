@@ -4,7 +4,8 @@ var ctx = canvas.getContext("2d");
 var content = document.getElementById("content");
 canvas.width = 1280;
 canvas.height = 720;
-
+ctx.fillStyle = "#FFFFFF";
+ctx.fillRect(0,0,canvas.width,canvas.height)
 
 //Transparent Image Setup
 var checker = document.getElementById("checker");
@@ -13,8 +14,3 @@ checker.addEventListener("click", function(e) {
 })
 checker.width = 1280;
 checker.height = 720;
-
-
-ctx.globalCompositeOperation = "source-over";
-ctx.fillStyle = "#FFFFFF";
-ctx.fillRect(0,0,canvas.width,canvas.height)
