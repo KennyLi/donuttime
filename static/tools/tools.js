@@ -1,8 +1,8 @@
 var canvas = document.getElementById("playground");
 var ctx = canvas.getContext("2d");
 var currentTool = undefined;
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight
+canvas.width = 1280;
+canvas.height = 720;
 var color = 'black';
 
 var general = function (event) {
@@ -35,16 +35,27 @@ canvas.addEventListener("mouseup", general, false)
 canvas.addEventListener("keydown", general, false)
 
 //Tool-ify a class
-var tool = function (name) {
+var tool = function (name, image=false) {
 
     //Add a button of the fxn to the toolbar
     let button = document.createElement("button");
-    button.innerHTML = name;
+    button.className += " btn btn-link";
+    if(image) {
+	let img = document.createElement("IMG");
+	img.className += " toolicon"
+	img.src = '/static/icons/' + name + '.png';
+	img.width = 25;
+	img.height = 25;
+	button.appendChild(img);
+    } else {
+	button.innerHTML = name;
+    }
+    
     button.addEventListener('click', function (e) {
         currentTool = name;
         console.log("Switched tool to: " + currentTool)
     });
-    let toolbar = document.getElementById("sidebar");
+    let toolbar = document.getElementById("toolbar");
     toolbar.appendChild(button);
 }
 

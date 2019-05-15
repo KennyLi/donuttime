@@ -1,5 +1,5 @@
 //Erases from canvas
-tool("eraser")
+tool("eraser",true)
 
 eventFunction("eraser","mousedown", function(x0,y0,e) {
   let x1 = e.offsetX;

@@ -1,5 +1,5 @@
 //Pencil tool that gets passed in events
-tool("pencil")
+tool("pencil",true)
 
 eventFunction("pencil", "mousedown", function (x0, y0, e) {
     ctx.beginPath();
