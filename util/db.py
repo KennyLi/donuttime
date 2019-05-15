@@ -16,6 +16,7 @@ def createTable():
     db.commit()
     db.close()
 
+
 def add_user(username, password):
     """Insert credentials for newly registered user into database."""
     db = sqlite3.connect(DB_FILE)
@@ -26,6 +27,7 @@ def add_user(username, password):
 
 def add_drawing(username, drawing_name, blob):
     db = sqlite3.connect(DB_FILE)
+    db.text_factory = str
     c = db.cursor()
     c.execute("INSERT INTO drawing VALUES(?, ?, ?)", (username, drawing_name, blob))
     db.commit()
