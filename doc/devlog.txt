@@ -51,6 +51,12 @@ johnsonL -- 2019-05-14 15:31
 + made global var for color and pencil color works with pencil tool.
 ==============================================================
 
+jiayangC -- 2019-05-14 20:21
+--------------------------------------------------------------
++ added sidebar
++ made canvas fullscreen
+==============================================================
+
 kennyL -- 2019-05-14 22:35
 --------------------------------------------------------------
 + completed process for downloading and storing blob to database
