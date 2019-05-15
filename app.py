@@ -5,8 +5,6 @@ from flask import Flask, request, render_template, \
 
 from util import db
 
-import io
-
 app = Flask(__name__)
 
 app.secret_key = os.urandom(32)
@@ -23,18 +21,8 @@ def test():
 
 @app.route("/blob", methods = ["POST"])
 def blob():
-    print("hi")
-    # print(request.headers)
-    # print(request.files)
-    f = request.files["file"]
-    for line in f:
-        print('-----------------------------')
-        print(line)
-    # print(request.form)
-    # db.add_drawing("Kenny", "blob", request.files["file"])
-    return "hi"
-
-
+    db.add_drawing("Kenny", request.form["drawing_name"], request.files["file"].read())
+    return "Successfully Downloaded"
 
 if __name__ == "__main__":	
     app.debug = True	

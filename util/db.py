@@ -1,6 +1,5 @@
 import sqlite3
 
-#change later when connected with app.py
 DB_FILE="./data/drawing.db"
 
 def createTable():
@@ -11,7 +10,7 @@ def createTable():
     command = "CREATE TABLE users (username TEXT, password TEXT)"
     c.execute(command)
 
-    command = "CREATE TABLE drawing (username TEXT, drawing_name TEXT, drawing BLOB)"
+    command = "CREATE TABLE drawing (username TEXT, drawing_name TEXT, drawing BLOB, UNIQUE(username, drawing_name) ON CONFLICT REPLACE)"
     c.execute(command)
 
     db.commit()

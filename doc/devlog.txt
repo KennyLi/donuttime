@@ -50,3 +50,13 @@ johnsonL -- 2019-05-14 15:31
 + added simple color picker. click and hold to choose works.
 + made global var for color and pencil color works with pencil tool.
 ==============================================================
+
+kennyL -- 2019-05-14 22:35
+--------------------------------------------------------------
++ completed process for downloading and storing blob to database
+
+TODO: 
+- confirm message if image is going to overwrite
+- connect test files to actual file
+- retrieve image from database
+==============================================================
