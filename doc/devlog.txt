@@ -72,3 +72,8 @@ TODO:
 - connect test files to actual file
 - retrieve image from database
 ==============================================================
+
+kennyL -- 2019-05-14 22:35
+--------------------------------------------------------------
++fixed bug with downloading blob which didn't work on ubuntu
+==============================================================
