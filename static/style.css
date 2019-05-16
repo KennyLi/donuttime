@@ -37,7 +37,7 @@
     height: 100vh;
     width: 100vw;
     padding: 5%;
-    background-color: gray;
+    background-color: lightgray;
 }
 
 #content canvas {

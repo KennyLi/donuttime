@@ -1,7 +1,7 @@
 var color = 'black';
 var brushSize = 10;
 
-var currentTool = undefined;
+var currentTool = 'paintbrush';
 
 var general = function (event) {
     if (currentTool == undefined) {
