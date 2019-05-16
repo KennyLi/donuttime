@@ -44,8 +44,8 @@ var tool = function (name, image=false) {
 	let img = document.createElement("IMG");
 	img.className += " toolicon"
 	img.src = '/static/icons/' + name + '.png';
-	img.width = 25;
-	img.height = 25;
+	img.width = 35;
+	img.height = 35;
 	button.appendChild(img);
     } else {
 	button.innerHTML = name;

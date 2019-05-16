@@ -33,6 +33,7 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = 10;    
+    ctx.strokeStyle = color;
     ctx.lineTo(start[0], start[1]);
     ctx.stroke();
 
