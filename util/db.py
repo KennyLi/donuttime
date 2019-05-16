@@ -25,6 +25,30 @@ def add_user(username, password):
     db.commit()
     db.close()
 
+def auth_user(username, password):
+    """Authenticate a user attempting to log in."""
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    for entry in c.execute("SELECT users.username, users.password FROM users"):
+        if(entry[0] == username and entry[1] == password):
+            db.close()
+            return True
+    db.close()
+    return False
+
+def check_user(username):
+    """Check if a username has already been taken when registering."""
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    for entry in c.execute("SELECT users.username FROM users"):
+        if(entry[0] == username):
+            db.close()
+            return True
+    db.close()
+    return False
+
 def add_drawing(username, drawing_name, blob):
     db = sqlite3.connect(DB_FILE)
     db.text_factory = str
