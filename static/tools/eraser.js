@@ -6,6 +6,7 @@ eventFunction("eraser","mousedown", function(x0,y0,e) {
     let y1 = e.offsetY;
     ctx.strokeStyle = "#FF00FF";
     ctx.fillStyle = "#FF00FF";
+    lineWidth = 1;
     ctx.globalCompositeOperation = 'destination-out'; //Erases and actually clears the portion rather than fill white
     ctx.beginPath();
     ctx.arc(x1,y1,20, 0, 2 * Math.PI);
