@@ -97,3 +97,9 @@ I am justa lowly snail. Someone should dash through me with sharp shadow equippe
 Anyway, for some reason, if you clearrect before you draw, it looks smooth,
 but if you don't it looks how it looks now.
 ==============================================================
+
+kennyL -- 2019-05-16 00:43
+--------------------------------------------------------------
++ added register/login/logout methods
++ added dynamic nav bar for logged in user
+==============================================================
