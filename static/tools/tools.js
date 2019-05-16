@@ -1,4 +1,5 @@
 var color = 'black';
+var brushSize = 10;
 
 var currentTool = undefined;
 
