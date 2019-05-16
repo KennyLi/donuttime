@@ -8,7 +8,7 @@ var gradient = new Image();
 gradient.onload = () => {
     colorGradContext.drawImage(gradient, 0, 0);
 }
-gradient.src = '/static/gradient.png';
+gradient.src = '/static/gradientwithblack.png';
 
 grad_mousedown = false;
 
