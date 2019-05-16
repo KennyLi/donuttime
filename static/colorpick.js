@@ -18,7 +18,7 @@ colorGrad.addEventListener('mousedown', (e) => {
     var data = colorGradContext.getImageData(e.offsetX, e.offsetY, 1, 1);
     var data_color = data.data;
     color = `rgba(${data_color[0]}, ${data_color[1]}, ${data_color[2]}, ${data_color[3]})`;
-    currColor.innerHTML = color;
+    currColor.style.color = color;
 })
 
 colorGrad.addEventListener('mouseup', () => {
@@ -32,6 +32,6 @@ colorGrad.addEventListener('mousemove', (e) => {
         var data = colorGradContext.getImageData(e.offsetX, e.offsetY, 1, 1);
         var data_color = data.data;
         color = `rgba(${data_color[0]}, ${data_color[1]}, ${data_color[2]}, ${data_color[3]})`
-        currColor.innerHTML = color;
+        currColor.style.color = color;
     }
 })
