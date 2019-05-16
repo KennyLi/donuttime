@@ -1,6 +1,5 @@
 #playground,
 .helpercanvas {
-    border: 1px solid black;
     position: absolute;
 }
 
@@ -46,13 +45,11 @@
 }
 
 #toolbar {
-    padding-left: 5%;
-    padding-right: 5%;
+    align-items: center;
 }
 
 #toolbar button {
-    padding-top: 30px;
-    padding-right: 20px;
+    padding-top: 20%;
 }
 
 .toolicon {

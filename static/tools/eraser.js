@@ -59,8 +59,8 @@ eventFunction("eraser","mousemove", function(x0,y0,e) {
 //=============================For the dotted circle effect=========================
 eraserCanvas = document.createElement("canvas");
 eraserCtx = eraserCanvas.getContext("2d");
-eraserCanvas.height = 720;
-eraserCanvas.width = 1280;
+eraserCanvas.height = canvas.height;
+eraserCanvas.width = canvas.width;
 eraserCanvas.className += " helpercanvas";
 eraserCtx.setLineDash([5,3]);
 content.addEventListener("mousemove", function(e) {
