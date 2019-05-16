@@ -1,3 +1,4 @@
+// COLOR PICKER
 var colorGrad = document.getElementById('color-grad');
 var colorGradContext = colorGrad.getContext('2d');
 var currColor = document.getElementById('curr-color');
@@ -13,25 +14,32 @@ gradient.src = '/static/gradientwithblack.png';
 grad_mousedown = false;
 
 colorGrad.addEventListener('mousedown', (e) => {
-    console.log('down');
     grad_mousedown = true;
     var data = colorGradContext.getImageData(e.offsetX, e.offsetY, 1, 1);
     var data_color = data.data;
     color = `rgba(${data_color[0]}, ${data_color[1]}, ${data_color[2]}, ${data_color[3]})`;
-    currColor.innerHTML = color;
+    currColor.style.color = color;
 })
 
 colorGrad.addEventListener('mouseup', () => {
-    console.log('up');
     grad_mousedown = false;
 })
 
 colorGrad.addEventListener('mousemove', (e) => {
-    console.log('hihih');
     if (grad_mousedown) {
         var data = colorGradContext.getImageData(e.offsetX, e.offsetY, 1, 1);
         var data_color = data.data;
         color = `rgba(${data_color[0]}, ${data_color[1]}, ${data_color[2]}, ${data_color[3]})`
-        currColor.innerHTML = color;
+        currColor.style.color = color;
     }
 })
+
+// BRUSH SIZE PICKER
+var slider = document.getElementById('brush-slider');
+var sizeIndicator = document.getElementById('curr-brush-size');
+
+slider.addEventListener('input', (e) => {
+    val = e.target.value;
+    brushSize = parseInt(val);
+    sizeIndicator.innerHTML = val;
+});

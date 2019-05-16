@@ -98,6 +98,14 @@ Anyway, for some reason, if you clearrect before you draw, it looks smooth,
 but if you don't it looks how it looks now.
 ==============================================================
 
+johnsonL -- 2019-05-16 00:02
+--------------------------------------------------------------
++ changed some styling; added a side for options like color pick and size change
++ added slider for brush size
+00:12
++ eyedropper tool
+==============================================================
+
 kennyL -- 2019-05-16 00:43
 --------------------------------------------------------------
 + added register/login/logout methods
