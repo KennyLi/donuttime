@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title> Log In Page </title>
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+
+
+
+
+{% block content %}
+<div class="text-center" style="padding:50px 0">
+  <div class="container">
+            <div class="col-md-12">
+                <br><br>
+            </div>
+            <br><br>
+  <div class="heading" style="color: White">{% block heading %}LOGIN {% endblock %}</div>
+
+
+
+  <div class="login">
+    {% block action %}
+    <form action="/auth" method = "POST">
+      {% endblock %}
+      <div class="loginBackground">
+	       <div id="flashedMessages">
+	          {% set msgs = get_flashed_messages() %}
+	          {% for each in msgs %}
+	          <h5 style="color:#ff2821">{{each}}</h5>
+	          <br>
+	          {% endfor %}
+	       </div>
+	    <div class="form">
+	       <input type="text" class="formBackground" name="username" placeholder="username">
+         <input type="password" class="formBackground" name="password" placeholder="password">
+      </div>
+	<!-- <div class="form">
+	</div> -->
+	{% block other %}
+	{% endblock %}
+	<div class="form">
+	  <button class="button btn btn-secondary" type="submit"> {% block submit %} Login {% endblock %} </button>
+	</div>
+      </div>
+  </div>
+  </form>
+  <div class="register">
+    {% block text %}
+    <p style="color:white">new user? <a href="/reg" style="color:white">create new account</a></p>
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
