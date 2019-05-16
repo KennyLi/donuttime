@@ -5,9 +5,6 @@ from flask import Flask, request, render_template, \
 
 from util import db
 
-from passlib.hash import sha256_crypt
-
-
 app = Flask(__name__)
 
 app.secret_key = os.urandom(32)
