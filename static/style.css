@@ -50,3 +50,21 @@
     -webkit-filter: invert(1);
     filter: invert(1);
 }
+
+.userInfo {
+    width: 30%;
+    margin: auto;
+    padding-top: 10%;
+}
+
+.titleMsg {
+    color: #856A5D;
+    text-align: center;
+    padding: 10px;
+}
+
+#account {
+    color: #856A5D;
+    width: 50%;
+    margin: 5px;
+}
