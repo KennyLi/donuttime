@@ -91,6 +91,6 @@ johnsonL -- 2019-05-15 21:44
 --------------------------------------------------------------
 + paintbrush tool with bezier but it looks like trash for some reason
 but when you run it locally with only canvas and bezier, it looks fine,
-U suspect it might be jiayang's superflous abstractions which cause
+I suspect it might be jiayang's superflous abstractions which cause
 the browser to slow down. 
 ==============================================================
