@@ -92,7 +92,7 @@ johnsonL -- 2019-05-15 21:44
 + paintbrush tool with bezier but it looks like trash for some reason
 but when you run it locally with only canvas and bezier, it looks fine,
 ̶I̶̶̶̶̶ ̶̶̶̶̶s̶̶̶̶̶u̶̶̶̶̶s̶̶̶̶̶p̶̶̶̶̶e̶̶̶̶̶c̶̶̶̶̶t̶̶̶̶̶ ̶̶̶̶̶i̶̶̶̶̶t̶̶̶̶̶ ̶̶̶̶̶m̶̶̶̶̶i̶̶̶̶̶g̶̶̶̶̶h̶̶̶̶̶t̶̶̶̶̶ ̶̶̶̶̶b̶̶̶̶̶e̶̶̶̶̶ ̶̶̶̶̶j̶̶̶̶̶i̶̶̶̶̶a̶̶̶̶̶y̶̶̶̶̶a̶̶̶̶̶n̶̶̶̶̶g̶̶̶̶̶'̶̶̶̶̶s̶̶̶̶̶ ̶̶̶̶̶s̶̶̶̶̶u̶̶̶̶̶p̶̶̶̶̶e̶̶̶̶̶r̶̶̶̶̶f̶̶̶̶̶l̶̶̶̶̶o̶̶̶̶̶u̶̶̶̶̶s̶̶̶̶̶ ̶̶̶̶̶a̶̶̶̶̶b̶̶̶̶̶s̶̶̶̶̶t̶̶̶̶̶r̶̶̶̶̶a̶̶̶̶̶c̶̶̶̶̶t̶̶̶̶̶i̶̶̶̶̶o̶̶̶̶̶n̶̶̶̶̶s̶̶̶̶̶ ̶̶̶̶̶w̶̶̶̶̶h̶̶̶̶̶i̶̶̶̶̶c̶̶̶̶̶h̶̶̶̶̶ ̶̶̶̶̶c̶̶̶̶̶a̶̶̶̶̶u̶̶̶̶̶s̶̶̶̶̶e̶̶̶̶̶ ̶̶̶̶̶t̶̶̶̶̶h̶̶̶̶̶e̶̶̶̶̶ ̶̶̶̶̶b̶̶̶̶̶r̶̶̶̶̶o̶̶̶̶̶w̶̶̶̶̶s̶̶̶̶̶e̶̶̶̶̶r̶̶̶̶̶ ̶̶̶̶̶t̶̶̶̶̶o̶̶̶̶̶ ̶̶̶̶̶s̶̶̶̶̶l̶̶̶̶̶o̶̶̶̶̶w̶̶̶̶̶ ̶̶̶̶̶d̶̶̶̶̶o̶̶̶̶̶w̶̶̶̶̶n̶̶̶̶̶.̶̶̶̶̶
-Update at 22 : 47- I apologize for blaming someone else for a problem I had. 
+Update at 22 : 47- I apologize for blaming someone else for a problem I had.
 I am justa lowly snail. Someone should dash through me with sharp shadow equipped.
 Anyway, for some reason, if you clearrect before you draw, it looks smooth,
 but if you don't it looks how it looks now.
@@ -110,4 +110,10 @@ kennyL -- 2019-05-16 00:43
 --------------------------------------------------------------
 + added register/login/logout methods
 + added dynamic nav bar for logged in user
+==============================================================
+
+chenD -- 2019-05-16 17:08
+--------------------------------------------------------------
++ created the fill tool, which fills in an enclosed area with
+the color that is selected, it's a bit slow however
 ==============================================================
