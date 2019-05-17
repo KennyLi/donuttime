@@ -122,8 +122,15 @@ jiayangC -- 2019-05-16 19:18
 
 johnsonLi -- 2019-05-16 23:59
 --------------------------------------------------------------
-+ chnaged indicator styling
++ changed indicator styling
 + made it so click and drag works with eyedrop
 + changed how to color value is stored and tried to add opacity as an options
 but something weird happens. Might have to do something with how the paintbrush works.
+==============================================================
+
+kennyL -- 2019-05-17 07:39
+--------------------------------------------------------------
++ fixed placement of links on nav bar
++ added method for retrieving image from database
++ added html page for displaying image
 ==============================================================
