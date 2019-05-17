@@ -79,3 +79,11 @@
     width: 50%;
     margin: 5px;
 }
+
+#content canvas:hover {
+    cursor: none;
+}
+
+#curr-color {
+    font-size: 1.5em;
+}
