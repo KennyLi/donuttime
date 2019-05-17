@@ -1,4 +1,6 @@
 tool("fill")
+console.log(canvas.width)
+console.log(canvas.height)
 
 eventFunction("fill", "mousedown", function(x0,y0,e){
     let x1 = e.offsetX;
@@ -14,6 +16,7 @@ eventFunction("fill", "mousedown", function(x0,y0,e){
         }
     }
     var imgData = ctx.getImageData(0,0,canvas.width,canvas.height)
+    var d32 = new Uint32Array(imgData.data.buffer);
     var frontier = [[x1,y1]]
     var explored = new Set()
     var startPosC = imgData.data.slice((canvas.width * y1 + x1) * 4,(canvas.width * y1 + x1) * 4 + 4)

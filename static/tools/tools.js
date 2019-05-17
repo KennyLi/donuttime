@@ -1,8 +1,7 @@
-var color = 'black';
+var color = [0, 0, 0, 1]; // r g b a
 var brushSize = 10;
-
-var currentTool = 'paintbrush';
-
+var opacity = 1 // 100%
+var currentTool = undefined;
 var general = function (event) {
     if (currentTool == undefined) {
         return
@@ -35,26 +34,34 @@ content.addEventListener("mousemove", general, false)
 content.addEventListener("mouseup", general, false)
 content.addEventListener("keydown", general, false)
 
-//Tool-ify a class
+
+var buttons = {};
+//Tool-ify a class, allowed to include a toolicon and a custom cursor
 var tool = function (name, image=false) {
 
     //Add a button of the fxn to the toolbar
     let button = document.createElement("button");
-    button.className += " btn btn-link";
+    button.className += " btn btn-link toolicon";
     if(image) {
-	let img = document.createElement("IMG");
-	img.className += " toolicon"
-	img.src = '/static/icons/' + name + '.png';
-	img.width = 35;
-	img.height = 35;
-	button.appendChild(img);
+	    let img = document.createElement("IMG");
+	    img.src = '/static/icons/' + name + '.png';
+	    img.width = 35;
+	    img.height = 35;
+	    button.appendChild(img);
     } else {
-	button.innerHTML = name;
+	    button.innerHTML = name;
     }
-
+    buttons[name] = button;
     button.addEventListener('click', function (e) {
-        currentTool = name;
-        console.log("Switched tool to: " + currentTool)
+        if (currentTool != name) {
+            button.style.background = "#9ca3db";
+            if (currentTool != undefined) {
+                buttons[currentTool].style.background = "";
+            }
+            //Update the current tool
+            currentTool = name;
+            console.log("Switched tool to: " + currentTool)
+        }
     });
     let toolbar = document.getElementById("toolbar");
     toolbar.appendChild(button);
@@ -73,7 +80,7 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
             fxn1(e)
             lastClicked = [undefined,undefined]
         }
-        else if (e.type == type) {
+        else if (e.type == type && inside) {
             fxn(lastClicked[0], lastClicked[1], e) //Pass in the coords of the click and the previous
             lastClicked = [e.offsetX, e.offsetY] //Update the last clicked
         }

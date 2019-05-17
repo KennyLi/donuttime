@@ -2,18 +2,18 @@
 
 
 
-{% block logged %}
+{% block left %}
     {% if user is defined %}
+        <li class="nav-item"><a class="nav-link" href="/saved">Saved Drawings</a></li>
     {% else %}
         {{ super() }}
     {% endif %}
 {% endblock %}
 
-{% block user %}
+{% block right %}
     {% if user is defined %}
-        <ul class="navbar-nav">
             <li class="nav-item">
-                <span class="navbar-text">{{user}}</span>
+                <span class="navbar-text"><b>{{user}}</b></span>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a></li>
@@ -44,12 +44,19 @@
 
             </canvas>
             <br>
-            current color = <span id="curr-color">■</span>
+            current color: <span id="curr-color">■</span>
         </div>
         <hr>
         <div id="brush-size">
-            <input type="range" min="1" max="100" value="10" class="slider" id="brush-slider">
-            size: <span id="curr-brush-size">10</span>px
+            Brush Size:<br>
+            <input type="range" min="1" max="100" value="10" class="slider" id="brush-slider"><br>
+            Size: <span id="curr-brush-size">10</span>px
+        </div>
+        <hr>
+        <div id="opacity">
+            Opacity:<br>
+            <input type="range" min="1" max="100" value="100" class="slider" id="opacity-slider"><br>
+            Opacity: <span id="curr-opacity">100</span>%
         </div>
     </div>
 
@@ -59,12 +66,14 @@
 {% block javascript %}
 <script src="/static/tools/options.js"></script>
 <script src="/static/canvas.js"></script>
+<script src="/static/cursors.js"></script>
 <script src="/static/tools/tools.js"></script>
 <script src="/static/tools/paintbrush.js"></script>
 <script src="/static/tools/pencil.js"></script>
 <script src="/static/tools/eraser.js"></script>
 <script src="/static/tools/eyedrop.js"></script>
 <script src="/static/tools/fill.js"></script>
+<script src="/static/tools/smudge.js"></script>
 
 
 {% endblock %}

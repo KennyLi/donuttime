@@ -1,4 +1,4 @@
-import os, urllib, json
+import os, urllib, json, base64
 
 from flask import Flask, request, render_template, \
      flash, session, url_for, redirect
@@ -68,6 +68,15 @@ def test():
 def blob():
     db.add_drawing("Kenny", request.form["drawing_name"], request.files["file"].read())
     return "Successfully Downloaded"
+
+@app.route("/saved")
+def saved():
+    try:
+        # drawings = db.get_drawing(session["logged_in"])
+        drawings = db.get_drawing("Kenny")
+        return render_template("saved.html", img = base64.b64encode(drawings[0][1]).decode('utf8'))
+    except:
+        return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.debug = True

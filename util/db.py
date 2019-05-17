@@ -56,3 +56,12 @@ def add_drawing(username, drawing_name, blob):
     c.execute("INSERT INTO drawing VALUES(?, ?, ?)", (username, drawing_name, blob))
     db.commit()
     db.close()
+
+def get_drawing(username):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    c.execute("SELECT drawing_name, drawing FROM drawing WHERE username =?", (username,))
+    return c.fetchall()
+
+# print(get_drawing("Kenny"))

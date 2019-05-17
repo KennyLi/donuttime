@@ -16,16 +16,16 @@
             <a class="navbar-brand" href="/">Donut Drawing</a>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/saved">Saved Drawings</a></li>
-                {% block logged %}
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-                {% endblock %}
+                    {% block left %}
+                    {% endblock %}
                 </ul>
-            </div>
-            {% block user %}
-            {% endblock %}
-            
+                <ul class="navbar-nav">            
+                    {% block right %}
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>            
+                    {% endblock %}
+                </ul>
+            </div>            
         </div>
     </nav>
     </head>
