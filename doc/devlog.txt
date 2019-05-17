@@ -119,3 +119,11 @@ jiayangC -- 2019-05-16 19:18
 + added eyedrop cursor
 + added cursor generalization (also stopped using svg + cursor combo cause there was a size limit; went back to canvas)
 ==============================================================
+
+johnsonLi -- 2019-05-16 23:59
+--------------------------------------------------------------
++ chnaged indicator styling
++ made it so click and drag works with eyedrop
++ changed how to color value is stored and tried to add opacity as an options
+but something weird happens. Might have to do something with how the paintbrush works.
+==============================================================
