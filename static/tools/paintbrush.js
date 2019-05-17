@@ -8,7 +8,7 @@ var mdpnt = (p0, p1) => {
 }
 
 eventFunction("paintbrush", "mousedown", (x0, y0, e) => {
-    ctx.fillStyle = currColor.style.color;
+    ctx.fillStyle = `rgba(${color.join(',')})`;
     ctx.beginPath();
     ctx.arc(e.offsetX,e.offsetY,brushSize/2, 0, 2 * Math.PI);
     ctx.closePath();
@@ -37,7 +37,7 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = brushSize;
-    ctx.strokeStyle = color;
+    ctx.strokeStyle = `rgba(${color.join(',')})`;
     ctx.stroke();
     ctx.lineWidth = 1;
 }, function (e) {
