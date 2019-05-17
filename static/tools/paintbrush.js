@@ -54,15 +54,14 @@ var el = document.createEvent('Events');
 el.initEvent("click", true, false);
 buttons["paintbrush"].dispatchEvent(el);
 
-
-
-
 //Cursor
 cursor("paintbrush", function(e) {
+    cursorCtx.save();
+    cursorCtx.setLineDash([]);
     cursorCtx.beginPath();
     cursorCtx.arc(e.offsetX,e.offsetY,brushSize/2 + 1,0,2 *Math.PI);
     cursorCtx.closePath();
-    cursorCtx.fillStyle = currColor.style.color;
-    cursorCtx.fill();
-
+    cursorCtx.strokeStyle = "#000000";
+    cursorCtx.stroke();
+    cursorCtx.restore();
 })
