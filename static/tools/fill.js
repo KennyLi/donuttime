@@ -1,22 +1,31 @@
-tool("fill")
-console.log(canvas.width)
-console.log(canvas.height)
+tool("fill",true)
 
 eventFunction("fill", "mousedown", function(x0,y0,e){
     let x1 = e.offsetX;
     let y1 = e.offsetY;
+    console.log(color)
     var fillColor = color
-    if(fillColor == "black"){
-        fillColor = [0,0,0,255]
-    }
-    else{
-        fillColor = fillColor.substring(fillColor.indexOf("(") + 1,fillColor.indexOf(")")).split(",")
-        for(var i = 0 ; i < 4; i++){
-            fillColor[i] = parseInt(fillColor[i])
-        }
-    }
+    fillColor[3] = 255
     var imgData = ctx.getImageData(0,0,canvas.width,canvas.height)
-    var d32 = new Uint32Array(imgData.data.buffer);
+    // var buf = new ArrayBuffer(imgData.data.length);
+    // var buf8 = new Uint8ClampedArray(buf);
+    // var data = new Uint32Array(buf);
+    //
+    // for (var y = 0; y < canvas.height; ++y) {
+    //     for (var x = 0; x < canvas.width; ++x) {
+    //         var value = x * y & 0xff;
+    //
+    //         data[y * canvas.width + x] =
+    //             (255   << 24) |    // alpha
+    //             (value << 0) |    // blue
+    //             (value << 0) |    // green
+    //              value << 0;            // red
+    //     }
+    // }
+    //
+    // imgData.data.set(buf8);
+
+    // ctx.putImageData(imgData, 0, 0);
     var frontier = [[x1,y1]]
     var explored = new Set()
     var startPosC = imgData.data.slice((canvas.width * y1 + x1) * 4,(canvas.width * y1 + x1) * 4 + 4)
@@ -48,4 +57,15 @@ eventFunction("fill", "mousedown", function(x0,y0,e){
     }
     ctx.putImageData(imgData,0,0)
 
+})
+
+cursor("fill", function(e) {
+    cursorCtx.save();
+    cursorCtx.setLineDash([]);
+    cursorCtx.beginPath();
+    cursorCtx.arc(e.offsetX,e.offsetY, 1,0,2 *Math.PI);
+    cursorCtx.closePath();
+    cursorCtx.strokeStyle = "#000000";
+    cursorCtx.stroke();
+    cursorCtx.restore();
 })

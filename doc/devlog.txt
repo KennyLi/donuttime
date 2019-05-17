@@ -112,13 +112,12 @@ kennyL -- 2019-05-16 00:43
 + added dynamic nav bar for logged in user
 ==============================================================
 
-<<<<<<< HEAD
 chenD -- 2019-05-16 17:08
 --------------------------------------------------------------
 + created the fill tool, which fills in an enclosed area with
 the color that is selected, it's a bit slow however
 ==============================================================
-=======
+
 jiayangC -- 2019-05-16 19:18
 --------------------------------------------------------------
 + added indicator for tool selected
@@ -141,4 +140,3 @@ kennyL -- 2019-05-17 07:39
 + added method for retrieving image from database
 + added html page for displaying image
 ==============================================================
->>>>>>> b860389eb6fbde5c2c37891b7847e6f26c84b06c
