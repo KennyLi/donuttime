@@ -41,7 +41,7 @@
     <div id="options">
         <div id="color-picker">
             <canvas id="color-grad" width="256" height="192">
-        
+
             </canvas>
             <br>
             current color = <span id="curr-color">■</span>
@@ -52,13 +52,14 @@
             size: <span id="curr-brush-size">10</span>px
         </div>
     </div>
-    
+
 </div>
 {% endblock %}
 
 {% block javascript %}
 <script src="/static/tools/options.js"></script>
 <script src="/static/canvas.js"></script>
+<script src="/static/cursors.js"></script>
 <script src="/static/tools/tools.js"></script>
 <script src="/static/tools/paintbrush.js"></script>
 <script src="/static/tools/pencil.js"></script>

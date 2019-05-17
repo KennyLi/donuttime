@@ -1,4 +1,5 @@
 #playground,
+.cursor,
 .helpercanvas {
     position: absolute;
 }
@@ -50,11 +51,11 @@
 
 #toolbar button {
     padding-top: 20%;
+    padding-bottom: 20%
 }
 
-.toolicon {
-    -webkit-filter: invert(1);
-    filter: invert(1);
+.toolicon:hover {
+    background: #9ca3db;
 }
 
 #color-grad {

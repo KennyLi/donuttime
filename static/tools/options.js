@@ -2,6 +2,7 @@
 var colorGrad = document.getElementById('color-grad');
 var colorGradContext = colorGrad.getContext('2d');
 var currColor = document.getElementById('curr-color');
+currColor.style.color = "rgb(0,0,0)";
 // colorGradContext.rect(20, 20, 150, 100);
 // colorGradContext.stroke();
 

@@ -8,6 +8,11 @@ var mdpnt = (p0, p1) => {
 }
 
 eventFunction("paintbrush", "mousedown", (x0, y0, e) => {
+    ctx.fillStyle = currColor.style.color;
+    ctx.beginPath();
+    ctx.arc(e.offsetX,e.offsetY,brushSize/2, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fill();
     pointsToDraw.push([e.offsetX, e.offsetY]);
 });
 
@@ -16,14 +21,14 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
         return
     }
     pointsToDraw.push([e.offsetX, e.offsetY]);
-    
+
     ctx.beginPath();
     ctx.moveTo(pointsToDraw[0], pointsToDraw[1]);
 
     var start = pointsToDraw[0];
     var next = pointsToDraw[1];
     for (var i = 1; i < pointsToDraw.length; i++){
-        
+
         var mid = mdpnt(start, next);
         ctx.quadraticCurveTo(start[0], start[1], mid[0], mid[1])
         start = pointsToDraw[i];
@@ -31,10 +36,10 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     }
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = brushSize;    
+    ctx.lineWidth = brushSize;
     ctx.strokeStyle = color;
     ctx.stroke();
-
+    ctx.lineWidth = 1;
 }, function (e) {
     ctx.moveTo(e.offsetX,e.offsetY);
 });
@@ -44,3 +49,20 @@ eventFunction('paintbrush', 'mouseup', (x0, y0, e) => {
     ctx.beginPath();
 });
 
+//Default tool
+var el = document.createEvent('Events');
+el.initEvent("click", true, false);
+buttons["paintbrush"].dispatchEvent(el);
+
+
+
+
+//Cursor
+cursor("paintbrush", function(e) {
+    cursorCtx.beginPath();
+    cursorCtx.arc(e.offsetX,e.offsetY,brushSize/2 + 1,0,2 *Math.PI);
+    cursorCtx.closePath();
+    cursorCtx.fillStyle = currColor.style.color;
+    cursorCtx.fill();
+
+})
