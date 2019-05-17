@@ -6,9 +6,11 @@ pointsToDraw = [];
 var mdpnt = (p0, p1) => {
     return [(p0[0] + p1[0]) / 2, (p1[1] + p0[1]) / 2];
 }
+var paintSave = undefined;
 
 eventFunction("paintbrush", "mousedown", (x0, y0, e) => {
     ctx.fillStyle = `rgba(${color.join(',')})`;
+    paintSave = canvas.toDataURL();
     ctx.beginPath();
     ctx.arc(e.offsetX,e.offsetY,brushSize/2, 0, 2 * Math.PI);
     ctx.closePath();
@@ -20,8 +22,9 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return
     }
-    pointsToDraw.push([e.offsetX, e.offsetY]);
 
+    pointsToDraw.push([e.offsetX, e.offsetY]);
+    
     ctx.beginPath();
     ctx.moveTo(pointsToDraw[0], pointsToDraw[1]);
 
@@ -38,6 +41,9 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     ctx.lineCap = 'round';
     ctx.lineWidth = brushSize;
     ctx.strokeStyle = `rgba(${color.join(',')})`;
+    let img = document.createElement("img");
+    img.src = paintSave;
+    ctx.drawImage(img, 0, 0);
     ctx.stroke();
     ctx.lineWidth = 1;
 }, function (e) {
@@ -47,6 +53,7 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
 eventFunction('paintbrush', 'mouseup', (x0, y0, e) => {
     pointsToDraw.length = 0;
     ctx.beginPath();
+    paintSave = undefined;
 });
 
 //Default tool
