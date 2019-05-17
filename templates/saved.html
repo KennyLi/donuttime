@@ -22,4 +22,10 @@
     {% endif %}
 {% endblock %}
 
-<img id="img" src="data:image/png;base64,{{img}}">
+{% block content %}
+  <img id="test" src="data:image/png;base64,{{img}}">
+{% endblock %}
+
+{% block javascript %}
+<script src="/static/saved.js"></script>
+{% endblock %}
