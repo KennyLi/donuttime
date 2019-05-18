@@ -3,13 +3,16 @@ tool("fill",true)
 eventFunction("fill", "mousedown", function(x0,y0,e){
     let x1 = e.offsetX;
     let y1 = e.offsetY;
-    console.log(color)
     var fillColor = color
-    fillColor[3] = color[3] * 255
+    if (fillColor[3] <= 1){
+      fillColor[3] = color[3] * 255
+    }
     var imgData = ctx.getImageData(0,0,canvas.width,canvas.height)
     var frontier = [[x1,y1]]
     var explored = new Set()
     var startPosC = imgData.data.slice((canvas.width * y1 + x1) * 4,(canvas.width * y1 + x1) * 4 + 4)
+    console.log(startPosC)
+    console.log(fillColor)
     if (startPosC[0] == fillColor[0] && startPosC[1] == fillColor[1] && startPosC[2] == fillColor[2] && startPosC[3] == fillColor[3]){
         frontier.pop()
     }
