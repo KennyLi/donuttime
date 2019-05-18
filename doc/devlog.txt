@@ -140,3 +140,8 @@ kennyL -- 2019-05-17 07:39
 + added method for retrieving image from database
 + added html page for displaying image
 ==============================================================
+
+jiayangC -- 2019-05-18 13:52
+--------------------------------------------------------------
++ fixed paintbrush opacity and choppiness
+==============================================================
