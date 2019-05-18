@@ -44,19 +44,19 @@
 
             </canvas>
             <br>
-            current color: <span id="curr-color">■</span>
+            <div class="color-text">
+                Color: <span id="curr-color">■</span>
+            </div>
         </div>
         <hr>
-        <div id="brush-size">
-            Brush Size:<br>
+        <div class="slider-container" id="brush-size">
+            Brush Size: <span id="curr-brush-size">10</span>px<br>
             <input type="range" min="1" max="100" value="10" class="slider" id="brush-slider"><br>
-            Size: <span id="curr-brush-size">10</span>px
         </div>
         <hr>
-        <div id="opacity">
-            Opacity:<br>
+        <div class="slider-container" id="opacity">
+            Opacity: <span id="curr-opacity">100</span>%<br>
             <input type="range" min="1" max="100" value="100" class="slider" id="opacity-slider"><br>
-            Opacity: <span id="curr-opacity">100</span>%
         </div>
     </div>
 

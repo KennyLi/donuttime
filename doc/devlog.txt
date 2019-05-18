@@ -144,4 +144,5 @@ kennyL -- 2019-05-17 07:39
 jiayangC -- 2019-05-18 13:52
 --------------------------------------------------------------
 + fixed paintbrush opacity and choppiness
++ styling: made canvas centered, gave options bar color and styled the separators
 ==============================================================
