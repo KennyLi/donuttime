@@ -5,30 +5,14 @@ eventFunction("fill", "mousedown", function(x0,y0,e){
     let y1 = e.offsetY;
     console.log(color)
     var fillColor = color
-    fillColor[3] = 255
+    fillColor[3] = color[3] * 255
     var imgData = ctx.getImageData(0,0,canvas.width,canvas.height)
-    // var buf = new ArrayBuffer(imgData.data.length);
-    // var buf8 = new Uint8ClampedArray(buf);
-    // var data = new Uint32Array(buf);
-    //
-    // for (var y = 0; y < canvas.height; ++y) {
-    //     for (var x = 0; x < canvas.width; ++x) {
-    //         var value = x * y & 0xff;
-    //
-    //         data[y * canvas.width + x] =
-    //             (255   << 24) |    // alpha
-    //             (value << 0) |    // blue
-    //             (value << 0) |    // green
-    //              value << 0;            // red
-    //     }
-    // }
-    //
-    // imgData.data.set(buf8);
-
-    // ctx.putImageData(imgData, 0, 0);
     var frontier = [[x1,y1]]
     var explored = new Set()
     var startPosC = imgData.data.slice((canvas.width * y1 + x1) * 4,(canvas.width * y1 + x1) * 4 + 4)
+    if (startPosC[0] == fillColor[0] && startPosC[1] == fillColor[1] && startPosC[2] == fillColor[2] && startPosC[3] == fillColor[3]){
+        frontier.pop()
+    }
     while(frontier.length > 0){
         newPos = frontier.pop()
         explored.add(newPos)
