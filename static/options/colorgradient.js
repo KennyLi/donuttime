@@ -36,24 +36,3 @@ colorGrad.addEventListener('mousemove', (e) => {
         currColor.style.color = `rgb(${c.join(',')})`;
     }
 })
-
-// BRUSH SIZE PICKER
-var brushSlider = document.getElementById('brush-slider');
-var sizeIndicator = document.getElementById('curr-brush-size');
-
-brushSlider.addEventListener('input', (e) => {
-    val = e.target.value;
-    brushSize = parseInt(val);
-    sizeIndicator.innerHTML = val;
-});
-
-var opacitySlider = document.getElementById('opacity-slider');
-var opacityIndicator = document.getElementById('curr-opacity');
-
-opacitySlider.addEventListener('input', (e) => {
-    val = e.target.value;
-    opacity = parseInt(val) / 100;
-    opacityIndicator.innerHTML = val;
-    color[3] = opacity; //update color opacity
-})
-// REPEATED CODE. MAKE BETTER LATER

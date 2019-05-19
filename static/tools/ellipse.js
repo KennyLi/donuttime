@@ -25,7 +25,7 @@ eventFunction("ellipse", "mousemove", function(x0,y0,e){
     ctx.lineWidth = 1;
     ctx.beginPath()
     ctx.clearRect(0,0,canvas.width,canvas.height)
-    ctx.fillStyle = "#FFFFFF"
+    ctx.fillStyle = `rgba(${color.join(',')})`;
     ctx.lineWidth = brushSize;
     ctx.strokeStyle = `rgba(${color.join(',')})`;
     ctx.putImageData(imgData,0,0);
@@ -36,6 +36,9 @@ eventFunction("ellipse", "mousemove", function(x0,y0,e){
         ctx.ellipse(startX,startY,m,m, 0, 0, 2 * Math.PI)
     } else {
         ctx.ellipse(startX,startY,Math.abs(x1 - startX),Math.abs(y1 - startY), 0, 0, 2 * Math.PI)
+    }
+    if (fillbox.checked) {
+        ctx.fill();
     }
     ctx.stroke();
 });

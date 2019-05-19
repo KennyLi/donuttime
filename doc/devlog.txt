@@ -164,4 +164,5 @@ chenD -- 2019-05-18 21:02
 jiayangC -- 2019-05-18 22:30
 --------------------------------------------------------------
 + added shift option for the rect and ellipse tools to draw squares and circles respectively
++ added fill option for the tools above ^^
 ==============================================================

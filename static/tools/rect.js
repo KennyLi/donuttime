@@ -25,7 +25,7 @@ eventFunction("rect", "mousemove", function(x0,y0,e){
     ctx.lineWidth = 1;
     ctx.beginPath()
     ctx.clearRect(0,0,canvas.width,canvas.height)
-    ctx.fillStyle = "#FFFFFF"
+    ctx.fillStyle = `rgba(${color.join(',')})`;
     ctx.lineWidth = brushSize;
     ctx.strokeStyle = `rgba(${color.join(',')})`;
     ctx.putImageData(imgData,0,0)
@@ -37,6 +37,9 @@ eventFunction("rect", "mousemove", function(x0,y0,e){
 
     } else {
         ctx.rect(startX,startY,x1 - startX, y1 - startY);
+    }
+    if (fillbox.checked) {
+        ctx.fill();
     }
     ctx.stroke();
 });
