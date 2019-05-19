@@ -3,6 +3,7 @@
 
 
 {% block left %}
+    <li class="nav-item"><input type="text" class="form-control" placeholder="Untitled Drawing"></li>
     <div class="dropdown nav-item">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Filters
@@ -13,9 +14,11 @@
             <button class="dropdown-item" type="button">Something else here</button>
         </div>
     </div>
-    <button class="btn btn-primary nav-item">Download</button>
+    <!-- <span class="navbar-text" id="download">Download</span> -->
+    
     {% if user is defined %}
-        <li class="nav-item"><a class="nav-link" href="/saved">Saved Drawings</a></li>
+        <li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
+        <li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
     {% else %}
         {{ super() }}
     {% endif %}
@@ -23,12 +26,8 @@
 
 {% block right %}
     {% if user is defined %}
-            <li class="nav-item">
-                <span class="navbar-text"><b>{{user}}</b></span>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a></li>
-            </li>
+            <li class="nav-item"><span class="navbar-text"><b>{{user}}</b></span></li>
+            <li class="nav-item"><button type="button" class="btn btn-dark" id="logout">Logout</button></li>
         </ul>
     {% else %}
         {{ super() }}
@@ -98,5 +97,7 @@
 <script src="/static/tools/smudge.js"></script>
 <script src="/static/tools/rect.js"></script>
 <script src="/static/tools/ellipse.js"></script>
-
+<script src="/static/navbar.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 {% endblock %}

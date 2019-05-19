@@ -179,3 +179,14 @@ johnsonL -- 2019-05-19 00:25
 03:44
 + started on filters but it don't work.
 ==============================================================
+
+kennyL -- 2019-05-19 18:09
+--------------------------------------------------------------
++ combined download test files with canvas.html
++ added input field for drawing name
+
+TODO:
++ make drawing name save to database
++ replace hardcoded data for drawing name
++ stylize saved drawings page
+==============================================================

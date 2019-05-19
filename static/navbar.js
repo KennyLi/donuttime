@@ -1,18 +1,6 @@
-var c = document.getElementById("canvas");
-var ctx = c.getContext("2d");
-
-ctx.fillStyle = "yellow"
-ctx.fillRect(0, 0, 500, 500);
-
-ctx.beginPath();
-ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.arc(100, 75, 10, 0, 2 * Math.PI);
-ctx.stroke();
-
-var button = document.getElementById("blob")
+var downloadButton = document.getElementById("download")
+var savedButton = document.getElementById("saved")
+var logoutButton = document.getElementById("logout")
 
 var download = function (e) {
     e.preventDefault();
@@ -36,4 +24,16 @@ var download = function (e) {
 }
 
 
-button.addEventListener("click", download)
+var saved = function(e) {
+    e.preventDefault();
+    window.location.href="/saved"
+}
+
+var logout = function(e) {
+    e.preventDefault();
+    window.location.href="logout"
+}
+
+downloadButton.addEventListener("click", download)
+savedButton.addEventListener("click", saved)
+logoutButton.addEventListener("click", logout)
