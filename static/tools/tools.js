@@ -105,3 +105,10 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
     }
 
 }
+
+var makeHelperCanvas = (width, height) => {
+    let canvas = document.createElement('canvas');
+    canvas.width = width 
+    canvas.height = height;
+    return canvas;
+} 

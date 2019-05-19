@@ -20,12 +20,6 @@ var smudge = (x, y) => {
     helpCtx.fillRect(0, 0, brushSize, brushSize);
 }
 
-var makeHelperCanvas = (brushSize) => {
-    let canvas = document.createElement('canvas');
-    canvas.width = canvas.height = brushSize;
-    return canvas;
-} 
-
 eventFunction("smudge", "mousedown", () => {
     // initialize everything needed for smudging
     brushRadius = brushSize / 2;
@@ -33,7 +27,7 @@ eventFunction("smudge", "mousedown", () => {
     grad = ctx.createRadialGradient(brushRadius, brushRadius, 0, brushRadius, brushRadius, brushRadius);
     grad.addColorStop(0, 'rgba(255, 255, 255, 1');
     grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    helperCanvas = makeHelperCanvas(brushSize);
+    helperCanvas = makeHelperCanvas(brushSize, brushSize);
 })
 
 eventFunction("smudge", "mousemove", (x0, y0, e) => {

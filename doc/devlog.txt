@@ -176,4 +176,6 @@ johnsonL -- 2019-05-19 00:25
 + fixed smudge not changing with brush size.
 02:15
 + minor addition for rounded corner of rect.
+03:44
++ started on filters but it don't work.
 ==============================================================

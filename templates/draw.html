@@ -3,6 +3,17 @@
 
 
 {% block left %}
+    <div class="dropdown nav-item">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filters
+        </button>
+        <div class="dropdown-menu" aria-labelledby="filter-dropdown">
+            <button class="dropdown-item" type="button" id="grayscale">Grayscale</button>
+            <button class="dropdown-item" type="button" >Another action</button>
+            <button class="dropdown-item" type="button">Something else here</button>
+        </div>
+    </div>
+    <button class="btn btn-primary nav-item">Download</button>
     {% if user is defined %}
         <li class="nav-item"><a class="nav-link" href="/saved">Saved Drawings</a></li>
     {% else %}
@@ -78,6 +89,7 @@
 <script src="/static/canvas.js"></script>
 <script src="/static/cursors.js"></script>
 <script src="/static/tools/tools.js"></script>
+<script src="/static/tools/filters.js"></script>
 <script src="/static/tools/paintbrush.js"></script>
 <script src="/static/tools/pencil.js"></script>
 <script src="/static/tools/eraser.js"></script>
