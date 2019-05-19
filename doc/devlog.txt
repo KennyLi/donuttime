@@ -160,3 +160,8 @@ chenD -- 2019-05-18 21:02
 --------------------------------------------------------------
 + created the rectangle and ellipse tool, also fixed a bug with fill
 ==============================================================
+
+jiayangC -- 2019-05-18 22:30
+--------------------------------------------------------------
++ added shift option for the rect and ellipse tools to draw squares and circles respectively
+==============================================================

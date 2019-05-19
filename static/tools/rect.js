@@ -26,9 +26,18 @@ eventFunction("rect", "mousemove", function(x0,y0,e){
     ctx.beginPath()
     ctx.clearRect(0,0,canvas.width,canvas.height)
     ctx.fillStyle = "#FFFFFF"
+    ctx.lineWidth = brushSize;
     ctx.strokeStyle = `rgba(${color.join(',')})`;
     ctx.putImageData(imgData,0,0)
-    ctx.rect(startX,startY,x1 - startX, y1 - startY)
+    if (16 in keysPressed) {  //If shift is pressed, draw a square
+        let a = x1 - startX;
+        let b = y1 - startY;
+        let m = Math.min(Math.abs(a),Math.abs(b));
+        ctx.rect(startX,startY,m * Math.sign(a), m * Math.sign(b));
+
+    } else {
+        ctx.rect(startX,startY,x1 - startX, y1 - startY);
+    }
     ctx.stroke();
 });
 cursor("rect", function(e) {
