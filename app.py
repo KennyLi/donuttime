@@ -1,4 +1,4 @@
-import os, urllib, json, base64
+import os, urllib, json, base64, math
 
 from flask import Flask, request, render_template, \
      flash, session, url_for, redirect
@@ -76,8 +76,10 @@ def blob():
 def saved():
     # try:
         # drawings = db.get_drawing(session["logged_in"])
-    drawings = db.get_drawing("Kenny")
-    return render_template("saved.html", img=base64.b64encode(drawings[0][1]).decode('utf8'), user=session["logged_in"])
+    data = db.get_drawing("Kenny")
+    drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8')) for drawing in data]    
+    grid = [drawings[i*3:i*3+3] for i in range(math.ceil(len(drawings) / 3))]
+    return render_template("saved.html", imgs=grid, user=session["logged_in"])
     # except:
     #     return redirect(url_for("home"))
 

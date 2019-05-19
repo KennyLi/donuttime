@@ -23,7 +23,22 @@
 {% endblock %}
 
 {% block content %}
-    <img id="test" src="data:image/png;base64,{{img}}">
+    <!-- <img id="test" src="data:image/png;base64,{{img}}"> -->
+    {% for row in imgs %}
+    <div class="row">
+        {% for img in row %}
+        <div class="col-md-4">
+          <div class="thumbnail">
+              <img src="data:image/png;base64,{{img[1]}}" width="200" height="200" class="img-thumbnail">
+              <div class="caption">
+                <p>{{img[0]}}</p>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
     <form style="display: hidden" action="/" method="POST" id="form">
         <input type="hidden" id="var" name="var" value=""/>
     </form>

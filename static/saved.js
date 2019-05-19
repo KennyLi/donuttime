@@ -1,10 +1,8 @@
-var test = document.getElementById("test");
+var images = document.getElementsByTagName('img'); 
 
-var redirect = function() {
-    $("#var").val(test.src);
-    $("#form").submit();
+for(var i = 0; i < images.length; i++) {
+    images[i].addEventListener("click", function() {
+        $("#var").val(this.src);
+        $("#form").submit();
+    })
 }
-
-test.addEventListener("click", redirect);
-
-
