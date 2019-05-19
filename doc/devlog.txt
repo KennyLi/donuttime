@@ -174,4 +174,6 @@ johnsonL -- 2019-05-19 00:25
 01:44
 + added smudge
 + fixed smudge not changing with brush size.
+02:15
++ minor addition for rounded corner of rect.
 ==============================================================

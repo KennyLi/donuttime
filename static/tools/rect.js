@@ -27,6 +27,7 @@ eventFunction("rect", "mousemove", function(x0,y0,e){
     ctx.clearRect(0,0,canvas.width,canvas.height)
     ctx.fillStyle = `rgba(${color.join(',')})`;
     ctx.lineWidth = brushSize;
+    ctx.lineJoin = 'miter';
     ctx.strokeStyle = `rgba(${color.join(',')})`;
     ctx.putImageData(imgData,0,0)
     if (16 in keysPressed) {  //If shift is pressed, draw a square
@@ -38,9 +39,13 @@ eventFunction("rect", "mousemove", function(x0,y0,e){
     } else {
         ctx.rect(startX,startY,x1 - startX, y1 - startY);
     }
+    if (cornerbox.checked) {
+        ctx.lineJoin = 'round';
+    }
     if (fillbox.checked) {
         ctx.fill();
     }
+    
     ctx.stroke();
 });
 cursor("rect", function(e) {
