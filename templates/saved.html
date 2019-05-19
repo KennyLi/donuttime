@@ -23,9 +23,15 @@
 {% endblock %}
 
 {% block content %}
-  <img id="test" src="data:image/png;base64,{{img}}">
+    <img id="test" src="data:image/png;base64,{{img}}">
+    <form style="display: hidden" action="/" method="POST" id="form">
+        <input type="hidden" id="var" name="var" value=""/>
+    </form>
 {% endblock %}
 
 {% block javascript %}
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script src="/static/saved.js"></script>
 {% endblock %}

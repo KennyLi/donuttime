@@ -35,14 +35,14 @@
     </nav>
     <div id="content">
         <img id="checker" draggable="false" width="1280" height="720" src="/static/imgs/grey_checker.svg"></img>
-        <canvas id="playground" tabindex="1">
-        </canvas>
+        <canvas id="playground" tabindex="1"></canvas>
+        {% if data is defined %}
+            <img style="display: none" id="img" src={{data}}>
+        {% endif %}
     </div>
     <div id="options">
         <div id="color-picker">
-            <canvas id="color-grad" width="256" height="192">
-
-            </canvas>
+            <canvas id="color-grad" width="256" height="192"></canvas>
             <br>
             <div class="color-text">
                 Color: <span id="curr-color">■</span>

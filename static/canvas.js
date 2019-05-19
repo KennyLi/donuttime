@@ -15,3 +15,9 @@ checker.addEventListener("click", function(e) {
 })
 checker.width = canvas.width;
 checker.height = canvas.height;
+
+
+var img = document.getElementById("img")
+if (img != null) {
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+}
