@@ -62,10 +62,10 @@ body {
 .toolicon:hover {
     background: #c3c7e9;
 }
-
+/* 
 #color-grad {
     border: black solid 1px;
-}
+} */
 
 .userInfo {
     width: 30%;
@@ -131,7 +131,7 @@ hr {
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  background: #4CAF50;
+  background: rgb(230, 245, 230);
   cursor: pointer;
 }
 
@@ -139,6 +139,28 @@ hr {
   width: 1em;
   height: 1em;
   border-radius: 50%;
-  background: #4CAF50;
+  background: rgb(191, 129, 216);
   cursor: pointer;
+}
+
+.number-input {
+    color: white;
+    background: transparent;
+    border: 0;
+    border-bottom: solid white 1px;
+    width: 35px;
+    text-align: center;
+}
+
+
+
+/* these remove the arrows next to a numbe inout field */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

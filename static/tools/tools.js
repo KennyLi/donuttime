@@ -1,6 +1,7 @@
 var color = [0, 0, 0, 1]; // r g b a
 var brushSize = 10;
 var opacity = 1 // 100%
+
 var currentTool = undefined;
 var keysPressed = {};
 var general = function (event) {
