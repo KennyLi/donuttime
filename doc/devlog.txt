@@ -155,3 +155,8 @@ TODO:
 + replace hard coded data on retrieve data from database
 + incorporate download button
 ==============================================================
+
+chenD -- 2019-05-18 21:02
+--------------------------------------------------------------
++ created the rectangle and ellipse tool, also fixed a bug with fill
+==============================================================
