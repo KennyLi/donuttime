@@ -29,7 +29,7 @@ eventFunction("ellipse", "mousemove", function(x0,y0,e){
     ctx.lineWidth = brushSize;
     ctx.strokeStyle = `rgba(${color.join(',')})`;
     ctx.putImageData(imgData,0,0);
-    if (16 in keysPressed) {  //If shift is pressed, draw a square
+    if (16 in keysPressed) {  //If shift is pressed, draw a circle
         let a = x1 - startX;
         let b = y1 - startY;
         let m = Math.min(Math.abs(a),Math.abs(b));

@@ -166,3 +166,12 @@ jiayangC -- 2019-05-18 22:30
 + added shift option for the rect and ellipse tools to draw squares and circles respectively
 + added fill option for the tools above ^^
 ==============================================================
+
+johnsonL -- 2019-05-19 00:25
+--------------------------------------------------------------
++ slider resets on refresh.
++ input for brush size and opacity.
+01:44
++ added smudge
++ fixed smudge not changing with brush size.
+==============================================================
