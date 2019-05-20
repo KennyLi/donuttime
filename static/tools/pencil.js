@@ -10,7 +10,6 @@ eventFunction("pencil", "mousemove", function (x0, y0, e) {
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return
     }
-    console.log(color)
     ctx.moveTo(x0,y0);
     let x1 = e.offsetX;
     let y1 = e.offsetY;

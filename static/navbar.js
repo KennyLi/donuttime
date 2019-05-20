@@ -35,6 +35,8 @@ var logout = function(e) {
     window.location.href="logout"
 }
 
-downloadButton.addEventListener("click", download)
-savedButton.addEventListener("click", saved)
-logoutButton.addEventListener("click", logout)
+if (downloadButton != undefined) {
+    downloadButton.addEventListener("click", download)
+    savedButton.addEventListener("click", saved)
+    logoutButton.addEventListener("click", logout)
+}

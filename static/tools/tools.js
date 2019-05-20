@@ -8,6 +8,11 @@ var general = function (event) {
     if (currentTool == undefined) {
         return
     }
+    //Keep track of undo redo
+    if (event.type == "mouseup" && inCanvas(event,canvas)) {
+        d = ctx.getImageData(0,0,canvas.width,canvas.height);
+        chistory.push(d);
+    }
     //Execute event if it exists in list of all functions
     if (event.type in allTools[currentTool]) {
         allTools[currentTool][event.type](event,inCanvas(event,canvas));
@@ -89,9 +94,6 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
             lastClicked = [undefined,undefined]
         }
         else if (e.type == type && inside) {
-	    if (e.type = "mouseup") {
-		chistory.push(canvas.toDataURL());
-	    }
             fxn(lastClicked[0], lastClicked[1], e) //Pass in the coords of the click and the previous
             lastClicked = [e.offsetX, e.offsetY] //Update the last clicked
         }
@@ -111,7 +113,7 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
 
 var makeHelperCanvas = (width, height) => {
     let canvas = document.createElement('canvas');
-    canvas.width = width 
+    canvas.width = width
     canvas.height = height;
     return canvas;
-} 
+}
