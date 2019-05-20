@@ -5,7 +5,7 @@ var logoutButton = document.getElementById("logout")
 console.log(name.val)
 var download = function (e) {
     e.preventDefault();
-    var name = document.getElementById("name").var
+    var name = document.getElementById("name").value
     canvas.toBlob(function (blob) {
         var formData = new FormData();
         formData.append("drawing_name", name);
