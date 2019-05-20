@@ -1,3 +1,3 @@
-$('#myModal').modal({
-  keyboard: false
-})
+$(document).ready(function () {
+    $('#myModal').modal('show');
+});

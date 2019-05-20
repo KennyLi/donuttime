@@ -22,13 +22,13 @@
                     {% block left %}
                     {% endblock %}
                 </ul>
-                <ul class="navbar-nav">            
+                <ul class="navbar-nav">
                     {% block right %}
                         <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>            
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                     {% endblock %}
                 </ul>
-            </div>            
+            </div>
         </div>
     </nav>
     </head>
@@ -40,7 +40,7 @@
 
         {% set msgs = get_flashed_messages() %}
         {% for each in msgs %}
-        <div class="alert alert-warning" role="alert">{{each}}</div>        
+        <div class="alert alert-warning" role="alert">{{each}}</div>
         <br>
         {% endfor %}
 

@@ -72,12 +72,22 @@ def blob():
     db.add_drawing("Kenny", request.form["drawing_name"], request.files["file"].read())
     return "Successfully Downloaded"
 
+@app.route("/color", methods = ["POST","GET"])
+def modalColor():
+    try:
+        return render_template("draw.html", user=session["logged_in"], data=request.form["var"], mColor = request.form["modColor"])
+    except:
+        try:
+            return render_template("draw.html", user=session["logged_in"],mColor = request.form["modColor"])
+        except:
+            return render_template("draw.html",mColor = request.form["modColor"])
+
 @app.route("/saved")
 def saved():
     # try:
         # drawings = db.get_drawing(session["logged_in"])
     data = db.get_drawing("Kenny")
-    drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8')) for drawing in data]    
+    drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8')) for drawing in data]
     grid = [drawings[i*3:i*3+3] for i in range(math.ceil(len(drawings) / 3))]
     return render_template("saved.html", imgs=grid, user=session["logged_in"])
     # except:

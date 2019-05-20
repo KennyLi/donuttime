@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-
-
 {% block left %}
     <li class="nav-item"><input type="text" id="name" class="form-control" value="Untitled Drawing"></li>
     <div class="dropdown nav-item">
@@ -35,7 +33,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="myModal">
+<div class="modal" id = "myModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -45,12 +43,15 @@
         </button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Transparant</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">White</button>
+        <form action = "/color" method = "POST">
+            <input type="submit" name = "modColor" value = "Transparant" class="btn btn-primary">
+            <input type="submit" name = "modColor" value = "White" class="btn btn-primary">
+        </form>
       </div>
     </div>
   </div>
 </div>
+
 <div class="wrapper">
     <nav id="sidebar">
         <!-- <div class="sidebar-header">
@@ -66,6 +67,7 @@
             <img style="display: none" id="img" src={{data}}>
         {% endif %}
     </div>
+    <div id = "color" style="display: none" >{{mColor}}</div>
     <div id="options">
         <div id="color-picker">
             <canvas id="color-grad" width="256" height="192"></canvas>
@@ -115,6 +117,6 @@
 <script src="/static/tools/rect.js"></script>
 <script src="/static/tools/ellipse.js"></script>
 <script src="/static/navbar.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"
-integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="/static/modal.js"></script>
+
 {% endblock %}
