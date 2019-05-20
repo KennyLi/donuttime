@@ -22,4 +22,31 @@
     {% endif %}
 {% endblock %}
 
-<img id="img" src="data:image/png;base64,{{img}}">
+{% block content %}
+    <!-- <img id="test" src="data:image/png;base64,{{img}}"> -->
+    {% for row in imgs %}
+    <div class="row">
+        {% for img in row %}
+        <div class="col-md-4">
+          <div class="thumbnail">
+              <img src="data:image/png;base64,{{img[1]}}" width="200" height="200" class="img-thumbnail">
+              <div class="caption">
+                <p>{{img[0]}}</p>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <form style="display: hidden" action="/" method="POST" id="form">
+        <input type="hidden" id="var" name="var" value=""/>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="/static/saved.js"></script>
+{% endblock %}

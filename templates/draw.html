@@ -3,8 +3,22 @@
 
 
 {% block left %}
+    <li class="nav-item"><input type="text" id="name" class="form-control" value="Untitled Drawing"></li>
+    <div class="dropdown nav-item">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filters
+        </button>
+        <div class="dropdown-menu" aria-labelledby="filter-dropdown">
+            <button class="dropdown-item" type="button" id="grayscale">Grayscale</button>
+            <button class="dropdown-item" type="button" >Another action</button>
+            <button class="dropdown-item" type="button">Something else here</button>
+        </div>
+    </div>
+    <!-- <span class="navbar-text" id="download">Download</span> -->
+
     {% if user is defined %}
-        <li class="nav-item"><a class="nav-link" href="/saved">Saved Drawings</a></li>
+        <li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
+        <li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
     {% else %}
         {{ super() }}
     {% endif %}
@@ -12,12 +26,8 @@
 
 {% block right %}
     {% if user is defined %}
-            <li class="nav-item">
-                <span class="navbar-text"><b>{{user}}</b></span>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a></li>
-            </li>
+            <li class="nav-item"><span class="navbar-text"><b>{{user}}</b></span></li>
+            <li class="nav-item"><button type="button" class="btn btn-dark" id="logout">Logout</button></li>
         </ul>
     {% else %}
         {{ super() }}
@@ -35,28 +45,35 @@
     </nav>
     <div id="content">
         <img id="checker" draggable="false" width="1280" height="720" src="/static/imgs/grey_checker.svg"></img>
-        <canvas id="playground" tabindex="1">
-        </canvas>
+        <canvas id="playground" tabindex="1"></canvas>
+        {% if data is defined %}
+            <img style="display: none" id="img" src={{data}}>
+        {% endif %}
     </div>
     <div id="options">
         <div id="color-picker">
-            <canvas id="color-grad" width="256" height="192">
-
-            </canvas>
+            <canvas id="color-grad" width="256" height="192"></canvas>
             <br>
-            current color: <span id="curr-color">■</span>
+            <div class="color-text">
+                Color: <span id="curr-color">■</span>
+            </div>
         </div>
         <hr>
-        <div id="brush-size">
-            Brush Size:<br>
-            <input type="range" min="1" max="100" value="10" class="slider" id="brush-slider"><br>
-            Size: <span id="curr-brush-size">10</span>px
+        <div class="option-container" id="brush-size">
+            <!-- Brush Size: <span id="curr-brush-size">10</span>px<br> -->
+            Brush Size (test): <input id="curr-brush-size" class="number-input" type="number" value="10" autocomplete="off" max="300"><br>
+            <input autocomplete="off" type="range" min="1" max="300" value="10" class="slider" id="brush-slider"><br>
         </div>
         <hr>
-        <div id="opacity">
-            Opacity:<br>
-            <input type="range" min="1" max="100" value="100" class="slider" id="opacity-slider"><br>
-            Opacity: <span id="curr-opacity">100</span>%
+        <div class="option-container" id="opacity">
+            <!-- Opacity: <span id="curr-opacity">100</span>%<br> -->
+            Opacity: <input id="curr-opacity" class="number-input" type="number" value="100" autocomplete="off" max="100"><br>
+            <input autocomplete="off" type="range" min="1" max="100" value="100" class="slider" id="opacity-slider"><br>
+        </div>
+        <hr>
+        <div class="option-container" id="fill">
+            Fill: <input type="checkbox" id="fill-checkbox"> Rounded Corners: <input type="checkbox" id="corner-checkbox"><br>
+            <br>
         </div>
     </div>
 
@@ -64,16 +81,23 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="/static/tools/options.js"></script>
+<script src="/static/options/brushsize.js"></script>
+<script src="/static/options/colorgradient.js"></script>
+<script src="/static/options/opacity.js"></script>
+<script src="/static/options/fill.js"></script>
 <script src="/static/canvas.js"></script>
 <script src="/static/cursors.js"></script>
 <script src="/static/tools/tools.js"></script>
+<script src="/static/tools/filters.js"></script>
 <script src="/static/tools/paintbrush.js"></script>
 <script src="/static/tools/pencil.js"></script>
 <script src="/static/tools/eraser.js"></script>
 <script src="/static/tools/eyedrop.js"></script>
 <script src="/static/tools/fill.js"></script>
 <script src="/static/tools/smudge.js"></script>
-
-
+<script src="/static/tools/rect.js"></script>
+<script src="/static/tools/ellipse.js"></script>
+<script src="/static/navbar.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 {% endblock %}

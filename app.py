@@ -1,4 +1,4 @@
-import os, urllib, json, base64
+import os, urllib, json, base64, math
 
 from flask import Flask, request, render_template, \
      flash, session, url_for, redirect
@@ -10,12 +10,15 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
 #root route
-@app.route("/")
+@app.route("/", methods = ["POST","GET"])
 def home():
     try:
-        return render_template("draw.html", user=session["logged_in"])
+        return render_template("draw.html", user=session["logged_in"], data=request.form["var"])
     except:
-        return render_template("draw.html")
+        try:
+            return render_template("draw.html", user=session["logged_in"])
+        except:
+            return render_template("draw.html")
 
 @app.route("/login")
 def login():
@@ -64,19 +67,21 @@ def logout():
 def test():
     return render_template("blob.html")
 
-@app.route("/blob", methods = ["POST"])
+@app.route("/blob", methods = ["POST","GET"])
 def blob():
     db.add_drawing("Kenny", request.form["drawing_name"], request.files["file"].read())
     return "Successfully Downloaded"
 
 @app.route("/saved")
 def saved():
-    try:
+    # try:
         # drawings = db.get_drawing(session["logged_in"])
-        drawings = db.get_drawing("Kenny")
-        return render_template("saved.html", img = base64.b64encode(drawings[0][1]).decode('utf8'))
-    except:
-        return redirect(url_for("home"))
+    data = db.get_drawing("Kenny")
+    drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8')) for drawing in data]    
+    grid = [drawings[i*3:i*3+3] for i in range(math.ceil(len(drawings) / 3))]
+    return render_template("saved.html", imgs=grid, user=session["logged_in"])
+    # except:
+    #     return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.debug = True

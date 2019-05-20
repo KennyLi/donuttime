@@ -1,13 +1,17 @@
 // paintbrush using points and bezier curves
 tool("paintbrush", true);
 
+//Save the points to make smooth bezier curve
 pointsToDraw = [];
 
 var mdpnt = (p0, p1) => {
     return [(p0[0] + p1[0]) / 2, (p1[1] + p0[1]) / 2];
 }
+
+//A save of how the image looked before the click
 var paintSave = undefined;
 
+//When mouse is clicked, save the canvas, and draw a dot
 eventFunction("paintbrush", "mousedown", (x0, y0, e) => {
     ctx.fillStyle = `rgba(${color.join(',')})`;
     paintSave = canvas.toDataURL();
@@ -18,15 +22,16 @@ eventFunction("paintbrush", "mousedown", (x0, y0, e) => {
     pointsToDraw.push([e.offsetX, e.offsetY]);
 });
 
+//When moved
 eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return
     }
 
-    pointsToDraw.push([e.offsetX, e.offsetY]);
-    
+    pointsToDraw.push([e.offsetX, e.offsetY]); //add the point
+
     ctx.beginPath();
-    ctx.moveTo(pointsToDraw[0], pointsToDraw[1]);
+    ctx.moveTo(pointsToDraw[0], pointsToDraw[1]); //Draw a beizer curve with all the saved points
 
     var start = pointsToDraw[0];
     var next = pointsToDraw[1];
@@ -41,9 +46,13 @@ eventFunction("paintbrush", "mousemove", function (x0, y0, e) {
     ctx.lineCap = 'round';
     ctx.lineWidth = brushSize;
     ctx.strokeStyle = `rgba(${color.join(',')})`;
+    //clear the last curve drawn and draw the newer one
     let img = document.createElement("img");
     img.src = paintSave;
+    ctx.globalCompositeOperation = "copy";
     ctx.drawImage(img, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+    //draw the curve
     ctx.stroke();
     ctx.lineWidth = 1;
 }, function (e) {

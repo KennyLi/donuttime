@@ -1,12 +1,13 @@
 var color = [0, 0, 0, 1]; // r g b a
 var brushSize = 10;
 var opacity = 1 // 100%
+
 var currentTool = undefined;
+var keysPressed = {};
 var general = function (event) {
     if (currentTool == undefined) {
         return
     }
-
     //Execute event if it exists in list of all functions
     if (event.type in allTools[currentTool]) {
         allTools[currentTool][event.type](event,inCanvas(event,canvas));
@@ -14,7 +15,7 @@ var general = function (event) {
 }
 
 //Used to tell if the mouse is being pressed
-var updateMouse = function(event) {
+var updateGlobal = function(event) {
     //For specific functions
     if (event.type == "mousedown") {
         mousedown = true;
@@ -22,17 +23,24 @@ var updateMouse = function(event) {
     if (event.type == "mouseup") {
         mousedown = false;
     }
+    if (event.type == "keydown") {
+        keysPressed[event.keyCode] = true;
+    } else if (event.type == "keyup") {
+        delete keysPressed[event.keyCode];
+    }
 }
 //Used to see if mouse in canvas
 var inCanvas = function(e,c) {
     return e.pageX > c.offsetLeft && e.pageX < c.offsetLeft + c.width && e.pageY > c.offsetTop && e.pageY < c.offsetTop + c.height
 }
-window.addEventListener("mousedown", updateMouse, false)
-window.addEventListener("mouseup", updateMouse, false)
+window.addEventListener("mousedown", updateGlobal, false)
+window.addEventListener("mouseup", updateGlobal, false)
+window.addEventListener("keydown", updateGlobal, false)
+window.addEventListener("keyup", updateGlobal, false)
 content.addEventListener("mousedown", general, false)
 content.addEventListener("mousemove", general, false)
 content.addEventListener("mouseup", general, false)
-content.addEventListener("keydown", general, false)
+
 
 
 var buttons = {};
@@ -100,3 +108,10 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
     }
 
 }
+
+var makeHelperCanvas = (width, height) => {
+    let canvas = document.createElement('canvas');
+    canvas.width = width 
+    canvas.height = height;
+    return canvas;
+} 

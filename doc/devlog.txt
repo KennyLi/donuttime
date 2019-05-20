@@ -75,7 +75,7 @@ TODO:
 
 kennyL -- 2019-05-14 22:35
 --------------------------------------------------------------
-+fixed bug with downloading blob which didn't work on ubuntu
++ fixed bug with downloading blob which didn't work on ubuntu
 ==============================================================
 
 jiayangC -- 2019-05-15 18:44
@@ -139,4 +139,54 @@ kennyL -- 2019-05-17 07:39
 + fixed placement of links on nav bar
 + added method for retrieving image from database
 + added html page for displaying image
+==============================================================
+
+jiayangC -- 2019-05-18 13:52
+--------------------------------------------------------------
++ fixed paintbrush opacity and choppiness
++ styling: made canvas centered, gave options bar color and styled the separators
+==============================================================
+
+kennyL -- 2019-05-18 20:07
+--------------------------------------------------------------
++ added functionality for working on saved images
+
+TODO:
++ replace hard coded data on retrieve data from database
++ incorporate download button
+==============================================================
+
+chenD -- 2019-05-18 21:02
+--------------------------------------------------------------
++ created the rectangle and ellipse tool, also fixed a bug with fill
+==============================================================
+
+jiayangC -- 2019-05-18 22:30
+--------------------------------------------------------------
++ added shift option for the rect and ellipse tools to draw squares and circles respectively
++ added fill option for the tools above ^^
+==============================================================
+
+johnsonL -- 2019-05-19 00:25
+--------------------------------------------------------------
++ slider resets on refresh.
++ input for brush size and opacity.
+01:44
++ added smudge
++ fixed smudge not changing with brush size.
+02:15
++ minor addition for rounded corner of rect.
+03:44
++ started on filters but it don't work.
+==============================================================
+
+kennyL -- 2019-05-19 18:09
+--------------------------------------------------------------
++ combined download test files with canvas.html
++ added input field for drawing name
+
+TODO:
++ make drawing name save to database
++ replace hardcoded data for drawing name
++ stylize saved drawings page
 ==============================================================
