@@ -64,4 +64,5 @@ def get_drawing(username):
     c.execute("SELECT drawing_name, drawing FROM drawing WHERE username =?", (username,))
     return c.fetchall()
 
+# createTable()
 # print(get_drawing("Kenny"))
