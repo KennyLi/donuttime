@@ -90,7 +90,7 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
         }
         else if (e.type == type && inside) {
 	    if (e.type = "mouseup") {
-		history.push(canvas.toDataURL());
+		chistory.push(canvas.toDataURL());
 	    }
             fxn(lastClicked[0], lastClicked[1], e) //Pass in the coords of the click and the previous
             lastClicked = [e.offsetX, e.offsetY] //Update the last clicked
