@@ -43,10 +43,8 @@
         </button>
       </div>
       <div class="modal-footer">
-        <form action = "/color" method = "POST">
-            <input type="submit" name = "modColor" value = "Transparant" class="btn btn-primary">
-            <input type="submit" name = "modColor" value = "White" class="btn btn-primary">
-        </form>
+        <button type="button" id = "w" name = "modColor" class="btn btn-primary" data-dismiss = "modal">White</button>
+        <button type="button" id = "t" name = "modColor" class="btn btn-primary" data-dismiss = "modal">Transparant</button>
       </div>
     </div>
   </div>
@@ -118,6 +116,5 @@
 <script src="/static/tools/ellipse.js"></script>
 <script src="/static/navbar.js"></script>
 <script src="/static/modal.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.js"
-integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
 {% endblock %}

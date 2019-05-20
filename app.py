@@ -72,16 +72,6 @@ def blob():
     db.add_drawing(session["logged_in"], request.form["drawing_name"], request.files["file"].read())
     return "Successfully Downloaded"
 
-@app.route("/color", methods = ["POST","GET"])
-def modalColor():
-    try:
-        return render_template("draw.html", user=session["logged_in"], data=request.form["var"], mColor = request.form["modColor"])
-    except:
-        try:
-            return render_template("draw.html", user=session["logged_in"],mColor = request.form["modColor"])
-        except:
-            return render_template("draw.html",mColor = request.form["modColor"])
-
 @app.route("/saved")
 def saved():
     # try:

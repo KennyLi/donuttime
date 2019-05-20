@@ -7,14 +7,8 @@ canvas.height = content.offsetHeight / 2;
 console.log(content);
 var color = document.getElementById("color")
 console.log(color.innerHTML)
-if(color.innerHTML == "Transparant"){
-    ctx.fillStyle = "rgba(0,0,0,0)"
-    ctx.fillRect(0,0,canvas.width,canvas.height)
-}
-if(color.innerHTML == "White"){
-    ctx.fillStyle = "#FFFFFF";
-    ctx.fillRect(0,0,canvas.width,canvas.height)
-}
+ctx.fillStyle = "#FFFFFF";
+ctx.fillRect(0,0,canvas.width,canvas.height)
 
 
 //Transparent Image Setup
