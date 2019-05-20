@@ -2,11 +2,13 @@ var downloadButton = document.getElementById("download")
 var savedButton = document.getElementById("saved")
 var logoutButton = document.getElementById("logout")
 
+console.log(name.val)
 var download = function (e) {
     e.preventDefault();
+    var name = document.getElementById("name").var
     canvas.toBlob(function (blob) {
         var formData = new FormData();
-        formData.append("drawing_name", "drawing");
+        formData.append("drawing_name", name);
         formData.append("file", blob, "blob.png");
 
         $.ajax({
