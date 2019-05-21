@@ -201,3 +201,8 @@ chenD -- 2019-05-20 18:12
 + created a modal which asks the user if they want a transparent
 or white background and modifies the canvas accordingly
 ==============================================================
+
+johnsonL -- 2019-05-21 13:13
+--------------------------------------------------------------
++ grayscale works. doing other filters.
+==============================================================
