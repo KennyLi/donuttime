@@ -22,3 +22,16 @@ grayscale.addEventListener('click', () => {
     ctx.putImageData(img, 0, 0);
 });
 
+invert.addEventListener('click', () => {
+    let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let pixels = img.data;
+
+    for (let i = 0; i < pixels.length; i += 4) {
+
+        pixels[i] = 255 - pixels[i];
+        pixels[i + 1] = 255 - pixels[i + 1];
+        pixels[i + 2] = 255 - pixels[i + 2];
+    }
+    ctx.putImageData(img, 0, 0);
+});
+

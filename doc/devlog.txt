@@ -204,5 +204,6 @@ or white background and modifies the canvas accordingly
 
 johnsonL -- 2019-05-21 13:13
 --------------------------------------------------------------
-+ grayscale works. doing other filters.
++ grayscale works.
++ invert works.
 ==============================================================
