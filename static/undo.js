@@ -6,11 +6,10 @@ window.addEventListener("keydown", function (e) {
         if (chistory.length == 1) {
             return
         }
-        console.log(chistory)
-	    a = chistory.pop();
+	a = chistory.pop();
         b = chistory[chistory.length - 1];
         ctx.putImageData(b,0,0)
-	    credo.push(a);
+	credo.push(a);
 
     }
 
@@ -23,10 +22,9 @@ window.addEventListener("keydown", function (e) {
         if (credo.length == 0) {
             return
         }
-        console.log(credo)
-	    a = credo.pop();
+	a = credo.pop();
         ctx.putImageData(a,0,0)
-	    chistory.push(a);
+	chistory.push(a);
 
     }
 

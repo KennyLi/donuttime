@@ -19,7 +19,7 @@ checker.addEventListener("click", function(e) {
 checker.width = canvas.width;
 checker.height = canvas.height;
 
-
+var canvasIsWhite = false;
 var img = document.getElementById("img")
 if (img != null) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
@@ -30,10 +30,12 @@ if (img != null) {
     document.getElementById("w").addEventListener("click",function(e){
         ctx.fillStyle = "#FFFFFF"
         ctx.fillRect(0,0,canvas.width,canvas.height)
+	canvasIsWhite = true;
     })
     document.getElementById("t").addEventListener("click",function(e){
         ctx.clearRect(0,0,canvas.width,canvas.height)
     })
 }
 
+//Initialize "history" of the canvas
 chistory.push(ctx.getImageData(0,0,canvas.width,canvas.height));
