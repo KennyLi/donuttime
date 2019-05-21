@@ -33,22 +33,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="modal" id = "myModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Pick a Canvas Background</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id = "w" name = "modColor" class="btn btn-primary" data-dismiss = "modal">White</button>
-        <button type="button" id = "t" name = "modColor" class="btn btn-primary" data-dismiss = "modal">Transparent</button>
+
+{% if data is defined %}
+    <img style="display: none" id="img" src={{data}}>
+{% else %}
+    <div class="modal" id = "myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Pick a Canvas Background</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id = "w" name = "modColor" class="btn btn-primary" data-dismiss = "modal">White</button>
+            <button type="button" id = "t" name = "modColor" class="btn btn-primary" data-dismiss = "modal">Transparent</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    <div id = "color" style="display: none" >{{mColor}}</div>
+{% endif %}
+
 
 <div class="wrapper">
     <nav id="sidebar">
@@ -61,11 +68,7 @@
     <div id="content">
         <img id="checker" draggable="false" width="1280" height="720" src="/static/imgs/grey_checker.svg"></img>
         <canvas id="playground" tabindex="1"></canvas>
-        {% if data is defined %}
-            <img style="display: none" id="img" src={{data}}>
-        {% endif %}
     </div>
-    <div id = "color" style="display: none" >{{mColor}}</div>
     <div id="options">
         <div id="color-picker">
             <canvas id="color-grad" width="256" height="192"></canvas>
