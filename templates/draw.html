@@ -1,62 +1,70 @@
 {% extends "base.html" %}
 
 {% block left %}
-    <li class="nav-item"><input type="text" id="name" class="form-control" value="Untitled Drawing"></li>
-    <div class="dropdown nav-item">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Filters
-        </button>
-        <div class="dropdown-menu" aria-labelledby="filter-dropdown">
-            <button class="dropdown-item" type="button" id="grayscale">Grayscale</button>
-            <button class="dropdown-item" type="button" >Another action</button>
-            <button class="dropdown-item" type="button">Something else here</button>
-        </div>
+<li class="nav-item"><input type="text" id="name" class="form-control" value="Untitled Drawing"></li>
+<div class="dropdown nav-item">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Filters
+    </button>
+    <div class="dropdown-menu" aria-labelledby="filter-dropdown">
+        <button class="dropdown-item" type="button" id="grayscale">Grayscale</button>
+        <button class="dropdown-item" type="button" id="invert">Invert</button>
+        <button class="dropdown-item" type="button">Something else here</button>
     </div>
-    <!-- <span class="navbar-text" id="download">Download</span> -->
+</div>
+<!-- <span class="navbar-text" id="download">Download</span> -->
 
-    {% if user is defined %}
-        <li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
-        <li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
-    {% else %}
-        {{ super() }}
-    {% endif %}
+{% if user is defined %}
+<li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
+{% else %}
+{{ super() }}
+{% endif %}
 {% endblock %}
 
 {% block right %}
-    {% if user is defined %}
-            <li class="nav-item"><span class="navbar-text"><b>{{user}}</b></span></li>
-            <li class="nav-item"><button type="button" class="btn btn-dark" id="logout">Logout</button></li>
-        </ul>
-    {% else %}
-        {{ super() }}
-    {% endif %}
+{% if user is defined %}
+<li class="nav-item"><span class="navbar-text"><b>{{user}}</b></span></li>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="logout">Logout</button></li>
+</ul>
+{% else %}
+{{ super() }}
+{% endif %}
 {% endblock %}
 
 {% block content %}
-<div class="modal" id = "myModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Pick a Canvas Background</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id = "w" name = "modColor" class="btn btn-primary" data-dismiss = "modal">White</button>
-        <button type="button" id = "t" name = "modColor" class="btn btn-primary" data-dismiss = "modal">Transparent</button>
-      </div>
+
+{% if data is defined %}
+<img style="display: none" id="img" src={{data}}>
+{% else %}
+<div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Pick a Canvas Background</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="w" name="modColor" class="btn btn-primary" data-dismiss="modal">White</button>
+                <button type="button" id="t" name="modColor" class="btn btn-primary"
+                    data-dismiss="modal">Transparent</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+<div id="color" style="display: none">{{mColor}}</div>
+{% endif %}
 
 <div class="wrapper">
     <nav id="sidebar">
         <!-- <div class="sidebar-header">
             Tools
         </div> -->
-	<div id="toolbar">
-	</div>
+        <div id="toolbar">
+        </div>
     </nav>
     <div id="content">
         <img id="checker" draggable="false" width="1280" height="720" src="/static/imgs/grey_checker.svg"></img>
@@ -77,18 +85,21 @@
         <hr>
         <div class="option-container" id="brush-size">
             <!-- Brush Size: <span id="curr-brush-size">10</span>px<br> -->
-            Brush Size (test): <input id="curr-brush-size" class="number-input" type="number" value="10" autocomplete="off" max="300"><br>
+            Brush Size (test): <input id="curr-brush-size" class="number-input" type="number" value="10"
+                autocomplete="off" max="300"><br>
             <input autocomplete="off" type="range" min="1" max="300" value="10" class="slider" id="brush-slider"><br>
         </div>
         <hr>
         <div class="option-container" id="opacity">
             <!-- Opacity: <span id="curr-opacity">100</span>%<br> -->
-            Opacity: <input id="curr-opacity" class="number-input" type="number" value="100" autocomplete="off" max="100"><br>
+            Opacity: <input id="curr-opacity" class="number-input" type="number" value="100" autocomplete="off"
+                max="100"><br>
             <input autocomplete="off" type="range" min="1" max="100" value="100" class="slider" id="opacity-slider"><br>
         </div>
         <hr>
         <div class="option-container" id="fill">
-            Fill: <input type="checkbox" id="fill-checkbox"> Rounded Corners: <input type="checkbox" id="corner-checkbox"><br>
+            Fill: <input type="checkbox" id="fill-checkbox"> Rounded Corners: <input type="checkbox"
+                id="corner-checkbox"><br>
             <br>
         </div>
 	<div class="option-container" id="layers">
