@@ -2,18 +2,16 @@
 
 const grayscale = document.getElementById('grayscale');
 const invert = document.getElementById('invert');
-
-// ctx.filter only applies to new things so i have to redraw the
-// canvas into a buffer that has the filter then copy it back
-// but it don't work. fix soon.
+const sepia = document.getElementById('sepia');
 
 grayscale.addEventListener('click', () => {
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let pixels = img.data;
 
     for (let i = 0; i < pixels.length; i += 4) {
-        // get avg color
-        let avg = parseInt((pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3);
+        // calculation for gray value that works better for human eyes
+        // formula from wikipedia https://en.wikipedia.org/wiki/Grayscale
+        let avg = parseInt(pixels[i] * 0.2126 + pixels[i + 1] * 0.7152 + pixels[i + 2] * 0.722);
         // set rgb to the avg color
         pixels[i] = avg;
         pixels[i + 1] = avg;
@@ -31,6 +29,19 @@ invert.addEventListener('click', () => {
         pixels[i] = 255 - pixels[i];
         pixels[i + 1] = 255 - pixels[i + 1];
         pixels[i + 2] = 255 - pixels[i + 2];
+    }
+    ctx.putImageData(img, 0, 0);
+});
+
+sepia.addEventListener('click', () => {
+    let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    let pixels = img.data;
+    for (let i = 0; i < pixels.length; i += 4) {
+        let avg = parseInt(pixels[i] * 0.2126 + pixels[i + 1] * 0.7152 + pixels[i + 2] * 0.722);
+        // lazy implementation of sepia. just gray scale with red and green
+        pixels[i] = avg + 100;
+        pixels[i + 1] = avg + 50;
+        pixels[i + 2] = avg;
     }
     ctx.putImageData(img, 0, 0);
 });

@@ -8,13 +8,13 @@ console.log(content);
 var color = document.getElementById("color")
 console.log(color.innerHTML)
 ctx.fillStyle = "#FFFFFF";
-ctx.fillRect(0,0,canvas.width,canvas.height)
+ctx.fillRect(0, 0, canvas.width, canvas.height)
 chistory[ctx] = [];
 credo[ctx] = [];
 
 //Transparent Image Setup
 var checker = document.getElementById("checker");
-checker.addEventListener("click", function(e) {
+checker.addEventListener("click", function (e) {
     e.preventDefault();
 })
 checker.width = canvas.width;
@@ -28,15 +28,24 @@ if (img != null) {
     $(document).ready(function () {
         $('#myModal').modal('show');
     });
-    document.getElementById("w").addEventListener("click",function(e){
+    document.getElementById("w").addEventListener("click", function (e) {
         ctx.fillStyle = "#FFFFFF"
-        ctx.fillRect(0,0,canvas.width,canvas.height)
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
-	canvasIsWhite = true;
+        canvasIsWhite = true;
+        var loadTestImg = () => {
+            var img = new Image();
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0);
+            };
+            img.src = 'static/tools/testimg.png'
+        }
+
+        loadTestImg();
     })
-    document.getElementById("t").addEventListener("click",function(e){
-        ctx.clearRect(0,0,canvas.width,canvas.height)
+    document.getElementById("t").addEventListener("click", function (e) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
     })
