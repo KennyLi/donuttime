@@ -2,7 +2,7 @@ var chistory = [];
 var credo = [];
 
 window.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.key == "z") {
+    if (e.ctrlKey && e.key === "z") {
         if (chistory.length == 1) {
             return
         }
@@ -10,7 +10,7 @@ window.addEventListener("keydown", function (e) {
         b = chistory[chistory.length - 1];
         //console.log(b)
 	    for (var key in b) {
-	        canvases[key].getContext("2d").putImageData(b[key],0,0)
+            canvases[key].getContext("2d").putImageData(b[key],0,0)
 	    }
 	credo.push(a);
 
@@ -18,14 +18,12 @@ window.addEventListener("keydown", function (e) {
 
 });
 
-
-
 window.addEventListener("keydown", function (e) {
-    if (e.ctrlKey && e.key == "y") {
+    if (e.ctrlKey && e.key === "y") {
         if (credo.length == 0) {
             return
         }
-	    a = credo.pop();
+        a = credo.pop();
         for (var key in a) {
 	        canvases[key].getContext("2d").putImageData(a[key],0,0)
     	}
