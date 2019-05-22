@@ -1,5 +1,6 @@
 //Layers
 var canvases = {0: canvas};
+var canvasesOrdering = [];
 var canvasIDCounter = 0;
 var newLayer = function() {
     let c = document.createElement("canvas");
@@ -9,7 +10,8 @@ var newLayer = function() {
     canvasIDCounter += 1;
     c.canvasid = canvasIDCounter;
     content.insertBefore(c, cursorCanvas)
-    canvases[c.canvasid] = c;
+    canvases[c.canvasid] = c
+    canvasesOrdering.push(c.canvasid);
 }
 
 newLayer()
