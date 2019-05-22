@@ -3,11 +3,11 @@
 
 
 {% block left %}
-    {% if name is defined %}
-        <li class="nav-item"><input type="text" id="name" class="form-control" value="{{name}}"></li>
-    {% else %}
-        <li class="nav-item"><input type="text" id="name" class="form-control" value="Untitled Drawing"></li>
-    {% endif %}
+{% if name is defined %}
+<li class="nav-item"><input type="text" id="name" class="form-control" value="{{name}}"></li>
+{% else %}
+<li class="nav-item"><input type="text" id="name" class="form-control" value="Untitled Drawing"></li>
+{% endif %}
 <div class="dropdown nav-item">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-dropdown" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
@@ -22,21 +22,21 @@
 <!-- <span class="navbar-text" id="download">Download</span> -->
 
 {% if user is defined %}
-    <li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
-    <li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
 {% else %}
-    {{ super() }}
+{{ super() }}
 {% endif %}
 {% endblock %}
 
 {% block right %}
-    {% if user is defined %}
-        <li class="nav-item"><span class="navbar-text"><b>{{user}}</b></span></li>
-        <li class="nav-item"><button type="button" class="btn btn-dark" id="logout">Logout</button></li>
-        </ul>
-    {% else %}
-        {{ super() }}
-    {% endif %}
+{% if user is defined %}
+<li class="nav-item"><span class="navbar-text"><b>{{user}}</b></span></li>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="logout">Logout</button></li>
+</ul>
+{% else %}
+{{ super() }}
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -77,10 +77,10 @@
         <img id="checker" draggable="false" width="1280" height="720" src="/static/imgs/grey_checker.svg"></img>
         <canvas id="playground" tabindex="1"></canvas>
         {% if data is defined %}
-            <img style="display: none" id="img" src={{data}}>
+        <img style="display: none" id="img" src={{data}}>
         {% endif %}
     </div>
-    <div id = "color" style="display: none" >{{mColor}}</div>
+    <div id="color" style="display: none">{{mColor}}</div>
     <div id="options">
         <div id="color-picker">
             <canvas id="color-grad" width="256" height="192"></canvas>
@@ -92,8 +92,8 @@
         <hr>
         <div class="option-container" id="brush-size">
             <!-- Brush Size: <span id="curr-brush-size">10</span>px<br> -->
-            Brush Size: <input id="curr-brush-size" class="number-input" type="number" value="10"
-                autocomplete="off" max="300"><br>
+            Brush Size: <input id="curr-brush-size" class="number-input" type="number" value="10" autocomplete="off"
+                max="300"><br>
             <input autocomplete="off" type="range" min="1" max="300" value="10" class="slider" id="brush-slider"><br>
         </div>
         <hr>
@@ -109,15 +109,15 @@
                 id="corner-checkbox"><br>
             <br>
         </div>
-	<div class="option-container" id="layers">
-        <form id="layer-form">
-            <input type="radio" name="layer" value="2"> 3<br>
-            <input type="radio" name="layer" value="1"> 2<br>
-	        <input type="radio" name="layer" value="0"> 1<br>
+        <div class="option-container" id="layers">
+            <form id="layer-form">
+                <input type="radio" name="layer" value="2"> 3<br>
+                <input type="radio" name="layer" value="1"> 2<br>
+                <input type="radio" name="layer" value="0"> 1<br>
 
 
-        </form>
-	</div>
+            </form>
+        </div>
     </div>
 
 </div>
@@ -137,9 +137,9 @@
 <script src="/static/tools/paintbrush.js"></script>
 <script src="/static/tools/pencil.js"></script>
 <script src="/static/tools/eraser.js"></script>
+<script src="/static/tools/smudge.js"></script>
 <script src="/static/tools/eyedrop.js"></script>
 <script src="/static/tools/fill.js"></script>
-<script src="/static/tools/smudge.js"></script>
 <script src="/static/tools/rect.js"></script>
 <script src="/static/tools/ellipse.js"></script>
 <script src="/static/navbar.js"></script>
