@@ -9,7 +9,8 @@ var color = document.getElementById("color")
 console.log(color.innerHTML)
 ctx.fillStyle = "#FFFFFF";
 ctx.fillRect(0,0,canvas.width,canvas.height)
-
+chistory[ctx] = [];
+credo[ctx] = [];
 
 //Transparent Image Setup
 var checker = document.getElementById("checker");
@@ -30,12 +31,17 @@ if (img != null) {
     document.getElementById("w").addEventListener("click",function(e){
         ctx.fillStyle = "#FFFFFF"
         ctx.fillRect(0,0,canvas.width,canvas.height)
-	canvasIsWhite = true;
+        //Initialize "history" of the canvas
+        data = ctx.getImageData(0,0,canvas.width,canvas.height)
+        addHistory(ctx,data);
+        baseCanvases[ctx] = data;
+	    canvasIsWhite = true;
     })
     document.getElementById("t").addEventListener("click",function(e){
         ctx.clearRect(0,0,canvas.width,canvas.height)
+        //Initialize "history" of the canvas
+        data = ctx.getImageData(0,0,canvas.width,canvas.height)
+        addHistory(ctx,data);
+        baseCanvases[ctx] = data;
     })
 }
-
-//Initialize "history" of the canvas
-chistory.push(ctx.getImageData(0,0,canvas.width,canvas.height));

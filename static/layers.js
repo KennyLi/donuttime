@@ -1,11 +1,27 @@
 //Layers
-var canvas = document.getElementById("playground");
-var ctx = canvas.getContext("2d");
-var content = document.getElementById("content");
-canvas.width = content.offsetWidth / 2;
-canvas.height = content.offsetHeight / 2;
-console.log(content);
-var color = document.getElementById("color")
-console.log(color.innerHTML)
-ctx.fillStyle = "#FFFFFF";
-ctx.fillRect(0,0,canvas.width,canvas.height)
+var canvases = [canvas];
+
+var newLayer = function() {
+    let c = document.createElement("canvas");
+    c.className += " helpercanvas";
+    c.width = canvas.width;
+    c.height = canvas.height;
+    content.insertBefore(c, cursorCanvas)
+    canvases.push(c);
+}
+
+newLayer()
+newLayer()
+
+var radios = document.forms["layer-form"].children;
+for(var i = 0; i < radios.length; i++) {
+    radios[i].onclick = function() {
+        changeActiveLayer(this);
+    }
+}
+
+var changeActiveLayer = function(e) {
+    canvas = canvases[parseInt(e.value)];
+    ctx = canvas.getContext("2d");
+    chistory[0] = [ctx,ctx.getImageData(0,0,canvas.width,canvas.height)]
+}

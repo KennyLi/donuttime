@@ -103,12 +103,13 @@
             <br>
         </div>
 	<div class="option-container" id="layers">
-	  <input type="radio" name="layer" value="1">
-	  <label for="1">1</label>
-	  <input type="radio" name="layer" value="2">
-	  <label for="2">2</label>
-	  <input type="radio" name="layer" value="3">
-	  <label for="3">3</label>
+        <form id="layer-form">
+            <input type="radio" name="layer" value="2"> 3<br>
+            <input type="radio" name="layer" value="1"> 2<br>
+	        <input type="radio" name="layer" value="0"> 1<br>
+
+
+        </form>
 	</div>
     </div>
 
@@ -123,6 +124,7 @@
 <script src="/static/options/fill.js"></script>
 <script src="/static/canvas.js"></script>
 <script src="/static/cursors.js"></script>
+<script src="/static/layers.js"></script>
 <script src="/static/tools/tools.js"></script>
 <script src="/static/tools/filters.js"></script>
 <script src="/static/tools/paintbrush.js"></script>

@@ -4,6 +4,7 @@ cursorCtx = cursorCanvas.getContext("2d");
 cursorCanvas.height = canvas.height;
 cursorCanvas.width = canvas.width;
 cursorCanvas.className += " helpercanvas";
+cursorCanvas.setAttribute("id","cursors");
 content.addEventListener("mousemove", function(e) {
     cursorCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
     if (!(inCanvas(e,cursorCanvas))){
