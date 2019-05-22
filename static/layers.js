@@ -24,4 +24,5 @@ var changeActiveLayer = function(e) {
     canvas = canvases[parseInt(e.value)];
     ctx = canvas.getContext("2d");
     chistory[0] = [ctx,ctx.getImageData(0,0,canvas.width,canvas.height)]
+    console.log(e.value);
 }

@@ -32,16 +32,12 @@ if (img != null) {
         ctx.fillStyle = "#FFFFFF"
         ctx.fillRect(0,0,canvas.width,canvas.height)
         //Initialize "history" of the canvas
-        data = ctx.getImageData(0,0,canvas.width,canvas.height)
-        addHistory(ctx,data);
-        baseCanvases[ctx] = data;
-	    canvasIsWhite = true;
+        addHistory(saveStates());
+	canvasIsWhite = true;
     })
     document.getElementById("t").addEventListener("click",function(e){
         ctx.clearRect(0,0,canvas.width,canvas.height)
         //Initialize "history" of the canvas
-        data = ctx.getImageData(0,0,canvas.width,canvas.height)
-        addHistory(ctx,data);
-        baseCanvases[ctx] = data;
+        addHistory(saveStates());
     })
 }

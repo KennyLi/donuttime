@@ -1,54 +1,53 @@
-var chistory = {};
-var credo = {};
-var lhistory = [];
-var lredo = [];
-var baseCanvases = {};
+var chistory = [];
+var credo = [];
+
 window.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.key == "z") {
-        if (lhistory.length == 0) {
+        if (chistory.length == 1) {
             return
         }
-	    let oldcvs1 = lhistory.pop();
-        let oldcvs0 = lhistory[lhistory.length - 1]
-        clist = chistory[old];
-        let historydata;
-        if (old == undefined) {
-            historydata = baseCanvases[old];
-            old.putImageData(historydata,0,0);
-        } else {
-            historydata = clist.pop();
-            historydata = clist[clist.length-1];
-            old.putImageData(historydata,0,0);
-            addRedo(old,historydata);
-        }
+        console.log(chistory)
+	a = chistory.pop();
+        b = chistory[chistory.length - 1];
+
+	for (let key in b) {
+	    key.putImageData(b[key],0,0)
+	}
+	credo.push(a);
+
     }
 
 });
 
-var addHistory = function(ctx,data) {
-    chistory[ctx].push(data);
-    lhistory.push(ctx);
-};
-
-var addRedo = function(ctx,data) {
-    credo[ctx].push(data);
-    lredo.push(ctx);
-};
 
 
 window.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.key == "y") {
-        if (lredo.length == 0) {
+        if (credo.length == 0) {
             return
         }
-        old = lhistory.pop();
-        old = lhistory[lhistory.length - 1]
-        clist = chistory[old];
-        historydata = clist.pop();
-        historydata = clist[clist.length-1]
-        old.putImageData(historydata,0,0)
-	    addHistory(ctx,historydata)
-
+        console.log(credo)
+	a = credo.pop();
+        for (let key in a) {
+	    key.putImageData(a[key],0,0)
+	}
+	    chistory.push(a);
     }
-
 });
+
+var addHistory = function(data) {
+    chistory.push(data);
+};
+
+var addRedo = function(data) {
+    credo.push(data);
+};
+
+var saveStates = function() {
+    let s = {};
+    for (let x = 0; x < canvases.length; x++) {
+	let c = canvases[x];
+	s[c] = c.getContext("2d").getImageData(0,0,c.width,c.height);
+    }
+    return s;
+}
