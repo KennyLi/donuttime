@@ -13,7 +13,7 @@ app.secret_key = os.urandom(32)
 @app.route("/", methods = ["POST","GET"])
 def home():
     try:
-        return render_template("draw.html", user=session["logged_in"], data=request.form["var"])
+        return render_template("draw.html", user=session["logged_in"], data=request.form["drawing"], name=request.form["name"])
     except:
         try:
             return render_template("draw.html", user=session["logged_in"])

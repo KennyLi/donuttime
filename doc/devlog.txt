@@ -207,3 +207,9 @@ johnsonL -- 2019-05-21 13:13
 + grayscale works.
 + invert works.
 ==============================================================
+
+kennyL -- 2019-05-22 00:50
+--------------------------------------------------------------
++ made drawing name show up after going through saved drawings
++ removed test text from brush size
+==============================================================
