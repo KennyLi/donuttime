@@ -57,12 +57,22 @@ def add_drawing(username, drawing_name, blob):
     db.commit()
     db.close()
 
+def delete_drawing(username, drawing_name):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("DELETE FROM drawing WHERE username=? AND drawing_name=?", (username, drawing_name,))
+    db.commit()
+    db.close()
+
 def get_drawing(username):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-
     c.execute("SELECT drawing_name, drawing FROM drawing WHERE username =?", (username,))
     return c.fetchall()
 
+# delete_drawing("b","b")
+# delete_drawing("a","b")
+# delete_drawing("b","Untitled Drawing")
+# delete_drawing("a","Untitled Drawing")
 # createTable()
 # print(get_drawing("Kenny"))
