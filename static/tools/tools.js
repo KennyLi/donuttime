@@ -11,6 +11,7 @@ var general = function (event) {
     //Keep track of undo redo
     if (event.type == "mouseup" && inCanvas(event,canvas)) {
         addHistory(saveStates());
+        credo = [];
     }
     //Execute event if it exists in list of all functions
     if (event.type in allTools[currentTool]) {

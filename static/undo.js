@@ -6,13 +6,12 @@ window.addEventListener("keydown", function (e) {
         if (chistory.length == 1) {
             return
         }
-        console.log(chistory)
-	a = chistory.pop();
+	    a = chistory.pop();
         b = chistory[chistory.length - 1];
-
-	for (let key in b) {
-	    key.putImageData(b[key],0,0)
-	}
+        //console.log(b)
+	    for (var key in b) {
+	        canvases[key].getContext("2d").putImageData(b[key],0,0)
+	    }
 	credo.push(a);
 
     }
@@ -26,17 +25,17 @@ window.addEventListener("keydown", function (e) {
         if (credo.length == 0) {
             return
         }
-        console.log(credo)
-	a = credo.pop();
-        for (let key in a) {
-	    key.putImageData(a[key],0,0)
-	}
+	    a = credo.pop();
+        for (var key in a) {
+	        canvases[key].getContext("2d").putImageData(a[key],0,0)
+    	}
 	    chistory.push(a);
     }
 });
 
 var addHistory = function(data) {
     chistory.push(data);
+    //console.log(data)
 };
 
 var addRedo = function(data) {
@@ -45,9 +44,9 @@ var addRedo = function(data) {
 
 var saveStates = function() {
     let s = {};
-    for (let x = 0; x < canvases.length; x++) {
-	let c = canvases[x];
-	s[c] = c.getContext("2d").getImageData(0,0,c.width,c.height);
+    for (let x = 0; x < Object.keys(canvases).length; x++) {
+	    let c = canvases[x];
+	    s[c.canvasid] = c.getContext("2d").getImageData(0,0,canvas.width,canvas.height);
     }
     return s;
 }

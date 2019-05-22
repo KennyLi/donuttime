@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 var content = document.getElementById("content");
 canvas.width = content.offsetWidth / 2;
 canvas.height = content.offsetHeight / 2;
+canvas.canvasid = 0;
 console.log(content);
 var color = document.getElementById("color")
 console.log(color.innerHTML)

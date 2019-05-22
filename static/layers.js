@@ -1,13 +1,15 @@
 //Layers
-var canvases = [canvas];
-
+var canvases = {0: canvas};
+var canvasIDCounter = 0;
 var newLayer = function() {
     let c = document.createElement("canvas");
     c.className += " helpercanvas";
     c.width = canvas.width;
     c.height = canvas.height;
+    canvasIDCounter += 1;
+    c.canvasid = canvasIDCounter;
     content.insertBefore(c, cursorCanvas)
-    canvases.push(c);
+    canvases[c.canvasid] = c;
 }
 
 newLayer()
@@ -23,6 +25,5 @@ for(var i = 0; i < radios.length; i++) {
 var changeActiveLayer = function(e) {
     canvas = canvases[parseInt(e.value)];
     ctx = canvas.getContext("2d");
-    chistory[0] = [ctx,ctx.getImageData(0,0,canvas.width,canvas.height)]
     console.log(e.value);
 }
