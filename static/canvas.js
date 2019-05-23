@@ -17,10 +17,9 @@ bkg.height = canvas.height;
 const bImg = document.createElement("img");
 bImg.src = "/static/imgs/grey_checker.svg";
 bImg.onload = function (e) {
-    bCtx.drawImage(bImg, 0,0);
+    bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
 }
 
-var canvasIsWhite = false;
 var img = document.getElementById("img")
 if (img != null) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
@@ -29,11 +28,10 @@ if (img != null) {
         $('#myModal').modal('show');
     });
     document.getElementById("w").addEventListener("click", function (e) {
-        ctx.fillStyle = "#FFFFFF"
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        bCtx.fillStyle = "#FFFFFF"
+        bCtx.fillRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
-        canvasIsWhite = true;
         var loadTestImg = () => {
             var img = new Image();
             img.onload = () => {
@@ -42,10 +40,9 @@ if (img != null) {
             img.src = 'static/tools/testimg.png'
         }
 
-        loadTestImg();
+        //loadTestImg();
     })
     document.getElementById("t").addEventListener("click", function (e) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
     })

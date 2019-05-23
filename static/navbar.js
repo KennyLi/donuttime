@@ -5,7 +5,21 @@ var logoutButton = document.getElementById("logout")
 var download = function (e) {
     e.preventDefault();
     var name = document.getElementById("name").value
-    canvas.toBlob(function (blob) {
+    //Combine all the layers
+    let combine = document.createElement("canvas");
+    let cctx = combine.getContext("2d");
+    combine.width = canvas.width;
+    combine.height = canvas.height;
+    for (let i = 0; i < canvasesOrdering.length; i++) {
+        let layer = canvases[canvasesOrdering[i]]
+        let data = layer.toDataURL();
+        //clear the last curve drawn and draw the newer one
+        let img = document.createElement("img");
+        img.src = data;
+        cctx.drawImage(img, 0, 0);
+    }
+
+    combine.toBlob(function (blob) {
         var formData = new FormData();
         formData.append("drawing_name", name);
         formData.append("file", blob, "blob.png");

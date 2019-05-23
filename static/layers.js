@@ -1,6 +1,6 @@
 //Layers
 var canvases = {0: canvas};
-var canvasesOrdering = [];
+var canvasesOrdering = [0];
 var canvasIDCounter = 0;
 var newLayer = function() {
     let c = document.createElement("canvas");

@@ -7,9 +7,7 @@ eventFunction("eraser","mousedown", function(x0,y0,e) {
     ctx.strokeStyle = "#FFFFFF";
     ctx.fillStyle = "#FFFFFF";
     lineWidth = 1;
-    if (!canvasIsWhite) {
 	ctx.globalCompositeOperation = 'destination-out'; //Erases and actually clears the portion rather than fill white
-    }
     ctx.beginPath();
     ctx.arc(x1,y1,brushSize/2, 0, 2 * Math.PI);
     ctx.closePath();
@@ -26,9 +24,7 @@ eventFunction("eraser","mousemove", function(x0,y0,e) {
     let y1 = e.offsetY;
     ctx.strokeStyle = "#FFFFFF";
     ctx.fillStyle = "#FFFFFF";
-    if (!canvasIsWhite) {
 	ctx.globalCompositeOperation = 'destination-out'; //Erases and actually clears the portion rather than fill white
-    }
     ctx.beginPath();
     ctx.arc(x1,y1,brushSize/2, 0, 2 * Math.PI);
     ctx.closePath();
