@@ -63,14 +63,15 @@ def logout():
     finally:
         return redirect(url_for("home"))
 
-@app.route("/test")
-def test():
-    return render_template("blob.html")
-
 @app.route("/blob", methods = ["POST","GET"])
 def blob():
     db.add_drawing(session["logged_in"], request.form["drawing_name"], request.files["file"].read())
     return "Successfully Downloaded"
+
+@app.route("/delete", methods = ["POST", "GET"])
+def delete():
+    db.delete_drawing(session["logged_in"], request.form["delete"])
+    return redirect(url_for("saved"))
 
 @app.route("/saved")
 def saved():
