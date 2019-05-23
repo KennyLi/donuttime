@@ -74,7 +74,7 @@
         </div>
     </nav>
     <div id="content">
-        <img id="checker" draggable="false" width="1280" height="720" src="/static/imgs/grey_checker.svg"></img>
+        <canvas id="bkg"> </canvas>
         <canvas id="playground" tabindex="1"></canvas>
         {% if data is defined %}
         <img style="display: none" id="img" src={{data}}>

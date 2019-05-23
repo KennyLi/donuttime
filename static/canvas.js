@@ -5,21 +5,20 @@ var content = document.getElementById("content");
 canvas.width = content.offsetWidth / 2;
 canvas.height = content.offsetHeight / 2;
 canvas.canvasid = 0;
-console.log(content);
 var color = document.getElementById("color")
-console.log(color.innerHTML)
-ctx.fillStyle = "#FFFFFF";
-ctx.fillRect(0, 0, canvas.width, canvas.height)
 chistory[ctx] = [];
 credo[ctx] = [];
 
 //Transparent Image Setup
-var checker = document.getElementById("checker");
-checker.addEventListener("click", function (e) {
-    e.preventDefault();
-})
-checker.width = canvas.width;
-checker.height = canvas.height;
+const bkg = document.getElementById("bkg");
+const bCtx = bkg.getContext("2d");
+bkg.width = canvas.width;
+bkg.height = canvas.height;
+const bImg = document.createElement("img");
+bImg.src = "/static/imgs/grey_checker.svg";
+bImg.onload = function (e) {
+    bCtx.drawImage(bImg, 0,0);
+}
 
 var canvasIsWhite = false;
 var img = document.getElementById("img")
