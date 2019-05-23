@@ -1,6 +1,7 @@
 var color = [0, 0, 0, 1]; // r g b a
 var brushSize = 10;
 var opacity = 1 // 100%
+var brightness = 10;
 
 var currentTool = undefined;
 var keysPressed = {};
@@ -9,18 +10,18 @@ var general = function (event) {
         return
     }
     //Keep track of undo redo
-    if (event.type == "mouseup" && inCanvas(event,canvas)) {
+    if (event.type == "mouseup" && inCanvas(event, canvas)) {
         addHistory(saveStates());
         credo = [];
     }
     //Execute event if it exists in list of all functions
     if (event.type in allTools[currentTool]) {
-        allTools[currentTool][event.type](event,inCanvas(event,canvas));
+        allTools[currentTool][event.type](event, inCanvas(event, canvas));
     }
 }
 
 //Used to tell if the mouse is being pressed
-var updateGlobal = function(event) {
+var updateGlobal = function (event) {
     //For specific functions
     if (event.type == "mousedown") {
         mousedown = true;
@@ -35,7 +36,7 @@ var updateGlobal = function(event) {
     }
 }
 //Used to see if mouse in canvas
-var inCanvas = function(e,c) {
+var inCanvas = function (e, c) {
     return e.pageX > c.offsetLeft && e.pageX < c.offsetLeft + c.width && e.pageY > c.offsetTop && e.pageY < c.offsetTop + c.height
 }
 window.addEventListener("mousedown", updateGlobal, false)
@@ -50,19 +51,19 @@ content.addEventListener("mouseup", general, false)
 
 var buttons = {};
 //Tool-ify a class, allowed to include a toolicon and a custom cursor
-var tool = function (name, image=false) {
+var tool = function (name, image = false) {
 
     //Add a button of the fxn to the toolbar
     let button = document.createElement("button");
     button.className += " btn btn-link toolicon";
-    if(image) {
-	    let img = document.createElement("IMG");
-	    img.src = '/static/icons/' + name + '.png';
-	    img.width = 35;
-	    img.height = 35;
-	    button.appendChild(img);
+    if (image) {
+        let img = document.createElement("IMG");
+        img.src = '/static/icons/' + name + '.png';
+        img.width = 35;
+        img.height = 35;
+        button.appendChild(img);
     } else {
-	    button.innerHTML = name;
+        button.innerHTML = name;
     }
     buttons[name] = button;
     button.addEventListener('click', function (e) {
@@ -89,9 +90,9 @@ var mousedown = false;
 var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
     //Create the inner function
     let inner = function (e, inside) {
-        if (type == "mousemove" && !inside && fxn1 != undefined){ //For mousemove, a lot of things go wrong if the mouse is held and dragged off canvas.
+        if (type == "mousemove" && !inside && fxn1 != undefined) { //For mousemove, a lot of things go wrong if the mouse is held and dragged off canvas.
             fxn1(e)
-            lastClicked = [undefined,undefined]
+            lastClicked = [undefined, undefined]
         }
         else if (e.type == type && inside) {
             fxn(lastClicked[0], lastClicked[1], e) //Pass in the coords of the click and the previous

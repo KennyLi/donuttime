@@ -6,4 +6,8 @@ for(var i = 0; i < images.length; i++) {
         $("#name").val(this.parentElement.getElementsByTagName("p")[0].innerHTML)
         $("#form").submit();
     })
+    images[i].getElementsByTagName("button")[0].addEventListener("click", function() {
+        $("#delete").val(this.parentElement.getElementsByTagName("p")[0].innerHTML)
+        $("#button").submit();
+    })
 }

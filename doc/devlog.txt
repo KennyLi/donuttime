@@ -228,3 +228,14 @@ TODO:
 + add delete button to every saved drawing
 + add overwrite message for users
 ==============================================================
+
+kennyL -- 2019-05-23 13:02
+--------------------------------------------------------------
++ added delete for saved drawings
++ remove test route for blob
+==============================================================
+
+johnsonL -- 2019-05-23 13:18
+--------------------------------------------------------------
++ did brightness but it's bad. will make better soon.
+==============================================================
