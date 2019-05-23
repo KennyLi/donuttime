@@ -32,6 +32,7 @@
               <img src="data:image/png;base64,{{img[1]}}" width="200" height="200" class="img-thumbnail">
               <div class="caption">
                 <p>{{img[0]}}</p>
+                <button type="button" class="btn btn-alert">
               </div>
           </div>
         </div>
@@ -42,6 +43,10 @@
     <form style="display: hidden" action="/" method="POST" id="form">
         <input type="hidden" id="drawing" name="drawing" value=""/>
         <input type="hidden" id="name" name="name" value=""/>
+    </form>
+
+    <form style="display: hidden" action="/delete" method="POST" id="button">
+        <input type="hidden" id="delete" name="delete" value=""/>
     </form>
 {% endblock %}
 
