@@ -248,4 +248,5 @@ chenD & kennyL -- 2019-05-24 13:14
 chenD -- 2019-05-24 14:50
 --------------------------------------------------------------
 + almost done with cropping, just need to get rid of borders
++ edit: got rid of the borders
 ==============================================================
