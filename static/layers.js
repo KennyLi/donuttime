@@ -16,7 +16,6 @@ var newLayer = function() {
 
 newLayer()
 newLayer()
-
 var radios = document.forms["layer-form"].children;
 for(var i = 0; i < radios.length; i++) {
     radios[i].onclick = function() {
@@ -28,4 +27,5 @@ var changeActiveLayer = function(e) {
     canvas = canvases[parseInt(e.value)];
     ctx = canvas.getContext("2d");
     console.log(e.value);
+    console.log(canvases)
 }
