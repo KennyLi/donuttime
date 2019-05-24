@@ -12,14 +12,8 @@ var download = function (e) {
     combine.height = canvas.height;
     for (let i = 0; i < canvasesOrdering.length; i++) {
         let layer = canvases[canvasesOrdering[i]]
-        // let data = layer.toDataURL();
-        // //clear the last curve drawn and draw the newer one
-        // let img = document.createElement("img");
-        // img.src = data;
         cctx.drawImage(layer, 0, 0);
     }
-    console.log(ctx)
-    console.log(cctx)
     combine.toBlob(function (blob) {
         var formData = new FormData();
         formData.append("drawing_name", name);
