@@ -70,6 +70,22 @@ def get_drawing(username):
     c.execute("SELECT drawing_name, drawing FROM drawing WHERE username =?", (username,))
     return c.fetchall()
 
+
+def check_drawing(username, drawing_name):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT * from drawing WHERE username=? AND drawing_name=?", (username, drawing_name,))
+    data = c.fetchall()
+    db.commit()
+    db.close()
+    if len(data) == 1:
+        return "true"
+    else:
+        return "false"
+
+# print (check_drawing("a", "Untitled Drawing"))
+# print (check_drawing("b", "Untitled Drawing"))
+# print (check_drawing("abc", "asd"))
 # delete_drawing("b","b")
 # delete_drawing("a","b")
 # delete_drawing("b","Untitled Drawing")
