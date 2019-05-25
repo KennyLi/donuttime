@@ -242,4 +242,5 @@ johnsonL -- 2019-05-23 13:18
 jiayangC -- 2019-05-24 16:07
 --------------------------------------------------------------
 + added adding layers, moved layers into divs for easier accessibility
++ added deleting layers, changed undo to work
 ==============================================================

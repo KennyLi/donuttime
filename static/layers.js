@@ -30,7 +30,7 @@ var newLayer = function() {
     layerForm.insertBefore(divContainer, layerForm.firstChild);
 
     divs[c.canvasid] = divContainer;
-
+    addHistory(saveStates());
 }
 
 var divs = {0: layerForm.children[0]};
@@ -51,9 +51,9 @@ addLayerButton.addEventListener("click", newLayer);
 //Deleting Layers
 var deleteLayer = function(cid) {
     canvases[cid].remove()
-    canvases[cid] = undefined;
+    delete canvases[cid];
     canvasesOrdering.splice(canvasesOrdering.indexOf(cid), 1);
     divs[cid].remove();
-    divs[cid] = undefined;
-    changeActiveLayer(divs[0].children[0])
+    delete divs[cid];
+    changeActiveLayer(divs[0].children[0]);
 }

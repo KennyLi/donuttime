@@ -9,10 +9,16 @@ window.addEventListener("keydown", function (e) {
 	    a = chistory.pop();
         b = chistory[chistory.length - 1];
         //console.log(b)
+        let canvasesToDelete = [];
         for (var canvas in Object.keys(canvases)) {
-            if (b[canvas] != undefined) {
-                canvases[canvas].getContext("2d").putImageData(b[canvas][1],0,0)
+            if (b[canvas] == undefined) {
+                canvasesToDelete.push(canvas);
+            } else {
+                canvases[canvas].getContext("2d").putImageData(b[canvas][1],0,0);
             }
+        }
+        for (var id in canvasesToDelete) {
+            deleteLayer(canvasesToDelete[id]);
         }
 	credo.push(a);
 
