@@ -68,6 +68,10 @@ def blob():
     db.add_drawing(session["logged_in"], request.form["drawing_name"], request.files["file"].read())
     return "Successfully Downloaded"
 
+@app.route("/confirm", methods = ["POST","GET"])
+def confirm():
+    return db.check_drawing(session["logged_in"], request.form["drawing_name"])
+
 @app.route("/delete", methods = ["POST", "GET"])
 def delete():
     db.delete_drawing(session["logged_in"], request.form["delete"])
