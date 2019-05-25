@@ -34,6 +34,8 @@ if (img != null) {
     document.getElementById("w").addEventListener("click", function (e) {
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = "#FFFFFF"
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
         var loadTestImg = () => {

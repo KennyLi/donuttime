@@ -239,8 +239,18 @@ johnsonL -- 2019-05-23 13:18
 --------------------------------------------------------------
 + did brightness but it's bad. will make better soon.
 ==============================================================
+
+chenD & kennyL -- 2019-05-24 13:14
+--------------------------------------------------------------
++ fixed issue with saving layers
+==============================================================
+
+chenD -- 2019-05-24 14:50
+--------------------------------------------------------------
++ almost done with cropping, just need to get rid of borders
++ edit: got rid of the borders
+==============================================================
 jiayangC -- 2019-05-24 16:07
 --------------------------------------------------------------
 + added adding layers, moved layers into divs for easier accessibility
 + added deleting layers, changed undo to work
-==============================================================
