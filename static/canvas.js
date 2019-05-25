@@ -1,5 +1,7 @@
 //Canvas Setup
 var canvas = document.getElementById("playground");
+var canvases = {0: canvas};
+var canvasesOrdering = [0];
 var ctx = canvas.getContext("2d");
 var content = document.getElementById("content");
 canvas.width = content.offsetWidth / 2;
@@ -23,6 +25,8 @@ bImg.onload = function (e) {
 var img = document.getElementById("img")
 if (img != null) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+    console.log("woop")
+    addHistory(saveStates());
 } else {
     $(document).ready(function () {
         $('#myModal').modal('show');

@@ -9,9 +9,17 @@ window.addEventListener("keydown", function (e) {
 	    a = chistory.pop();
         b = chistory[chistory.length - 1];
         //console.log(b)
-	    for (var key in b) {
-            canvases[key].getContext("2d").putImageData(b[key],0,0)
-	    }
+        let canvasesToDelete = [];
+        for (var canvas in Object.keys(canvases)) {
+            if (b[canvas] == undefined) {
+                canvasesToDelete.push(canvas);
+            } else {
+                canvases[canvas].getContext("2d").putImageData(b[canvas][1],0,0);
+            }
+        }
+        for (var id in canvasesToDelete) {
+            deleteLayer(canvasesToDelete[id]);
+        }
 	credo.push(a);
 
     }
@@ -24,9 +32,11 @@ window.addEventListener("keydown", function (e) {
             return
         }
         a = credo.pop();
-        for (var key in a) {
-	        canvases[key].getContext("2d").putImageData(a[key],0,0)
-    	}
+        for (var canvas in Object.keys(canvases)) {
+            if (a[canvas] != undefined) {
+                canvases[canvas].getContext("2d").putImageData(a[canvas][1],0,0)
+            }
+        }
 	    chistory.push(a);
     }
 });
@@ -44,7 +54,7 @@ var saveStates = function() {
     let s = {};
     for (let x = 0; x < Object.keys(canvases).length; x++) {
 	    let c = canvases[x];
-	    s[c.canvasid] = c.getContext("2d").getImageData(0,0,canvas.width,canvas.height);
+	    s[c.canvasid] = [canvasesOrdering.indexOf(c.canvasid),c.getContext("2d").getImageData(0,0,canvas.width,canvas.height)];
     }
     return s;
 }
