@@ -261,3 +261,10 @@ kennyL -- 2019-05-25 16:42
 --------------------------------------------------------------
 + added overwrite warning message for download
 ==============================================================
+
+chenD -- 2019-05-25 18:12
+--------------------------------------------------------------
++ fixed bug with cropping where erasing after cropping would
+result in a transparent background
++ also made it so that when cropping, the layers are preserved
+==============================================================

@@ -3,45 +3,56 @@ tool("crop",true)
 
 var startX
 var startY
+var imageData
 var imgData
 eventFunction("crop", "mousedown", function(x0,y0,e){
   let x1 = e.offsetX;
   let y1 = e.offsetY;
   startX = x1
   startY = y1
-  imgData = ctx.getImageData(0,0,canvas.width,canvas.height)
+  imageData = ctx.getImageData(0,0,canvas.width,canvas.height)
 });
 eventFunction("crop", "mouseup", function(x0,y0,e){
-    var imgData
+    imgData = []
     if(startX > e.offsetX){
         if(startY > e.offsetY){
-            imgData = ctx.getImageData(startX - 1 ,startY - 1,e.offsetX - startX + 2, e.offsetY - startY + 2);
+            for(var i = 0;i < canvasesOrdering.length; i++){
+                imgData.push(canvases[i].getContext("2d").getImageData(startX - 1 ,startY - 1,e.offsetX - startX + 2, e.offsetY - startY + 2))
+            }
         }
         else{
-            imgData = ctx.getImageData(startX - 1,startY + 1,e.offsetX - startX + 2, e.offsetY - startY - 2);
+            for(var i = 0;i < canvasesOrdering.length; i++){
+                imgData.push(canvases[i].getContext("2d").getImageData(startX - 1,startY + 1,e.offsetX - startX + 2, e.offsetY - startY - 2))
+            }
         }
     }
     else{
         if(startY > e.offsetY){
-            imgData = ctx.getImageData(startX + 1,startY - 1,e.offsetX - startX - 2, e.offsetY - startY + 2);
+            for(var i = 0;i < canvasesOrdering.length; i++){
+                imgData.push(canvases[i].getContext("2d").getImageData(startX + 1,startY - 1,e.offsetX - startX - 2, e.offsetY - startY + 2))
+            }
         }
         else{
-            imgData = ctx.getImageData(startX + 1,startY + 1,e.offsetX - startX - 2, e.offsetY - startY - 2);
+            for(var i = 0;i < canvasesOrdering.length; i++){
+                imgData.push(canvases[i].getContext("2d").getImageData(startX + 1,startY + 1,e.offsetX - startX - 2, e.offsetY - startY - 2));
+            }
         }
     }
-    var newCanvas = document.createElement("canvas");
-    newCanvas.width = imgData.width;
-    newCanvas.height = imgData.height;
-    newCanvas.getContext("2d").putImageData(imgData,0,0)
     ctx.clearRect(0,0,canvas.width,canvas.height)
-    for (var i = 0; i < canvasesOrdering.length; i++) {
-        canvasesOrdering[i].width = imgData.width;
-        canvasesOrdering[i].height = imgData.height;
+    for(var i = 0; i < canvasesOrdering.length;i++){
+        canvases[i].width = imgData[i].width;
+        canvases[i].height = imgData[i].height;
     }
-    bkg.width = imgData.width;
-    bkg.height = imgData.height;
+    bkg.width = canvas.width;
+    bkg.height = canvas.height;
     bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
-    ctx.drawImage(newCanvas,0,0)
+    bCtx.fillStyle = "#FFFFFF"
+    bCtx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = "#FFFFFF"
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    for(var i = 0; i < canvasesOrdering.length;i++){
+        canvases[i].getContext("2d").putImageData(imgData[i],0,0)
+    }
 });
 eventFunction("crop", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
@@ -54,7 +65,7 @@ eventFunction("crop", "mousemove", function(x0,y0,e){
     ctx.beginPath()
     ctx.clearRect(0,0,canvas.width,canvas.height)
     ctx.lineJoin = 'miter';
-    ctx.putImageData(imgData,0,0)
+    ctx.putImageData(imageData,0,0)
     ctx.rect(startX,startY,x1 - startX, y1 - startY);
     ctx.stroke();
 });
