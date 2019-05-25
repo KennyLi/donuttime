@@ -34,10 +34,12 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
     newCanvas.height = imgData.height;
     newCanvas.getContext("2d").putImageData(imgData,0,0)
     ctx.clearRect(0,0,canvas.width,canvas.height)
-    canvas.width = imgData.width
-    canvas.height = imgData.height
-    bkg.width = canvas.width;
-    bkg.height = canvas.height;
+    for (var i = 0; i < canvasesOrdering.length; i++) {
+        canvasesOrdering[i].width = imgData.width;
+        canvasesOrdering[i].height = imgData.height;
+    }
+    bkg.width = imgData.width;
+    bkg.height = imgData.height;
     bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
     ctx.drawImage(newCanvas,0,0)
 });

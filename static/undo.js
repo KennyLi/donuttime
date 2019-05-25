@@ -52,8 +52,9 @@ var addRedo = function(data) {
 
 var saveStates = function() {
     let s = {};
-    for (let x = 0; x < Object.keys(canvases).length; x++) {
-	    let c = canvases[x];
+    keys = Object.keys(canvases)
+    for (let x = 0; x < keys.length; x++) {
+	    let c = canvases[keys[x]];
 	    s[c.canvasid] = [canvasesOrdering.indexOf(c.canvasid),c.getContext("2d").getImageData(0,0,canvas.width,canvas.height)];
     }
     return s;
