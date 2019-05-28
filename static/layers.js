@@ -24,7 +24,7 @@ var newLayer = function() {
     deleteDiv.addEventListener("click", function(e) {
         deleteLayer(c.canvasid);
     });
-    divContainer.className += " div-container";
+    divContainer.className += " layer-container";
     divContainer.appendChild(newDiv);
     divContainer.appendChild(deleteDiv);
     layerForm.insertBefore(divContainer, layerForm.firstChild);
@@ -56,4 +56,22 @@ var deleteLayer = function(cid) {
     divs[cid].remove();
     delete divs[cid];
     changeActiveLayer(divs[0].children[0]);
+}
+
+//Swapping Layers
+var swapLayers = function(a,b) {
+    var c = canvasesOrdering;
+    [c[a],c[b]] = [c[b],c[a]];
+    swap(divs[a],divs[b]);
+    swap(canvases[a],canvases[b]);
+    
+}
+
+
+function swap(a,b) {
+
+    var div = a.parentNode;
+    var after = b.nextElementSibling;
+    div.insertBefore(a,b);
+    div.insertBefore(after,a);
 }
