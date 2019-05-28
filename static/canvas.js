@@ -10,6 +10,8 @@ canvas.canvasid = 0;
 var color = document.getElementById("color")
 chistory[ctx] = [];
 credo[ctx] = [];
+var bgColor
+
 
 //Transparent Image Setup
 const bkg = document.getElementById("bkg");
@@ -24,14 +26,29 @@ bImg.onload = function (e) {
 
 var img = document.getElementById("img")
 if (img != null) {
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-    console.log("woop")
+    var cWidth = img.width
+    var cHeight = img.height
+    for(var i = 0; i < canvasesOrdering.length;i++){
+        canvases[i].width = cWidth
+        canvases[i].height = cHeight
+        canvases[i].getContext("2d").fillStyle = "#FFFFFF"
+        canvases[i].getContext("2d").fillRect(0,0,cWidth,cHeight)
+    }
+    console.log(bkg)
+    bkg.width = cWidth
+    bkg.height = cHeight
+    bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
+    bCtx.fillStyle = "#FFFFFF"
+    bCtx.fillRect(0, 0, cWidth, cHeight)
+    console.log(bCtx)
+    ctx.drawImage(img,0,0)
     addHistory(saveStates());
 } else {
     $(document).ready(function () {
         $('#myModal').modal('show');
     });
     document.getElementById("w").addEventListener("click", function (e) {
+        bgColor = "White"
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
         ctx.fillStyle = "#FFFFFF"
@@ -49,6 +66,7 @@ if (img != null) {
         //loadTestImg();
     })
     document.getElementById("t").addEventListener("click", function (e) {
+        bgColor = "Transparent"
         //Initialize "history" of the canvas
         addHistory(saveStates());
     })
