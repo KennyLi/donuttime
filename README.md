@@ -22,10 +22,11 @@ Our dependencies, as listed in requirements.txt, are as follows:
 
 Install our dependencies with the follow command in the root directory of our repo:
 ```pip3 install -r requirements.txt```
+
 ### Instructions
 1. Clone the repo via ssh or https
-   - SSH: ```ssh```
-   - HTTPS: ```https```
+   - SSH: ```git clone git@github.com:lli15/donut_time.git```
+   - HTTPS: ```git clone https://github.com/lli15/donut_time.git```
 2. **(Optional)** Make and activate virtual environment
 ```
 python3 -m venv <venv_name>
