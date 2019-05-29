@@ -2,14 +2,18 @@ tool("select",true)
 
 var startX
 var startY
+var startXO
+var startXY
 var rectW
 var rectH
-var select = false
 var imageData
+var drag = false
+var xDis
+var yDis
 var originalID
 var imgData
 eventFunction("select", "mousedown", function(x0,y0,e){
-    if(!select){
+    if(!drag){
         let x1 = e.offsetX;
         let y1 = e.offsetY;
         startX = x1
@@ -20,12 +24,17 @@ eventFunction("select", "mousedown", function(x0,y0,e){
     else{
         if(rectW < 0 && rectH < 0){
             if(e.offsetX < startX && e.offsetX > startX + rectW && e.offsetY < startY && e.offsetY > startY + rectH){
-                imgData = ctx.getImageData(startX,startY,startX + rectW, startY + rectH)
-                
+                ctx.putImageData(originalID,0,0)
+                imgData = ctx.getImageData(startX,startY,rectW,rectH)
+                drag = true;
+                xDis = e.offsetX - startX - rectW
+                yDis = e.offsetY - startY - rectH
+                startXO = startX
+                startYO = startY
             }
             else{
                 ctx.putImageData(originalID,0,0)
-                select = false
+                drag = false
                 let x1 = e.offsetX;
                 let y1 = e.offsetY;
                 startX = x1
@@ -34,11 +43,17 @@ eventFunction("select", "mousedown", function(x0,y0,e){
         }
         else if (rectW < 0 && rectH > 0) {
             if(e.offsetX < startX && e.offsetX > startX + rectW && e.offsetY > startY && e.offsetY < startY + rectH){
-                imgData = ctx.getImageData(startX,startY,startX + rectW, startY + rectH)
+                ctx.putImageData(originalID,0,0)
+                imgData = ctx.getImageData(startX,startY,rectW,rectH)
+                drag = true;
+                xDis = e.offsetX - startX - rectW
+                yDis = e.offsetY - startY
+                startXO = startX
+                startYO = startY
             }
             else{
                 ctx.putImageData(originalID,0,0)
-                select = false
+                drag = false
                 let x1 = e.offsetX;
                 let y1 = e.offsetY;
                 startX = x1
@@ -47,11 +62,17 @@ eventFunction("select", "mousedown", function(x0,y0,e){
         }
         else if(rectW > 0 && rectH < 0){
             if(e.offsetX > startX && e.offsetX < startX + rectW && e.offsetY < startY && e.offsetY > startY + rectH){
-                imgData = ctx.getImageData(startX,startY,startX + rectW, startY + rectH)
+                ctx.putImageData(originalID,0,0)
+                imgData = ctx.getImageData(startX,startY,rectW,rectH)
+                drag = true;
+                xDis = e.offsetX - startX
+                yDis = e.offsetY - startY - rectH
+                startXO = startX
+                startYO = startY
             }
             else{
                 ctx.putImageData(originalID,0,0)
-                select = false
+                drag = false
                 let x1 = e.offsetX;
                 let y1 = e.offsetY;
                 startX = x1
@@ -60,11 +81,17 @@ eventFunction("select", "mousedown", function(x0,y0,e){
         }
         else{
             if(e.offsetX > startX && e.offsetX < startX + rectW && e.offsetY > startY && e.offsetY < startY + rectH){
-                imgData = ctx.getImageData(startX,startY,startX + rectW, startY + rectH)
+                ctx.putImageData(originalID,0,0)
+                imgData = ctx.getImageData(startX,startY,rectW,rectH)
+                drag = true;
+                xDis = e.offsetX - startX
+                yDis = e.offsetY - startY
+                startXO = startX
+                startYO = startY
             }
             else{
                 ctx.putImageData(originalID,0,0)
-                select = false
+                drag = false
                 let x1 = e.offsetX;
                 let y1 = e.offsetY;
                 startX = x1
@@ -74,13 +101,19 @@ eventFunction("select", "mousedown", function(x0,y0,e){
     }
 });
 eventFunction("select", "mouseup", function(x0,y0,e){
-    select = true
+    if(!drag){
+        drag = true
+    }
+    else if(drag){
+        drag = false;
+        originalID = ctx.getImageData(0,0,canvas.width,canvas.height)
+    }
 });
 eventFunction("select", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return
     }
-    if(!select){
+    if(!drag){
         ctx.strokeStyle = "#000000"
         ctx.moveTo(x0,y0);
         let x1 = e.offsetX;
@@ -94,6 +127,13 @@ eventFunction("select", "mousemove", function(x0,y0,e){
         ctx.putImageData(imageData,0,0)
         ctx.rect(startX,startY,rectW, rectH);
         ctx.stroke();
+    }
+    else{
+        startX = e.offsetX - xDis
+        startY = e.offsetY - yDis
+        ctx.putImageData(originalID,0,0)
+        ctx.clearRect(startXO,startYO,rectW,rectH)
+        ctx.putImageData(imgData,startX,startY)
     }
 });
 cursor("select", function(e) {
