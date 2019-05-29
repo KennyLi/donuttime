@@ -57,6 +57,7 @@ eventFunction("crop", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return
     }
+    ctx.strokeStyle = "#000000"
     ctx.moveTo(x0,y0);
     let x1 = e.offsetX;
     let y1 = e.offsetY;
