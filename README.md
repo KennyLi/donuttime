@@ -29,17 +29,19 @@ Our dependencies, as listed in requirements.txt, are as follows:
 python3 -m venv <venv_name>
 . <path-to-venv>/bin/activate
 ```
-3. Enter the repo directory
+3. Move into the repo
 ```
 cd <path-to-repo>
 ```
 4. Install requirements
    - Python 3.7: ```pip3 install -r requirements.txt```
    - If in virtual environment with Python 3.7: ```pip install -r requirements.txt```
-5. Run app.py
-   - Python 3.7: ```python3 app.py```
-   - If in virtual environment with Python 3.7: ```python app.py```
-6. Go to http://127.0.0.1:5000/ on any browser
+5. Move into the donut_time directory:
+```cd donut_time```
+6. Run app.py
+   - Python 3.7: ```python3 __init__.py```
+   - If in virtual environment with Python 3.7: ```python __init__.py```
+7. Go to http://127.0.0.1:5000/ on any browser
 
 ### Install and run on Apache2
 1. SSH into your droplet:
