@@ -51,8 +51,6 @@ if (img != null) {
         bgColor = "White"
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
-        ctx.fillStyle = "#FFFFFF"
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
         var loadTestImg = () => {
