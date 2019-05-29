@@ -46,35 +46,24 @@ cd <path-to-repo>
 ```ssh <user>@<ip address>```
 2. Move to the www directory:
 ```cd ../../var/www```
-3. Create a new directory named after your app and cd into it
-```
-mkdir <appname>
-cd <appname>
-```
-4. Get root access:
+3. Get root access:
 ```sudo su```
-5. Create a wsgi file named \<appname\>.wsgi
-6. Clone the repo via https:
-```git clone https://github.com/lli15/donut_time.git <appname>```
-7. Add write permisssions:
+4. Clone the repo via https:
+```git clone https://github.com/lli15/donut_time.git```
+5. Move into the repo, add write permisssions, and install requirements:
 ```
-chgrp -R www-data <appname>
-chmod -R g+w <appname>
-```
-8. Move into the repo, rename app.py, and install requirements
-```
-cd <appname>
-mv app.py __init__.py
+cd donut_time
+chgrp -R www-data donut_time
+chmod -R g+w donut_time
 pip3 install -r requirements.txt
 ```
-9. Move to the sites-enabled directory:
-```cd ~/../../etc/apache2/sites-enabled/```
-10. Create a conf file named \<appname\>.conf
-11. Enable the site:
+8. Move the conf file to the sites-enabled directory:
+```mv donut_time.conf ~/../../etc/apache2/sites-enabled/```
+9. Enable the site:
 ```a2ensite <appname>```
-12. Reload and restart the server
+10. Reload and restart the server
 ```
 service apache2 reload
 service apache2 restart
 ```
-13. Go to your ip address on any browser
+11. Go to your ip address on any browser
