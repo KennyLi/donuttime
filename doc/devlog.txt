@@ -268,3 +268,9 @@ chenD -- 2019-05-25 18:12
 result in a transparent background
 + also made it so that when cropping, the layers are preserved
 ==============================================================
+
+chenD -- 2019-05-25 08:42
+--------------------------------------------------------------
++ fixed bug with cropping where the background would always
+be transparent after loading a saved drawing that's been cropped
+==============================================================

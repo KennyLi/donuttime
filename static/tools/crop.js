@@ -45,7 +45,6 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
     }
     bkg.width = canvas.width;
     bkg.height = canvas.height;
-    bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
     bCtx.fillStyle = "#FFFFFF"
     bCtx.fillRect(0, 0, canvas.width, canvas.height)
     ctx.fillStyle = "#FFFFFF"

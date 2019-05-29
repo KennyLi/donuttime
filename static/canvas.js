@@ -21,7 +21,9 @@ bkg.height = canvas.height;
 const bImg = document.createElement("img");
 bImg.src = "/static/imgs/grey_checker.svg";
 bImg.onload = function (e) {
-    bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
+    if(img == null){
+        bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
+    }
 }
 
 var img = document.getElementById("img")
@@ -34,12 +36,10 @@ if (img != null) {
         canvases[i].getContext("2d").fillStyle = "#FFFFFF"
         canvases[i].getContext("2d").fillRect(0,0,cWidth,cHeight)
     }
-    console.log(bkg)
     bkg.width = cWidth
     bkg.height = cHeight
-    bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
     bCtx.fillStyle = "#FFFFFF"
-    bCtx.fillRect(0, 0, cWidth, cHeight)
+    bCtx.fillRect(0, 0,bkg.width,bkg.height )
     console.log(bCtx)
     ctx.drawImage(img,0,0)
     addHistory(saveStates());
