@@ -45,13 +45,22 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
     }
     bkg.width = canvas.width;
     bkg.height = canvas.height;
-    bCtx.fillStyle = "#FFFFFF"
-    bCtx.fillRect(0, 0, canvas.width, canvas.height)
+    if(bgColor == "White"){
+        bCtx.fillStyle = "#FFFFFF"
+        bCtx.fillRect(0, 0, canvas.width, canvas.height)
+    }
+    else{
+        bCtx.fillStyle = "rgba(0,0,0,0)"
+        bCtx.fillRect(0, 0, canvas.width, canvas.height)
+        bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
+    }
     ctx.fillStyle = "#FFFFFF"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     for(var i = 0; i < canvasesOrdering.length;i++){
         canvases[i].getContext("2d").putImageData(imgData[i],0,0)
     }
+    cursorCanvas.height = canvas.height;
+    cursorCanvas.width = canvas.width;
 });
 eventFunction("crop", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
