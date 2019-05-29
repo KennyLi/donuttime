@@ -1,5 +1,6 @@
 //Layers
 var canvasIDCounter = 0;
+var canvasdiv = document.getElementById("canvases");
 var layerForm = document.forms["layer-form"];
 var newLayer = function() {
     let c = document.createElement("canvas");
@@ -8,7 +9,7 @@ var newLayer = function() {
     c.height = canvas.height;
     canvasIDCounter += 1;
     c.canvasid = canvasIDCounter;
-    content.insertBefore(c, cursorCanvas)
+    canvasdiv.appendChild(c);
     canvases[c.canvasid] = c
     canvasesOrdering.push(c.canvasid);
     let divContainer = document.createElement("div");
@@ -58,20 +59,20 @@ var deleteLayer = function(cid) {
     changeActiveLayer(divs[0].children[0]);
 }
 
-//Swapping Layers
+//Swapping Layers RIGHT TO LEFT
 var swapLayers = function(a,b) {
     var c = canvasesOrdering;
     [c[a],c[b]] = [c[b],c[a]];
-    swap(divs[a],divs[b]);
+    swap(divs[b],divs[a]);
     swap(canvases[a],canvases[b]);
     
 }
 
 
 function swap(a,b) {
-
+    console.log(a,b);
     var div = a.parentNode;
     var after = b.nextElementSibling;
-    div.insertBefore(a,b);
-    div.insertBefore(after,a);
+    div.insertBefore(b,a);
+    div.insertBefore(a,after);
 }
