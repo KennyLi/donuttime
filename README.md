@@ -13,12 +13,12 @@ Our dependencies, as listed in requirements.txt, are as follows:
 
 | Dependency | Version | Origin | Description | 
 | --- | --- | --- | --- |
-| Click | 7.0 | Flask | unused |
+| Click | 7.0 | Flask | dependency for flask |
 | Flask | 1.0.2 | Flask | microframework of choice |
-| itsdangerous | 1.1.0 | Flask | unused |
+| itsdangerous | 1.1.0 | Flask | dependency for flask |
 | Jinja2 | 2.10 | Flask | templating language |
-| MarkupSafe | 1.1.1 | Flask | unused |
-| Werkzeug | 0.15.1 | Flask | unused |
+| MarkupSafe | 1.1.1 | Flask | dependency for flask |
+| Werkzeug | 0.15.1 | Flask | dependency for flask |
 
 ### Install and run on localhost
 1. Clone the repo via ssh or https
@@ -29,52 +29,43 @@ Our dependencies, as listed in requirements.txt, are as follows:
 python3 -m venv <venv_name>
 . <path-to-venv>/bin/activate
 ```
-3. Enter the repo directory
+3. Move into the repo
 ```
 cd <path-to-repo>
 ```
 4. Install requirements
    - Python 3.7: ```pip3 install -r requirements.txt```
    - If in virtual environment with Python 3.7: ```pip install -r requirements.txt```
-5. Run app.py
-   - Python 3.7: ```python3 app.py```
-   - If in virtual environment with Python 3.7: ```python app.py```
-6. Go to http://127.0.0.1:5000/ on any browser
+5. Move into the donut_time directory:
+```cd donut_time```
+6. Run app.py
+   - Python 3.7: ```python3 __init__.py```
+   - If in virtual environment with Python 3.7: ```python __init__.py```
+7. Go to http://127.0.0.1:5000/ on any browser
 
 ### Install and run on Apache2
 1. SSH into your droplet:
 ```ssh <user>@<ip address>```
 2. Move to the www directory:
 ```cd ../../var/www```
-3. Create a new directory named after your app and cd into it
-```
-mkdir <appname>
-cd <appname>
-```
-4. Get root access:
+3. Get root access:
 ```sudo su```
-5. Create a wsgi file named \<appname\>.wsgi
-6. Clone the repo via https:
-```git clone https://github.com/lli15/donut_time.git <appname>```
-7. Add write permisssions:
+4. Clone the repo via https:
+```git clone https://github.com/lli15/donut_time.git```
+5. Move into the repo, add write permisssions, and install requirements:
 ```
-chgrp -R www-data <appname>
-chmod -R g+w <appname>
-```
-8. Move into the repo, rename app.py, and install requirements
-```
-cd <appname>
-mv app.py __init__.py
+cd donut_time
+chgrp -R www-data donut_time
+chmod -R g+w donut_time
 pip3 install -r requirements.txt
 ```
-9. Move to the sites-enabled directory:
-```cd ~/../../etc/apache2/sites-enabled/```
-10. Create a conf file named \<appname\>.conf
-11. Enable the site:
-```a2ensite <appname>```
-12. Reload and restart the server
+8. Move the conf file to the sites-enabled directory:
+```mv donut_time.conf ~/../../etc/apache2/sites-enabled/```
+9. Enable the site:
+```a2ensite donut_time```
+10. Reload and restart the server
 ```
 service apache2 reload
 service apache2 restart
 ```
-13. Go to your ip address on any browser
+11. Go to your ip address on any browser
