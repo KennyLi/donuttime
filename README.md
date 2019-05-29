@@ -13,12 +13,12 @@ Our dependencies, as listed in requirements.txt, are as follows:
 
 | Dependency | Version | Origin | Description | 
 | --- | --- | --- | --- |
-| Click | 7.0 | Flask | unused |
+| Click | 7.0 | Flask | dependency for flask |
 | Flask | 1.0.2 | Flask | microframework of choice |
-| itsdangerous | 1.1.0 | Flask | unused |
+| itsdangerous | 1.1.0 | Flask | dependency for flask |
 | Jinja2 | 2.10 | Flask | templating language |
-| MarkupSafe | 1.1.1 | Flask | unused |
-| Werkzeug | 0.15.1 | Flask | unused |
+| MarkupSafe | 1.1.1 | Flask | dependency for flask |
+| Werkzeug | 0.15.1 | Flask | dependency for flask |
 
 ### Install and run on localhost
 1. Clone the repo via ssh or https
