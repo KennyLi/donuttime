@@ -1,10 +1,10 @@
-tool("rect", true)
+tool("rectangle", true)
 
 var startX
 var startY
 var imgData
 var drag = false
-eventFunction("rect", "mousedown", function(x0,y0,e){
+eventFunction("rectangle", "mousedown", function(x0,y0,e){
   let x1 = e.offsetX;
   let y1 = e.offsetY;
   startX = x1
@@ -12,10 +12,10 @@ eventFunction("rect", "mousedown", function(x0,y0,e){
   imgData = ctx.getImageData(0,0,canvas.width,canvas.height)
   drag = true
 });
-eventFunction("rect", "mouseup", function(x0,y0,e){
+eventFunction("rectangle", "mouseup", function(x0,y0,e){
   drag = false
 });
-eventFunction("rect", "mousemove", function(x0,y0,e){
+eventFunction("rectangle", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return
     }
@@ -45,10 +45,10 @@ eventFunction("rect", "mousemove", function(x0,y0,e){
     if (fillbox.checked) {
         ctx.fill();
     }
-    
+
     ctx.stroke();
 });
-cursor("rect", function(e) {
+cursor("rectangle", function(e) {
     cursorCtx.save();
     cursorCtx.setLineDash([]);
     cursorCtx.beginPath();

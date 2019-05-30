@@ -77,6 +77,12 @@ var tool = function (name, image = false) {
             console.log("Switched tool to: " + currentTool)
         }
     });
+    button.setAttribute("data-toggle", "tooltip");
+    button.setAttribute("data-placement", "right");
+    button.setAttribute("title", name.charAt(0).toUpperCase() + name.slice(1));
+    $(button).tooltip(
+        {trigger : 'hover'}
+    );
     let toolbar = document.getElementById("toolbar");
     toolbar.appendChild(button);
 }

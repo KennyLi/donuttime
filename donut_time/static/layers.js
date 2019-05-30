@@ -39,7 +39,6 @@ var newLayer = function() {
 }
 
 var divs = {0: layerForm.firstElementChild.firstElementChild.firstElementChild};
-console.log(divs[0])
 divs[0].parentNode.addEventListener("click", function() {
     changeActiveLayer(this.firstElementChild.firstElementChild);
 });
