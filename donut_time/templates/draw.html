@@ -62,7 +62,7 @@
 
 {% if data is defined %}
 <img style="display: none" id="img" src={{data}}>
-{% else %}
+{% endif %}
 <div class="modal" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -80,7 +80,7 @@
     </div>
 </div>
 <div id="color" style="display: none">{{mColor}}</div>
-{% endif %}
+
 
 <div class="wrapper">
     <nav id="sidebar">

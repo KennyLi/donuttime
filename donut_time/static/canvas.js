@@ -21,9 +21,7 @@ bkg.height = canvas.height;
 const bImg = document.createElement("img");
 bImg.src = "/static/imgs/grey_checker.svg";
 bImg.onload = function (e) {
-    if(img == null){
-        bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
-    }
+    bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
 }
 
 var img = document.getElementById("img")
@@ -36,34 +34,35 @@ if (img != null) {
     }
     bkg.width = cWidth
     bkg.height = cHeight
-    bCtx.fillStyle = "#FFFFFF"
-    bCtx.fillRect(0, 0,bkg.width,bkg.height )
-    console.log(bCtx)
+    if(bgColor == "White"){
+        bCtx.fillStyle = "#FFFFFF"
+        bCtx.fillRect(0,0,canvas.width,canvas.height)
+    }
     ctx.drawImage(img,0,0)
     addHistory(saveStates());
-} else {
-    $(document).ready(function () {
-        $('#myModal').modal('show');
-    });
-    document.getElementById("w").addEventListener("click", function (e) {
-        bgColor = "White"
-        bCtx.fillStyle = "#FFFFFF"
-        bCtx.fillRect(0, 0, canvas.width, canvas.height)
-        //Initialize "history" of the canvas
-        addHistory(saveStates());
-        var loadTestImg = () => {
-            var img = new Image();
-            img.onload = () => {
-                ctx.drawImage(img, 0, 0);
-            };
-            img.src = 'static/tools/testimg.png'
-        }
-
-        //loadTestImg();
-    })
-    document.getElementById("t").addEventListener("click", function (e) {
-        bgColor = "Transparent"
-        //Initialize "history" of the canvas
-        addHistory(saveStates());
-    })
 }
+
+$(document).ready(function () {
+    $('#myModal').modal('show');
+});
+document.getElementById("w").addEventListener("click", function (e) {
+    bgColor = "White"
+    bCtx.fillStyle = "#FFFFFF"
+    bCtx.fillRect(0, 0, canvas.width, canvas.height)
+    //Initialize "history" of the canvas
+    addHistory(saveStates());
+    var loadTestImg = () => {
+        var img = new Image();
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = 'static/tools/testimg.png'
+    }
+
+    //loadTestImg();
+})
+document.getElementById("t").addEventListener("click", function (e) {
+    bgColor = "Transparent"
+    //Initialize "history" of the canvas
+    addHistory(saveStates());
+})

@@ -12,6 +12,7 @@ var xDis
 var yDis
 var originalID
 var imgData
+var selCanvas
 eventFunction("select", "mousedown", function(x0,y0,e){
     if(!drag){
         let x1 = e.offsetX;
@@ -133,7 +134,12 @@ eventFunction("select", "mousemove", function(x0,y0,e){
         startY = e.offsetY - yDis
         ctx.putImageData(originalID,0,0)
         ctx.clearRect(startXO,startYO,rectW,rectH)
-        ctx.putImageData(imgData,startX,startY)
+        selCanvas = document.createElement("canvas")
+        selCanvas.width = canvas.width
+        selCanvas.height = canvas.height
+        selCtx = selCanvas.getContext("2d")
+        selCtx.putImageData(imgData,startX,startY)
+        ctx.drawImage(selCanvas,0,0)
     }
 });
 cursor("select", function(e) {
