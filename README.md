@@ -59,10 +59,10 @@ chgrp -R www-data donut_time
 chmod -R g+w donut_time
 pip3 install -r requirements.txt
 ```
-8. Move the conf file to the sites-enabled directory:
-```mv donut_time.conf ~/../../etc/apache2/sites-enabled/```
-9. Move to the sites-enabled directory
-```cd ~/../../etc/apache2/sites-enabled/```
+8. Move the conf file to the sites-available directory:
+```mv donut_time.conf ~/../../etc/apache2/sites-available/```
+9. Move to the sites-available directory
+```cd ~/../../etc/apache2/sites-available/```
 10. Enable the site:
 ```a2ensite donut_time```
 11. Reload and restart the server
