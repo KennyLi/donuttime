@@ -282,3 +282,9 @@ they load a drawing
 + made select only select what's drawn and not the entire
 rectangle
 ==============================================================
+
+chenJ -- 2019-05-30 20:31
+--------------------------------------------------------------
++ styling layers
++ added tooltips for the icons
+==============================================================

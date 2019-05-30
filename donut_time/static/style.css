@@ -62,7 +62,7 @@ body {
 .toolicon:hover {
     background: #c3c7e9;
 }
-/* 
+/*
 #color-grad {
     border: black solid 1px;
 } */
@@ -163,4 +163,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.list-group{
+    color: black;
+    max-height: 10em;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.active-layer{
+    background-color: lightgrey;
 }
