@@ -61,11 +61,13 @@ pip3 install -r requirements.txt
 ```
 8. Move the conf file to the sites-enabled directory:
 ```mv donut_time.conf ~/../../etc/apache2/sites-enabled/```
-9. Enable the site:
+9. Move to the sites-enabled directory
+```cd ~/../../etc/apache2/sites-enabled/```
+10. Enable the site:
 ```a2ensite donut_time```
-10. Reload and restart the server
+11. Reload and restart the server
 ```
 service apache2 reload
 service apache2 restart
 ```
-11. Go to your ip address on any browser
+12. Go to your ip address on any browser
