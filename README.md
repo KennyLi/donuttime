@@ -38,7 +38,7 @@ cd <path-to-repo>
    - If in virtual environment with Python 3.7: ```pip install -r requirements.txt```
 5. Move into the donut_time directory:
 ```cd donut_time```
-6. Run app.py
+6. Run \_\_init\_\_.py
    - Python 3.7: ```python3 __init__.py```
    - If in virtual environment with Python 3.7: ```python __init__.py```
 7. Go to http://127.0.0.1:5000/ on any browser
