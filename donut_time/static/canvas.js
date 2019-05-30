@@ -33,8 +33,6 @@ if (img != null) {
     for(var i = 0; i < canvasesOrdering.length;i++){
         canvases[i].width = cWidth
         canvases[i].height = cHeight
-        canvases[i].getContext("2d").fillStyle = "#FFFFFF"
-        canvases[i].getContext("2d").fillRect(0,0,cWidth,cHeight)
     }
     bkg.width = cWidth
     bkg.height = cHeight
@@ -51,8 +49,6 @@ if (img != null) {
         bgColor = "White"
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
-        ctx.fillStyle = "#FFFFFF"
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
         //Initialize "history" of the canvas
         addHistory(saveStates());
         var loadTestImg = () => {

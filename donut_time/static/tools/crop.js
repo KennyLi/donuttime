@@ -54,8 +54,6 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
         bCtx.drawImage(bImg, 0,0,bkg.width,bkg.height);
     }
-    ctx.fillStyle = "#FFFFFF"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
     for(var i = 0; i < canvasesOrdering.length;i++){
         canvases[i].getContext("2d").putImageData(imgData[i],0,0)
     }
