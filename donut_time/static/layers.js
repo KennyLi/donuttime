@@ -16,21 +16,43 @@ var newLayer = function() {
     let divContainer = document.createElement("div");
     newLi.appendChild(divContainer);
     newLi.className += " list-group-item";
-    let newDiv = document.createElement("div");
+    let numberDiv = document.createElement("div");
     //Add new layer div
     newLi.addEventListener("click", function() {
         changeActiveLayer(this.firstElementChild.firstElementChild);
     });
-    newDiv.setAttribute("value",c.canvasid.toString());
-    newDiv.innerHTML +=  (c.canvasid + 1).toString() + "<br>";
+    numberDiv.setAttribute("value",c.canvasid.toString());
+    numberDiv.innerHTML +=  (c.canvasid + 1).toString();
     let deleteDiv = document.createElement("div");
     deleteDiv.innerHTML = "X";
     deleteDiv.addEventListener("click", function(e) {
         e.stopPropagation();
         deleteLayer(c.canvasid);
     }, true);
+    let moveUpDiv = document.createElement("div");
+    let moveDownDiv = document.createElement("div");
+    moveUpDiv.addEventListener("click", function(e) {
+        e.stopPropagation();
+        //up arrow
+        if (canvasesOrdering[canvasesOrdering.length-1] != c.canvasid) {
+            i = canvasesOrdering.indexOf(c.canvasid);
+            swapLayers(c.canvasid,canvasesOrdering[i+1])
+        }
+    },true);
+    moveUpDiv.innerHTML = "▲";
+    moveDownDiv.addEventListener("click", function(e) {
+        e.stopPropagation();
+        //down arrow
+        if (canvasesOrdering[0] != c.canvasid) {
+            i = canvasesOrdering.indexOf(c.canvasid);
+            swapLayers(canvasesOrdering[i-1],c.canvasid)
+        }
+    },true);
+    moveDownDiv.innerHTML = "▼";
     divContainer.className += " layer-container d-flex flex-row justify-content-between";
-    divContainer.appendChild(newDiv);
+    divContainer.appendChild(numberDiv);
+    divContainer.appendChild(moveUpDiv);
+    divContainer.appendChild(moveDownDiv);
     divContainer.appendChild(deleteDiv);
     layerForm.firstElementChild.insertBefore(newLi, layerForm.firstElementChild.firstChild);
 
@@ -42,6 +64,22 @@ var divs = {0: layerForm.firstElementChild.firstElementChild.firstElementChild};
 divs[0].parentNode.addEventListener("click", function() {
     changeActiveLayer(this.firstElementChild.firstElementChild);
 });
+divs[0].children[1].addEventListener("click", function(e) {
+    e.stopPropagation();
+    //up arrow
+    if (canvasesOrdering[canvasesOrdering.length-1] != 0) {
+        i = canvasesOrdering.indexOf(0);
+        swapLayers(0,canvasesOrdering[i+1])
+    }
+},true);
+divs[0].children[2].addEventListener("click", function(e) {
+    e.stopPropagation();
+    //down arrow
+    if (canvasesOrdering[0] != 0) {
+        i = canvasesOrdering.indexOf(0);
+        swapLayers(canvasesOrdering[i-1],0)
+    }
+},true);
 divs[0].lastChild.addEventListener("click", function(e) {
     e.stopPropagation();
     deleteLayer(0);
