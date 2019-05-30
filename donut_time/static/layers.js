@@ -12,7 +12,9 @@ var newLayer = function() {
     canvasdiv.appendChild(c);
     canvases[c.canvasid] = c
     canvasesOrdering.push(c.canvasid);
+    let newLi = document.createElement("li");
     let divContainer = document.createElement("div");
+    newLi.appendChild(divContainer);
     let newDiv = document.createElement("div");
     //Add new layer div
     newDiv.addEventListener("click", function() {
@@ -28,13 +30,13 @@ var newLayer = function() {
     divContainer.className += " layer-container";
     divContainer.appendChild(newDiv);
     divContainer.appendChild(deleteDiv);
-    layerForm.insertBefore(divContainer, layerForm.firstChild);
+    layerForm.firstElementChild.insertBefore(newLi, layerForm.firstElementChild.firstChild);
 
     divs[c.canvasid] = divContainer;
     addHistory(saveStates());
 }
 
-var divs = {0: layerForm.children[0]};
+var divs = {0: layerForm.firstElementChild.firstChild};
 divs[0].addEventListener("click", function() {
     changeActiveLayer(this.children[0]);
 });
