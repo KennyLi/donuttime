@@ -38,7 +38,7 @@ cd <path-to-repo>
    - If in virtual environment with Python 3.7: ```pip install -r requirements.txt```
 5. Move into the donut_time directory:
 ```cd donut_time```
-6. Run app.py
+6. Run \_\_init\_\_.py
    - Python 3.7: ```python3 __init__.py```
    - If in virtual environment with Python 3.7: ```python __init__.py```
 7. Go to http://127.0.0.1:5000/ on any browser
@@ -61,11 +61,13 @@ pip3 install -r requirements.txt
 ```
 8. Move the conf file to the sites-enabled directory:
 ```mv donut_time.conf ~/../../etc/apache2/sites-enabled/```
-9. Enable the site:
+9. Move to the sites-enabled directory
+```cd ~/../../etc/apache2/sites-enabled/```
+10. Enable the site:
 ```a2ensite donut_time```
-10. Reload and restart the server
+11. Reload and restart the server
 ```
 service apache2 reload
 service apache2 restart
 ```
-11. Go to your ip address on any browser
+12. Go to your ip address on any browser
