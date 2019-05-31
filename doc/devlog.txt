@@ -288,3 +288,10 @@ chenJ -- 2019-05-30 20:31
 + styling layers
 + added tooltips for the icons
 ==============================================================
+
+kennyL -- 2019-05-30 22:01
+--------------------------------------------------------------
++ reconfigured database to store background color
++ added background color to saved drawings
++ fixed launch instructions for README
+==============================================================
