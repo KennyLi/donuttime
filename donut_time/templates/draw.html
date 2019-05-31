@@ -19,10 +19,11 @@
         <button class="dropdown-item" type="button" id="sepia">Sepia</button>
     </div>
 </div>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="local">Download</button></li>
 <!-- <span class="navbar-text" id="download">Download</span> -->
 
 {% if user is defined %}
-<li class="nav-item"><button type="button" class="btn btn-dark" id="download">Download</button></li>
+<li class="nav-item"><button type="button" class="btn btn-dark" id="download">Save</button></li>
 <li class="nav-item"><button type="button" class="btn btn-dark" id="saved">Saved Drawings</button></li>
 {% else %}
 {{ super() }}

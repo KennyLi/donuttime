@@ -40,11 +40,9 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
     }
     ctx.clearRect(0,0,canvas.width,canvas.height)
     for(var i = 0; i < canvasesOrdering.length;i++){
-        canvases[i].width = imgData[i].width;
-        canvases[i].height = imgData[i].height;
+        reSize(canvases[i],imgData[i].width,imgData[i].height)
     }
-    bkg.width = canvas.width;
-    bkg.height = canvas.height;
+    reSize(bkg,canvas.width,canvas.height)
     if(bgColor == "White"){
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
@@ -57,8 +55,7 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
     for(var i = 0; i < canvasesOrdering.length;i++){
         canvases[i].getContext("2d").putImageData(imgData[i],0,0)
     }
-    cursorCanvas.height = canvas.height;
-    cursorCanvas.width = canvas.width;
+    reSize(cursorCanvas,canvas.width,canvas.height)
 });
 eventFunction("crop", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {

@@ -26,6 +26,11 @@ bImg.onload = function (e) {
     }
 }
 
+var reSize = function(rCanvas,width,height){
+    rCanvas.width = width
+    rCanvas.height = height 
+}
+
 var img = document.getElementById("img")
 if (img != null) {
     bgColor = document.getElementById("background").innerHTML

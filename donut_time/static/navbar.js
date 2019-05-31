@@ -3,11 +3,12 @@ var savedButton = document.getElementById("saved")
 var logoutButton = document.getElementById("logout")
 var confirmButton = document.getElementById("confirm")
 var replaceMsg = document.getElementById("replace")
+var localButton = document.getElementById("local")
 
 var confirm = function (e) {
     let formData = new FormData();
     let name = document.getElementById("name").value
-    formData.append("drawing_name", name);    
+    formData.append("drawing_name", name);
     $.ajax({
         type: 'POST',
         url: '/confirm',
@@ -69,8 +70,29 @@ var logout = function(e) {
     window.location.href="logout"
 }
 
+var local = function(e) {
+    e.preventDefault()
+    let name = document.getElementById("name").value
+    //Combine all the layers
+    let combine = document.createElement("canvas");
+    let cctx = combine.getContext("2d");
+    combine.width = canvas.width;
+    combine.height = canvas.height;
+    for (let i = 0; i < canvasesOrdering.length; i++) {
+        let layer = canvases[canvasesOrdering[i]]
+        cctx.drawImage(layer, 0, 0);
+    }
+    // let img = combine.toDataURL();
+    // document.write('<img src="'+img+'"/>');
+    let a = document.createElement("a");
+    a.href = combine.toDataURL()
+    a.download = name + ".png";
+    console.log(a)
+    a.click();
+}
 
 confirmButton.addEventListener("click", download)
+localButton.addEventListener("click", local)
 
 if (downloadButton != undefined && downloadButton != null) {
     downloadButton.addEventListener("click", confirm)
