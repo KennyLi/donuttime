@@ -1,37 +1,37 @@
 var chistory = [];
 var credo = [];
 
-/*
+
 window.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.key === "z") {
         if (chistory.length == 1) {
             return
         }
-	    a = chistory.pop();
+	a = chistory.pop();
         b = chistory[chistory.length - 1];
-        //console.log(b)
-        let canvasesToDelete = [];
-	let canvasesToAdd = [];
-        for (var canvas in Object.keys(canvases)) {
-            if (b[canvas] == undefined) {
-                canvasesToDelete.push(canvas);
-            } //else {
-              //  canvases[canvas].getContext("2d").putImageData(b[canvas][1],0,0);
-            //}
-        }
-	for (var cid in canvasesOrdering) {
-	    
+	for (change in b) {
+            action = change[0];
+	    args = change[1];
+	    //TYPES OF ACTIONS:
+	    //name - args
+	    //
+	    //canvas - [cid, imagedata] Changes the image on a canvas
+	    //resize - [cid, oldwidth, oldheight, newwidth, newheight]
+	    if (action == "canvas") {
+		cid = args[0];
+		imageData = args[1];
+		canvases[cid].getContext("2d").putImageData(imageData,0,0);
+	    }
+	    if (action == "resize") {
+		
+	    }
 	}
-        for (var id in canvasesToDelete) {
-            deleteLayer(canvasesToDelete[id]);
-        }
-	
 	credo.push(a);
 
     }
 
 });
-
+/*
 window.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.key === "y") {
         if (credo.length == 0) {

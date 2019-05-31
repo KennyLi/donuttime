@@ -63,7 +63,7 @@ if (img != null) {
             img.src = 'static/tools/testimg.png'
         }
 
-        //loadTestImg();
+        loadTestImg();
     })
     document.getElementById("t").addEventListener("click", function (e) {
         bgColor = "Transparent"

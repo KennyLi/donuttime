@@ -1,6 +1,5 @@
 tool("smudge", true);
 
-var brushSize;
 var grad;
 var helperCanvas;
 
@@ -34,7 +33,7 @@ eventFunction("smudge", "mousemove", (x0, y0, e) => {
     if (!(mousedown) || x0 == undefined || y0 == undefined) {
         return;
     }
-
+    ctx.globalCompositeOperation = "source-over";
     // self-explanatory
     let x = (e.offsetX - x0);
     let y = (e.offsetY - y0);
