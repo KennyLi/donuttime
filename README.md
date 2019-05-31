@@ -65,9 +65,6 @@ pip3 install -r requirements.txt
 ```cd ~/../../etc/apache2/sites-available/```
 10. Enable the site:
 ```a2ensite donut_time```
-11. Reload and restart the server
-```
-service apache2 reload
-service apache2 restart
-```
+11. Restart the apache server:
+```service apache2 restart```
 12. Go to your ip address on any browser
