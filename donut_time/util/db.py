@@ -10,7 +10,7 @@ def createTable():
     command = "CREATE TABLE users (username TEXT, password TEXT)"
     c.execute(command)
 
-    command = "CREATE TABLE drawing (username TEXT, drawing_name TEXT, drawing BLOB, UNIQUE(username, drawing_name) ON CONFLICT REPLACE)"
+    command = "CREATE TABLE drawing (username TEXT, drawing_name TEXT, drawing BLOB, background TEXT, UNIQUE(username, drawing_name) ON CONFLICT REPLACE)"
     c.execute(command)
 
     db.commit()
@@ -49,11 +49,11 @@ def check_user(username):
     db.close()
     return False
 
-def add_drawing(username, drawing_name, blob):
+def add_drawing(username, drawing_name, blob, background):
     db = sqlite3.connect(DB_FILE)
     db.text_factory = str
     c = db.cursor()
-    c.execute("INSERT INTO drawing VALUES(?, ?, ?)", (username, drawing_name, blob))
+    c.execute("INSERT INTO drawing VALUES(?, ?, ?, ?)", (username, drawing_name, blob, background))
     db.commit()
     db.close()
 
@@ -67,7 +67,7 @@ def delete_drawing(username, drawing_name):
 def get_drawing(username):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("SELECT drawing_name, drawing FROM drawing WHERE username =?", (username,))
+    c.execute("SELECT drawing_name, drawing, background FROM drawing WHERE username =?", (username,))
     return c.fetchall()
 
 
@@ -91,4 +91,4 @@ def check_drawing(username, drawing_name):
 # delete_drawing("b","Untitled Drawing")
 # delete_drawing("a","Untitled Drawing")
 # createTable()
-# print(get_drawing("Kenny"))
+# print(get_drawing("a"))

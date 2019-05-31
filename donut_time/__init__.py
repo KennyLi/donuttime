@@ -13,7 +13,7 @@ app.secret_key = os.urandom(32)
 @app.route("/", methods = ["POST","GET"])
 def home():
     try:
-        return render_template("draw.html", user=session["logged_in"], data=request.form["drawing"], name=request.form["name"])
+        return render_template("draw.html", user=session["logged_in"], data=request.form["drawing"], name=request.form["name"], background=request.form["background"])
     except:
         try:
             return render_template("draw.html", user=session["logged_in"])
@@ -65,7 +65,7 @@ def logout():
 
 @app.route("/blob", methods = ["POST","GET"])
 def blob():
-    db.add_drawing(session["logged_in"], request.form["drawing_name"], request.files["file"].read())
+    db.add_drawing(session["logged_in"], request.form["drawing_name"], request.files["file"].read(), request.form["background"])
     return "Successfully Downloaded"
 
 @app.route("/confirm", methods = ["POST","GET"])
@@ -82,7 +82,7 @@ def saved():
     try:
         # drawings = db.get_drawing(session["logged_in"])
         data = db.get_drawing(session["logged_in"])
-        drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8')) for drawing in data]
+        drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8'), drawing[2]) for drawing in data]
         grid = [drawings[i*3:i*3+3] for i in range(math.ceil(len(drawings) / 3))]
         return render_template("saved.html", imgs=grid, user=session["logged_in"])
     except:

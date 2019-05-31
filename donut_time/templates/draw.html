@@ -62,7 +62,8 @@
 
 {% if data is defined %}
 <img style="display: none" id="img" src={{data}}>
-{% endif %}
+<p hidden id="background">{{background}}</p>
+{% else %}
 <div class="modal" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -80,7 +81,7 @@
     </div>
 </div>
 <div id="color" style="display: none">{{mColor}}</div>
-
+{% endif %}
 
 <div class="wrapper">
     <nav id="sidebar">
@@ -94,10 +95,7 @@
       <canvas id="bkg"> </canvas>
       <div id="canvases">
         <canvas id="playground" tabindex="1"></canvas>
-        {% if data is defined %}
-        <img style="display: none" id="img" src={{data}}>
-        {% endif %}
-	</div>
+      </div>
     </div>
     <div id="color" style="display: none">{{mColor}}</div>
     <div id="options">

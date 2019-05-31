@@ -43,6 +43,7 @@ var download = function(e) {
         let formData = new FormData();
         formData.append("drawing_name", name);
         formData.append("file", blob, "blob.png");
+        formData.append("background", bgColor)
 
         $.ajax({
           type: 'POST',
