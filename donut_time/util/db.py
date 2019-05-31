@@ -1,6 +1,10 @@
 import sqlite3
+import os
 
-DB_FILE="./data/drawing.db"
+DIR = os.path.dirname(__file__) or '.'
+DIR += '/../' # points to util, ../ to go back to Flask root
+
+DB_FILE = DIR + "data/drawing.db"
 
 def createTable():
     """Create all data tables."""
