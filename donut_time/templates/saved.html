@@ -1,60 +1,59 @@
 {% extends "base.html" %}
 
 {% block left %}
-    {% if user is defined %}
-        <li class="nav-item"><a class="nav-link" href="/">New Canvas</a></li>
-    {% else %}
-        {{ super() }}
-    {% endif %}
+{% if user is defined %}
+<li class="nav-item"><a class="nav-link" href="/">New Canvas</a></li>
+{% else %}
+{{ super() }}
+{% endif %}
 {% endblock %}
 
 {% block right %}
-    {% if user is defined %}
-            <li class="nav-item">
-                <span class="navbar-text"><b>{{user}}</b></span>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a></li>
-            </li>
-        </ul>
-    {% else %}
-        {{ super() }}
-    {% endif %}
+{% if user is defined %}
+<li class="nav-item">
+    <span class="navbar-text"><b>{{user}}</b></span>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/logout">Logout</a></li>
+</li>
+</ul>
+{% else %}
+{{ super() }}
+{% endif %}
 {% endblock %}
 
 {% block content %}
-    <!-- <img id="test" src="data:image/png;base64,{{img}}"> -->
-    {% for row in imgs %}
-    <div class="row">
-        {% for img in row %}
-        <div class="col-md-4">
-          <div class="thumbnail">
-              <img src="data:image/png;base64,{{img[1]}}" width="200" height="200" class="img-thumbnail">
-              <div class="caption">
+{% for row in imgs %}
+<div class="row">
+    {% for img in row %}
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="data:image/png;base64,{{img[1]}}" class="img-thumbnail">
+            <div class="caption">
                 <p>{{img[0]}}</p>
                 <p hidden>{{img[2]}}</p>
                 <button type="button" class="btn btn-danger">Delete</button>
-              </div>
-          </div>
+            </div>
         </div>
-        {% endfor %}
     </div>
     {% endfor %}
+</div>
+{% endfor %}
 
-    <form style="display: hidden" action="/" method="POST" id="form">
-        <input type="hidden" id="drawing" name="drawing" value=""/>
-        <input type="hidden" id="name" name="name" value=""/>
-        <input type="hidden" id="background" name="background" value=""/>
-    </form>
 
-    <form style="display: hidden" action="/delete" method="POST" id="button">
-        <input type="hidden" id="delete" name="delete" value=""/>
-    </form>
+<form style="display: hidden" action="/" method="POST" id="form">
+    <input type="hidden" id="drawing" name="drawing" value="" />
+    <input type="hidden" id="name" name="name" value="" />
+    <input type="hidden" id="background" name="background" value="" />
+</form>
+
+<form style="display: hidden" action="/delete" method="POST" id="button">
+    <input type="hidden" id="delete" name="delete" value="" />
+</form>
 {% endblock %}
 
 {% block javascript %}
-<script
-src="https://code.jquery.com/jquery-3.3.1.js"
-integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
 <script src="/static/saved.js"></script>
 {% endblock %}

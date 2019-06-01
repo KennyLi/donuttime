@@ -83,7 +83,7 @@ def saved():
         # drawings = db.get_drawing(session["logged_in"])
         data = db.get_drawing(session["logged_in"])
         drawings = [(drawing[0], base64.b64encode(drawing[1]).decode('utf8'), drawing[2]) for drawing in data]
-        grid = [drawings[i*3:i*3+3] for i in range(math.ceil(len(drawings) / 3))]
+        grid = [drawings[i*4:i*4+4] for i in range(math.ceil(len(drawings) / 4))]
         return render_template("saved.html", imgs=grid, user=session["logged_in"])
     except:
         return render_template("saved.html", imgs=[], user=session["logged_in"])

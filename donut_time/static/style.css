@@ -175,3 +175,17 @@ input::-webkit-inner-spin-button {
 .active-layer{
     background-color: lightgrey;
 }
+
+.thumbnail *{
+    display: table;
+    margin: auto;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.col-md-3 {
+    padding:1em;
+}

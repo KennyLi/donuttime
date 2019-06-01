@@ -8,7 +8,12 @@ var getColor = (x0, y0, e) => {
 }
 
 eventFunction("eyedrop", "mousedown", getColor);
-eventFunction("eyedrop", "mousemove", getColor);
+eventFunction("eyedrop", "mousemove",  (x0, y0, e) => {
+    if (!(mousedown) || x0 == undefined || y0 == undefined) {
+        return;
+    }
+    getColor(x0,y0,e);
+});
 
 //Cursor
 cursor("eyedrop", function(e) {

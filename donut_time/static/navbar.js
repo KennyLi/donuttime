@@ -78,6 +78,10 @@ var local = function(e) {
     let cctx = combine.getContext("2d");
     combine.width = canvas.width;
     combine.height = canvas.height;
+    if (bgColor == "White") {
+    cctx.fillStyle = "#FFFFFF"
+    cctx.fillRect(0,0,combine.width,combine.height)
+    }    
     for (let i = 0; i < canvasesOrdering.length; i++) {
         let layer = canvases[canvasesOrdering[i]]
         cctx.drawImage(layer, 0, 0);
