@@ -82,13 +82,11 @@ var local = function(e) {
         let layer = canvases[canvasesOrdering[i]]
         cctx.drawImage(layer, 0, 0);
     }
-    // let img = combine.toDataURL();
-    // document.write('<img src="'+img+'"/>');
     let a = document.createElement("a");
-    a.href = combine.toDataURL()
+    a.href = combine.toDataURL();
     a.download = name + ".png";
-    console.log(a)
-    a.click();
+    let event = new MouseEvent("click");
+    a.dispatchEvent(event);
 }
 
 confirmButton.addEventListener("click", download)
