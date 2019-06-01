@@ -10,6 +10,10 @@ var smudge = (x, y) => {
     helpCtx.globalCompositeOperation = "source-over";
     // copy over the section where i clicked or dragged over on the actual canvas
     // it gets where you passed over when you drag the mouse.
+    if (bgColor == "White") {
+        helpCtx.fillStyle = "FFFFFF";
+        helpCtx.fillRect(0,0, helperCanvas.width, helperCanvas.height);
+    }
     helpCtx.drawImage(ctx.canvas, -1 * (x - brushRadius), -1 * (y - brushRadius));
     // destination in is used to blend the colors. It keeps the overlap. https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
     helpCtx.globalCompositeOperation = "destination-in";
