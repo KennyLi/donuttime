@@ -1,7 +1,9 @@
 //Erases from canvas
 tool("eraser",true)
 
+var initial
 eventFunction("eraser","mousedown", function(x0,y0,e) {
+    initial = saveStates();
     let x1 = e.offsetX;
     let y1 = e.offsetY;
     ctx.strokeStyle = "#FFFFFF";
@@ -42,6 +44,10 @@ eventFunction("eraser","mousemove", function(x0,y0,e) {
     ctx.moveTo(e.offsetX,e.offsetY);
 });
 
+eventFunction("eraser", "mouseup", function(x0,y0,e) {
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
+});
 //=============================For the dotted circle effect=========================
 cursor("eraser", function(e) {
     cursorCtx.save();

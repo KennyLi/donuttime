@@ -1,7 +1,9 @@
 //Pencil tool that gets passed in events
 tool("pencil",true)
 
+var initial;
 eventFunction("pencil", "mousedown", function (x0, y0, e) {
+    initial = saveStates();
     ctx.beginPath();
     ctx.moveTo(x0, y0);
 });
@@ -21,6 +23,10 @@ eventFunction("pencil", "mousemove", function (x0, y0, e) {
     ctx.moveTo(e.offsetX,e.offsetY);
 });
 
+eventFunction("pencil","mouseup", function(x0,y0,e) {
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
+});
 //Cursor
 cursor("pencil", function(e) {
     cursorCtx.save();

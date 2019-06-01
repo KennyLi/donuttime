@@ -1,10 +1,11 @@
-// this should stay one file 
+// this should stay one file
 
 const grayscale = document.getElementById('grayscale');
 const invert = document.getElementById('invert');
 const sepia = document.getElementById('sepia');
-
+var initial
 grayscale.addEventListener('click', () => {
+    initial = saveStates();
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let pixels = img.data;
 
@@ -18,9 +19,12 @@ grayscale.addEventListener('click', () => {
         pixels[i + 2] = avg;
     }
     ctx.putImageData(img, 0, 0);
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
 });
 
 invert.addEventListener('click', () => {
+    initial = saveStates();
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let pixels = img.data;
 
@@ -31,9 +35,12 @@ invert.addEventListener('click', () => {
         pixels[i + 2] = 255 - pixels[i + 2];
     }
     ctx.putImageData(img, 0, 0);
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
 });
 
 sepia.addEventListener('click', () => {
+    initial = saveStates();
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let pixels = img.data;
     for (let i = 0; i < pixels.length; i += 4) {
@@ -44,5 +51,6 @@ sepia.addEventListener('click', () => {
         pixels[i + 2] = avg;
     }
     ctx.putImageData(img, 0, 0);
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
 });
-

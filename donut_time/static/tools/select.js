@@ -13,6 +13,7 @@ var yDis
 var originalID
 var imgData
 var selCanvas
+var initial;
 eventFunction("select", "mousedown", function(x0,y0,e){
     if(!drag){
         let x1 = e.offsetX;
@@ -21,6 +22,7 @@ eventFunction("select", "mousedown", function(x0,y0,e){
         startY = y1
         imageData = ctx.getImageData(0,0,canvas.width,canvas.height)
         originalID = ctx.getImageData(0,0,canvas.width,canvas.height)
+        initial = saveStates();
     }
     else{
         if(rectW < 0 && rectH < 0){
@@ -108,6 +110,8 @@ eventFunction("select", "mouseup", function(x0,y0,e){
     else if(drag){
         drag = false;
         originalID = ctx.getImageData(0,0,canvas.width,canvas.height)
+        //History
+        addHistory([["canvas",[initial,saveStates()]]]);
     }
 });
 eventFunction("select", "mousemove", function(x0,y0,e){

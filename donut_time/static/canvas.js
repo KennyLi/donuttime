@@ -15,6 +15,7 @@ var bgColor
 
 //Transparent Image Setup
 const bkg = document.getElementById("bkg");
+canvases[-1] = bkg;
 const bCtx = bkg.getContext("2d");
 bkg.width = canvas.width;
 bkg.height = canvas.height;
@@ -28,7 +29,7 @@ bImg.onload = function (e) {
 
 var reSize = function(rCanvas,width,height){
     rCanvas.width = width
-    rCanvas.height = height 
+    rCanvas.height = height
 }
 
 var img = document.getElementById("img")
@@ -58,17 +59,19 @@ if (img != null) {
         bgColor = "White"
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
-        //Initialize "history" of the canvas
-        addHistory(saveStates());
+
         var loadTestImg = () => {
             var img = new Image();
             img.onload = () => {
                 ctx.drawImage(img, 0, 0);
+                addHistory(saveStates());
             };
             img.src = 'static/tools/testimg.png'
         }
 
         loadTestImg();
+        //Initialize "history" of the canvas
+        addHistory(saveStates());
     })
     document.getElementById("t").addEventListener("click", function (e) {
         bgColor = "Transparent"

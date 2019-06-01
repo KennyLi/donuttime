@@ -5,12 +5,20 @@ var startX
 var startY
 var imageData
 var imgData
+var cw
+var ch
+var initial
 eventFunction("crop", "mousedown", function(x0,y0,e){
   let x1 = e.offsetX;
   let y1 = e.offsetY;
   startX = x1
   startY = y1
   imageData = ctx.getImageData(0,0,canvas.width,canvas.height)
+
+  //Keeping track of history
+  initial = saveStates()
+  cw = canvas.width;
+  ch = canvas.height;
 });
 eventFunction("crop", "mouseup", function(x0,y0,e){
     imgData = []
@@ -56,6 +64,12 @@ eventFunction("crop", "mouseup", function(x0,y0,e){
         canvases[i].getContext("2d").putImageData(imgData[i],0,0)
     }
     reSize(cursorCanvas,canvas.width,canvas.height)
+
+    //History
+    let allActions = [];
+    allActions.push(["resize",[cw,ch,canvas.width,canvas.height]])
+    allActions.push(["canvas",[initial,saveStates()]])
+    addHistory(allActions)
 });
 eventFunction("crop", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {

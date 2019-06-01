@@ -1,6 +1,8 @@
 tool("fill",true)
 
+var initial
 eventFunction("fill", "mousedown", function(x0,y0,e){
+    initial = saveStates();
     let x1 = e.offsetX;
     let y1 = e.offsetY;
     var fillColor = color
@@ -44,6 +46,10 @@ eventFunction("fill", "mousedown", function(x0,y0,e){
 
 })
 
+eventFunction("fill", "mouseup", function(x0,y0,e) {
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
+});
 cursor("fill", function(e) {
     cursorCtx.save();
     cursorCtx.setLineDash([]);

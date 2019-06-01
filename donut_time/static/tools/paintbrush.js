@@ -3,7 +3,7 @@ tool("paintbrush", true);
 
 //Save the points to make smooth bezier curve
 pointsToDraw = [];
-
+var initial;
 var mdpnt = (p0, p1) => {
     return [(p0[0] + p1[0]) / 2, (p1[1] + p0[1]) / 2];
 }
@@ -13,6 +13,7 @@ var paintSave = undefined;
 
 //When mouse is clicked, save the canvas, and draw a dot
 eventFunction("paintbrush", "mousedown", (x0, y0, e) => {
+    initial = saveStates();
     ctx.fillStyle = `rgba(${color.join(',')})`;
     paintSave = canvas.toDataURL();
     ctx.beginPath();
@@ -63,6 +64,9 @@ eventFunction('paintbrush', 'mouseup', (x0, y0, e) => {
     pointsToDraw.length = 0;
     ctx.beginPath();
     paintSave = undefined;
+
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
 });
 
 //Default tool

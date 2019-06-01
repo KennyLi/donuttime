@@ -4,7 +4,9 @@ var startX
 var startY
 var imgData
 var drag = false
+var initial
 eventFunction("ellipse", "mousedown", function(x0,y0,e){
+    initial = saveStates();
   let x1 = e.offsetX;
   let y1 = e.offsetY;
   startX = x1
@@ -14,6 +16,8 @@ eventFunction("ellipse", "mousedown", function(x0,y0,e){
 });
 eventFunction("ellipse", "mouseup", function(x0,y0,e){
   drag = false
+  //History
+  addHistory([["canvas",[initial,saveStates()]]]);
 });
 eventFunction("ellipse", "mousemove", function(x0,y0,e){
     if (!(mousedown) || x0 == undefined || y0 == undefined) {

@@ -2,16 +2,21 @@
 var canvasIDCounter = 0;
 var canvasdiv = document.getElementById("canvases");
 var layerForm = document.forms["layer-form"];
-var newLayer = function() {
+var newLayer = function(e = undefined, id = undefined) {
     let c = document.createElement("canvas");
     c.className += " helpercanvas";
     c.width = canvas.width;
     c.height = canvas.height;
-    canvasIDCounter += 1;
-    c.canvasid = canvasIDCounter;
+    if (id == undefined) {
+        canvasIDCounter += 1;
+        c.canvasid = canvasIDCounter;
+
+    } else {
+        c.canvasid = id
+    }
+    canvasesOrdering.push(c.canvasid);
     canvasdiv.appendChild(c);
     canvases[c.canvasid] = c
-    canvasesOrdering.push(c.canvasid);
     let newLi = document.createElement("li");
     let divContainer = document.createElement("div");
     newLi.appendChild(divContainer);
@@ -27,6 +32,7 @@ var newLayer = function() {
     deleteDiv.innerHTML = "X";
     deleteDiv.addEventListener("click", function(e) {
         e.stopPropagation();
+        addHistory([["layerDelete", [c.canvasid,canvasesOrdering.indexOf(c.canvasid)]]])
         deleteLayer(c.canvasid);
     }, true);
     let moveUpDiv = document.createElement("div");
@@ -36,7 +42,9 @@ var newLayer = function() {
         //up arrow
         if (canvasesOrdering[canvasesOrdering.length-1] != c.canvasid) {
             i = canvasesOrdering.indexOf(c.canvasid);
+            addHistory([["layerSwap", [c.canvasid,canvasesOrdering[i+1]]]])
             swapLayers(c.canvasid,canvasesOrdering[i+1])
+
         }
     },true);
     moveUpDiv.innerHTML = "▲";
@@ -45,7 +53,9 @@ var newLayer = function() {
         //down arrow
         if (canvasesOrdering[0] != c.canvasid) {
             i = canvasesOrdering.indexOf(c.canvasid);
+            addHistory([["layerSwap", [canvasesOrdering[i-1],c.canvasid]]])
             swapLayers(canvasesOrdering[i-1],c.canvasid)
+
         }
     },true);
     moveDownDiv.innerHTML = "▼";
@@ -57,7 +67,9 @@ var newLayer = function() {
     layerForm.firstElementChild.insertBefore(newLi, layerForm.firstElementChild.firstChild);
 
     divs[c.canvasid] = divContainer;
-    addHistory(saveStates());
+    if (id == undefined) {
+        addHistory([["layerAdd", [c.canvasid]]]);
+    }
 }
 
 var divs = {0: layerForm.firstElementChild.firstElementChild.firstElementChild};
@@ -69,7 +81,9 @@ divs[0].children[1].addEventListener("click", function(e) {
     //up arrow
     if (canvasesOrdering[canvasesOrdering.length-1] != 0) {
         i = canvasesOrdering.indexOf(0);
+        addHistory([["layerSwap", [0,canvasesOrdering[i+1]]]])
         swapLayers(0,canvasesOrdering[i+1])
+
     }
 },true);
 divs[0].children[2].addEventListener("click", function(e) {
@@ -77,11 +91,14 @@ divs[0].children[2].addEventListener("click", function(e) {
     //down arrow
     if (canvasesOrdering[0] != 0) {
         i = canvasesOrdering.indexOf(0);
+        addHistory([["layerSwap", [canvasesOrdering[i-1],0]]])
         swapLayers(canvasesOrdering[i-1],0)
+
     }
 },true);
 divs[0].lastChild.addEventListener("click", function(e) {
     e.stopPropagation();
+    addHistory([["layerDelete", [0,canvasesOrdering.indexOf(0)]]])
     deleteLayer(0);
 },true);
 
@@ -113,7 +130,9 @@ var deleteLayer = function(cid) {
 //Swapping Layers RIGHT TO LEFT
 var swapLayers = function(a,b) {
     var c = canvasesOrdering;
-    [c[a],c[b]] = [c[b],c[a]];
+    i = c.indexOf(a);
+    j = c.indexOf(b);
+    [c[i],c[j]] = [c[j],c[i]];
     swap(divs[b].parentNode,divs[a].parentNode);
     swap(canvases[a],canvases[b]);
 
@@ -121,7 +140,6 @@ var swapLayers = function(a,b) {
 
 
 function swap(a,b) {
-    console.log(a,b);
     var div = a.parentNode;
     var after = b.nextElementSibling;
     div.insertBefore(b,a);

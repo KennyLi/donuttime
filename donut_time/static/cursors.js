@@ -1,6 +1,7 @@
 //=============================For the circle effect=========================
 cursorCanvas = document.createElement("canvas");
 cursorCtx = cursorCanvas.getContext("2d");
+canvases[-2] = cursorCanvas;
 cursorCanvas.height = canvas.height;
 cursorCanvas.width = canvas.width;
 cursorCanvas.className += " helpercanvas";

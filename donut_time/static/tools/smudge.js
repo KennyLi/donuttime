@@ -2,7 +2,7 @@ tool("smudge", true);
 
 var grad;
 var helperCanvas;
-
+var initial;
 var smudge = (x, y) => {
     // on the helper canvas, draw what the smudge would look like.
     var helpCtx = helperCanvas.getContext('2d');
@@ -24,6 +24,7 @@ var smudge = (x, y) => {
 }
 
 eventFunction("smudge", "mousedown", () => {
+    initial = saveStates();
     // initialize everything needed for smudging
     brushRadius = brushSize / 2;
     // makes a gradient with two stops. one at white and one at black. so a grayscale.
@@ -54,6 +55,8 @@ eventFunction("smudge", "mousemove", (x0, y0, e) => {
 
 eventFunction('smudge', 'mouseup', () => {
     helperCanvas.getContext('2d').clearRect(0, 0, brushSize, brushSize);
+    //History
+    addHistory([["canvas",[initial,saveStates()]]]);
 })
 
 //Cursor
