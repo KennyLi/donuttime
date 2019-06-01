@@ -6,7 +6,7 @@ var imgData
 var drag = false
 var initial
 eventFunction("rectangle", "mousedown", function(x0,y0,e){
-    initial = saveStates;
+    initial = saveStates();
   let x1 = e.offsetX;
   let y1 = e.offsetY;
   startX = x1

@@ -2,7 +2,7 @@ tool("smudge", true);
 
 var grad;
 var helperCanvas;
-var initial;
+
 var smudge = (x, y) => {
     // on the helper canvas, draw what the smudge would look like.
     var helpCtx = helperCanvas.getContext('2d');
@@ -11,7 +11,7 @@ var smudge = (x, y) => {
     // copy over the section where i clicked or dragged over on the actual canvas
     // it gets where you passed over when you drag the mouse.
     if (bgColor == "White") {
-        helpCtx.fillStyle = "FFFFFF";
+        helpCtx.fillStyle = "#FFFFFF";
         helpCtx.fillRect(0,0, helperCanvas.width, helperCanvas.height);
     }
     helpCtx.drawImage(ctx.canvas, -1 * (x - brushRadius), -1 * (y - brushRadius));
@@ -24,7 +24,6 @@ var smudge = (x, y) => {
 }
 
 eventFunction("smudge", "mousedown", () => {
-    initial = saveStates();
     // initialize everything needed for smudging
     brushRadius = brushSize / 2;
     // makes a gradient with two stops. one at white and one at black. so a grayscale.
@@ -55,8 +54,7 @@ eventFunction("smudge", "mousemove", (x0, y0, e) => {
 
 eventFunction('smudge', 'mouseup', () => {
     helperCanvas.getContext('2d').clearRect(0, 0, brushSize, brushSize);
-    //History
-    addHistory([["canvas",[initial,saveStates()]]]);
+    helperCanvas.remove();
 })
 
 //Cursor
