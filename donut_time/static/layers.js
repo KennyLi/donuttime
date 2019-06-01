@@ -59,10 +59,28 @@ var newLayer = function(e = undefined, id = undefined) {
         }
     },true);
     moveDownDiv.innerHTML = "▼";
+    let visibilityDiv = document.createElement("div");
+    let eyeimg = document.createElement("img");
+    eyeimg.width = 24;
+    eyeimg.width = 22;
+    eyeimg.src = "/static/icons/eye-solid.svg";
+    visibilityDiv.appendChild(eyeimg);
+    visibilityDiv.addEventListener("click", function(e) {
+        e.stopPropagation();
+        addHistory([["layerVisibility", [c.canvasid]]])
+        if (c.style.visibility == '') {
+            c.style.visibility = 'hidden';
+            this.firstElementChild.src = "/static/icons/eye-slash-solid.svg";
+        } else {
+            c.style.visibility = '';
+            this.firstElementChild.src = "/static/icons/eye-solid.svg";
+        }
+    }, true);
     divContainer.className += " layer-container d-flex flex-row justify-content-between";
     divContainer.appendChild(numberDiv);
     divContainer.appendChild(moveUpDiv);
     divContainer.appendChild(moveDownDiv);
+    divContainer.appendChild(visibilityDiv);
     divContainer.appendChild(deleteDiv);
     layerForm.firstElementChild.insertBefore(newLi, layerForm.firstElementChild.firstChild);
 
@@ -96,11 +114,23 @@ divs[0].children[2].addEventListener("click", function(e) {
 
     }
 },true);
+divs[0].children[3].addEventListener("click", function(e) {
+    e.stopPropagation();
+    addHistory([["layerVisibility", [0]]])
+    if (canvases[0].style.visibility == '') {
+        canvases[0].style.visibility = 'hidden';
+        this.firstElementChild.src = "/static/icons/eye-slash-solid.svg";
+    } else {
+        canvases[0].style.visibility = '';
+        this.firstElementChild.src = "/static/icons/eye-solid.svg";
+    }
+},true);
 divs[0].lastChild.addEventListener("click", function(e) {
     e.stopPropagation();
     addHistory([["layerDelete", [0,canvasesOrdering.indexOf(0)]]])
     deleteLayer(0);
 },true);
+
 
 var changeActiveLayer = function(e) {
     divs[canvas.canvasid].parentNode.className = "list-group-item";

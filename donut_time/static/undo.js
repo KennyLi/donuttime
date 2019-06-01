@@ -16,6 +16,7 @@ window.addEventListener("keydown", function (e) {
         //layerSwap - [layer0.id,layer1.id]
         //layerAdd - [layer0.id]
         //layerDelete - [layer0.id, index]
+        //layerVisibility - [layer0.id]
         for (var change in a) {
             action = a[change][0];
             args = a[change][1];
@@ -28,6 +29,16 @@ window.addEventListener("keydown", function (e) {
             }
             if (action == "layerSwap") {
                 swapLayers(args[1],args[0]);
+            }
+            if (action == "layerVisibility") {
+                c = canvases[args[0]]
+                if (c.style.visibility == '') {
+                    c.style.visibility = 'hidden';
+                    divs[args[0]].children[3].firstElementChild.src = "/static/icons/eye-slash-solid.svg";
+                } else {
+                    c.style.visibility = '';
+                    divs[args[0]].children[3].firstElementChild.src = "/static/icons/eye-solid.svg";
+                }
             }
             if (action == "layerAdd") {
                 deleteLayer(args[0]);
@@ -77,6 +88,16 @@ window.addEventListener("keydown", function (e) {
             }
             if (action == "layerDelete") {
                 deleteLayer(args[0])
+            }
+            if (action == "layerVisibility") {
+                c = canvases[args[0]]
+                if (c.style.visibility == '') {
+                    c.style.visibility = 'hidden';
+                    divs[args[0]].children[3].firstElementChild.src = "/static/icons/eye-slash-solid.svg";
+                } else {
+                    c.style.visibility = '';
+                    divs[args[0]].children[3].firstElementChild.src = "/static/icons/eye-solid.svg";
+                }
             }
             if (action == "canvas") {
                 data = args[1];
