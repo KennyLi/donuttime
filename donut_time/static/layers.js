@@ -32,7 +32,7 @@ var newLayer = function(e = undefined, id = undefined) {
     deleteDiv.innerHTML = "X";
     deleteDiv.addEventListener("click", function(e) {
         e.stopPropagation();
-        addHistory([["layerDelete", [c.canvasid,canvasesOrdering.indexOf(c.canvasid)]]])
+        addHistory([["layerDelete", [c.canvasid,canvasesOrdering.indexOf(c.canvasid)]],["canvas", [saveStates(),saveStates()]]])
         deleteLayer(c.canvasid);
     }, true);
     let moveUpDiv = document.createElement("div");
@@ -127,7 +127,7 @@ divs[0].children[3].addEventListener("click", function(e) {
 },true);
 divs[0].lastChild.addEventListener("click", function(e) {
     e.stopPropagation();
-    addHistory([["layerDelete", [0,canvasesOrdering.indexOf(0)]]])
+    addHistory([["layerDelete", [0,canvasesOrdering.indexOf(0)]],["canvas", [saveStates(),saveStates()]]])
     deleteLayer(0);
 },true);
 
@@ -149,12 +149,13 @@ var deleteLayer = function(cid) {
     if (canvasesOrdering[0] == cid) {
         return
     }
+    changeActiveLayer(divs[0].children[0]);
     canvases[cid].remove()
     delete canvases[cid];
     canvasesOrdering.splice(canvasesOrdering.indexOf(cid), 1);
     divs[cid].parentNode.remove();
     delete divs[cid];
-    changeActiveLayer(divs[0].children[0]);
+
 }
 
 //Swapping Layers RIGHT TO LEFT
