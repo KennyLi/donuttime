@@ -125,7 +125,7 @@ divs[0].children[3].addEventListener("click", function(e) {
         this.firstElementChild.src = "/static/icons/eye-solid.svg";
     }
 },true);
-divs[0].lastChild.addEventListener("click", function(e) {
+divs[0].lastElementChild.addEventListener("click", function(e) {
     e.stopPropagation();
     addHistory([["layerDelete", [0,canvasesOrdering.indexOf(0)]],["canvas", [saveStates(),saveStates()]]])
     deleteLayer(0);
@@ -147,9 +147,10 @@ addLayerButton.addEventListener("click", newLayer);
 //Deleting Layers
 var deleteLayer = function(cid) {
     if (canvasesOrdering[0] == cid) {
+	console.log("hi")
         return
     }
-    changeActiveLayer(divs[0].children[0]);
+    changeActiveLayer(divs[canvasesOrdering[0]].children[0]);
     canvases[cid].remove()
     delete canvases[cid];
     canvasesOrdering.splice(canvasesOrdering.indexOf(cid), 1);
