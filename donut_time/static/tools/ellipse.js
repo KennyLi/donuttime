@@ -43,8 +43,9 @@ eventFunction("ellipse", "mousemove", function(x0,y0,e){
     }
     if (fillbox.checked) {
         ctx.fill();
+    } else {
+	ctx.stroke();
     }
-    ctx.stroke();
 });
 cursor("ellipse", function(e) {
     cursorCtx.save();
