@@ -104,11 +104,11 @@ var eventFunction = function (toolName, type, fxn, fxn1 = undefined) {
     //Add it to the all tool functions lists
     if (!(toolName in allTools)) {
         allTools[toolName] = {};
-        console.log("CREATED TOOL: " + toolName)
+        //console.log("CREATED TOOL: " + toolName)
     }
     if (!(type in allTools[toolName])) {
         allTools[toolName][type] = inner;
-        console.log("ADDED TOOL FUNCTION: " + toolName + " " + type)
+        //console.log("ADDED TOOL FUNCTION: " + toolName + " " + type)
     }
 
 }

@@ -146,11 +146,14 @@ addLayerButton.addEventListener("click", newLayer);
 
 //Deleting Layers
 var deleteLayer = function(cid) {
-    if (canvasesOrdering[0] == cid) {
-	console.log("hi")
+    if (canvasesOrdering.length == 1) {
         return
     }
-    changeActiveLayer(divs[canvasesOrdering[0]].children[0]);
+    if (canvasesOrdering.indexOf(cid) == 0) {
+        changeActiveLayer(divs[canvasesOrdering[1]].children[0]);
+    } else {
+        changeActiveLayer(divs[canvasesOrdering[0]].children[0]);
+    }
     canvases[cid].remove()
     delete canvases[cid];
     canvasesOrdering.splice(canvasesOrdering.indexOf(cid), 1);
