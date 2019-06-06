@@ -314,3 +314,21 @@ kennyL -- 2019-06-01 15:34
 + fixed bug with dropper
 + stylized saved drawings
 ==============================================================
+
+kennyL -- 2019-06-05 00:37
+--------------------------------------------------------------
+What did other team do? A swipe based website that allows individuals 
+    to meet each other in a professional manner.
+Were they successful? Yes, although the content was lacking.
+Can you explain errors, if any? No errors were found.
+Who was other team? Billionaires Boys Club 
+    Robin Han, Sajed Nahian, Jerry Ye, Bill Ni
+==============================================================
+
+KennyL -- 2019-06-06 13:11
+--------------------------------------------------------------
+- removed brightness.js
+- removed test image
++ fixed bug with shapes + fill
++ fixed bug with removing layers
+==============================================================

@@ -60,16 +60,16 @@ if (img != null) {
         bCtx.fillStyle = "#FFFFFF"
         bCtx.fillRect(0, 0, canvas.width, canvas.height)
 
-        var loadTestImg = () => {
-            var img = new Image();
-            img.onload = () => {
-                ctx.drawImage(img, 0, 0);
-                addHistory(saveStates());
-            };
-            img.src = 'static/tools/testimg.png'
-        }
+        // var loadTestImg = () => {
+        //     var img = new Image();
+        //     img.onload = () => {
+        //         ctx.drawImage(img, 0, 0);
+        //         addHistory(saveStates());
+        //     };
+        //     img.src = 'static/tools/testimg.png'
+        // }
 
-        loadTestImg();
+        // loadTestImg();
         //Initialize "history" of the canvas
         addHistory(saveStates());
     })
