@@ -24,8 +24,8 @@ Our dependencies, as listed in requirements.txt, are as follows:
 
 ### Install and run on localhost
 1. Clone the repo via ssh or https
-   - SSH: ```git clone git@github.com:lli15/donut_time.git```
-   - HTTPS: ```git clone https://github.com/lli15/donut_time.git```
+   - SSH: ```git clone git@github.com:lli15/donuttime.git```
+   - HTTPS: ```git clone https://github.com/lli15/donuttime.git```
 2. **(Optional)** Make and activate virtual environment
 ```
 python3 -m venv <venv_name>
@@ -39,7 +39,7 @@ cd <path-to-repo>
    - Python 3.7: ```pip3 install -r requirements.txt```
    - If in virtual environment with Python 3.7: ```pip install -r requirements.txt```
 5. Move into the donut_time directory:
-```cd donut_time```
+```cd donuttime```
 6. Run \_\_init\_\_.py
    - Python 3.7: ```python3 __init__.py```
    - If in virtual environment with Python 3.7: ```python __init__.py```
@@ -53,22 +53,22 @@ cd <path-to-repo>
 3. Get root access:
 ```sudo su```
 4. Clone the repo via https:
-```git clone https://github.com/lli15/donut_time.git```
+```git clone https://github.com/lli15/donuttime.git```
 5. Move into the repo, add write permisssions, and install requirements:
 ```
-cd donut_time
-chgrp -R www-data donut_time
-chmod -R g+w donut_time
+cd donuttime
+chgrp -R www-data donuttime
+chmod -R g+w donuttime
 pip3 install -r requirements.txt
 ```
 6. Open the conf file and change the server name to your ip address:
-```nano donut_time.conf```
+```nano donuttime.conf```
 7. Move the conf file to the sites-available directory:
-```mv donut_time.conf /etc/apache2/sites-available/```
+```mv donuttime.conf /etc/apache2/sites-available/```
 8. Move to the sites-available directory
 ```cd /etc/apache2/sites-available/```
 9. Enable the site:
-```a2ensite donut_time```
+```a2ensite donuttime```
 10. Restart the apache server:
 ```service apache2 restart```
 11. Go to your ip address on any browser
