@@ -3,7 +3,7 @@ Kenny Li(PM), Jiayang Chen, Dennis Chen, Johnson Li
 
 P #05: Fin
 
-Watch Our Video Demo Here: [Demo Video](https://youtu.be/gt3q12s4cKk)
+[Watch Our Video Demo Here](https://youtu.be/gt3q12s4cKk)
 # Donut Drawing
 ## Description
 Donut Drawing is a layer-based web drawing program similiar to [Aggie.io](https://aggie.io/) or Adobe Photoshop. Users will have several tools such as pencil, paintbrush, paint bucket, eraser, smudge, eye dropper, ellipse, rectangle, and crop. Modifiers can be applied to these tools such as color, brush size, opacity, and brightness. Filters can also be applied to the canvas directly. Users may save their work by making an account and storing it or downloading it locally to their computer.
