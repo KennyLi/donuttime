@@ -38,7 +38,7 @@ cd <path-to-repo>
 4. Install requirements
    - Python 3.7: ```pip3 install -r requirements.txt```
    - If in virtual environment with Python 3.7: ```pip install -r requirements.txt```
-5. Move into the donut_time directory:
+5. Move into the donuttime directory:
 ```cd donuttime```
 6. Run \_\_init\_\_.py
    - Python 3.7: ```python3 __init__.py```
