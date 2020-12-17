@@ -1,6 +1,8 @@
 # 𝓭𝓸𝓷𝓾𝓽 𝓽𝓲𝓶𝓮  🍩
 Kenny Li(PM), Jiayang Chen, Dennis Chen, Johnson Li
 
+![shinobu](./shinobu.gif)
+
 P #05: Fin
 
 # [Watch Our Video Demo Here](https://youtu.be/gt3q12s4cKk)
